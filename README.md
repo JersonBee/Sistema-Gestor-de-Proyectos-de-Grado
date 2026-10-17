@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Sistema de gestión de proyectos de grado
 
 Aplicación JSP/JSTL con PostgreSQL en Supabase. Incluye acceso, perfiles, banco de ideas, creación de proyectos, Pago y revisiones de Propuesta/Informe. Hay versiones, previsualización, pausas, avisos y plazos automáticos. La fase Final permite registrar adicionales opcionales y cerrar por el Comité; las solicitudes permiten cambios de docentes, retiros y atención de consultas, quejas y reclamos. El historial muestra las decisiones y movimientos autorizados. Incluye actas con aprobación, mensajería privada estudiante/director, administración de cuentas por el Comité y búsqueda de proyectos con filtros combinables.
@@ -133,3 +134,6 @@ Las sesiones de autenticación se verifican en PostgreSQL mediante tokens aleato
 - [Contenedores en Vercel](https://vercel.com/docs/functions/runtimes/container).
 
 Los acuerdos funcionales están en `docs/DECISIONES_FUNCIONALES.md`. Los scripts de instalación Supabase permanecen en `database/supabase/`; el usuario confirma que ya los ejecutó. No volver a ejecutarlos como migraciones.
+=======
+# Sistema-Gestor-de-Proyectos-de-Grado
+>>>>>>> 0b556cd74f4a23f2e091534334d053f789d2c1f3
