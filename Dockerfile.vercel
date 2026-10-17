@@ -17,9 +17,13 @@ COPY --from=compilacion /proyecto/target/proyectos-grado.war webapps/ROOT.war
 COPY --from=compilacion /proyecto/target/tomcat-lib/ lib/
 COPY docker/context.xml conf/Catalina/localhost/ROOT.xml
 COPY docker/certs/supabase-ca.crt conf/ssl/supabase-ca.crt
+COPY docker/iniciar.sh bin/iniciar-grado.sh
 RUN printf '\norg.apache.tomcat.util.digester.PROPERTY_SOURCE=org.apache.tomcat.util.digester.EnvironmentPropertySource\n' >> conf/catalina.properties \
+    && sed -i 's/port="8080"/port="${grado.http.port}"/' conf/server.xml \
+    && sed -i 's/\r$//' bin/iniciar-grado.sh \
+    && chmod +x bin/iniciar-grado.sh \
     && groupadd --system grado && useradd --system --gid grado --home-dir /usr/local/tomcat grado \
     && chown -R grado:grado /usr/local/tomcat
 USER grado
 EXPOSE 8080
-CMD ["catalina.sh", "run"]
+CMD ["/usr/local/tomcat/bin/iniciar-grado.sh"]

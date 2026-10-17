@@ -71,6 +71,12 @@ Si aún no existe una cuenta del Comité, crear la primera con `scripts/crear-co
 - Verificar un proyecto existente, su resumen y las ventanas de fases.
 - Revisar que las peticiones no produzcan errores JNDI/JDBC en los registros. No publicar registros que contengan datos personales.
 
+### Error FUNCTION_INVOCATION_FAILED por puerto
+
+Si Logs indica `could not connect to $PORT=80` y detecta `8005, 8080`, Vercel y Tomcat están usando puertos distintos. Configurar `PORT=8080` en **Production**, guardar y crear un nuevo despliegue. Agregar una variable no cambia los despliegues ya creados.
+
+La imagen corregida utiliza `docker/iniciar.sh` para validar `PORT` y pasarlo al conector HTTP de Tomcat. Hay que subir tanto ese archivo como `Dockerfile.vercel` para incorporar la corrección; el valor por defecto local sigue siendo 8080. La declaración `EXPOSE` o `ENV` dentro de la imagen no sustituye la configuración del puerto del router en Vercel.
+
 ## Límite de sesiones en este despliegue
 
 La sesión HTTP y el token CSRF de Tomcat están en memoria. Vercel puede detener instancias inactivas o distribuir peticiones entre varias instancias. Un reinicio pierde la sesión; un cambio de instancia puede devolver al login o invalidar un formulario abierto. Esto **no está resuelto por guardar los tokens de autenticación en PostgreSQL**. Reabrir el login y reenviar desde una sesión nueva permite recuperar el acceso, pero no garantiza continuidad entre instancias.
