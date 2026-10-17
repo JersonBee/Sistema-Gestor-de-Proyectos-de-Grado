@@ -22,6 +22,7 @@ RUN printf '\norg.apache.tomcat.util.digester.PROPERTY_SOURCE=org.apache.tomcat.
     && sed -i 's/port="8080"/port="${grado.http.port}"/' conf/server.xml \
     && sed -i 's/\r$//' bin/iniciar-grado.sh \
     && chmod +x bin/iniciar-grado.sh \
+    && printf '\norg.apache.catalina.core.ContainerBase.[Catalina].[localhost].handlers = java.util.logging.ConsoleHandler\n' >> conf/logging.properties \
     && groupadd --system grado && useradd --system --gid grado --home-dir /usr/local/tomcat grado \
     && chown -R grado:grado /usr/local/tomcat
 USER grado
