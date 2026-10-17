@@ -1,0 +1,4 @@
+<section class="inicio-bienvenida" aria-labelledby="titulo-inicio">
+ <div class="inicio-presentacion"><p class="inicio-saludo">Bienvenido, <c:out value="${usuarioActual.nombre}" /></p><h1 id="titulo-inicio">Gestión de<br><span>proyectos de grado.</span></h1><p class="inicio-descripcion">Tus proyectos, decisiones y próximas acciones, organizados en un mismo espacio.</p><div class="inicio-perfil"><span class="inicio-punto" aria-hidden="true"></span><c:out value="${nombreRol}" /><span class="inicio-separador" aria-hidden="true">/</span> Unidades Tecnológicas de Santander</div></div>
+ <dl class="inicio-indicadores"><div><dt>Proyectos activos</dt><dd><c:out value="${resumen.rows[0].activos}" /></dd></div><div><dt>Finalizados</dt><dd><c:out value="${resumen.rows[0].finalizados}" /></dd></div><div><dt>En pausa</dt><dd><c:out value="${resumen.rows[0].pausados}" /></dd></div></dl>
+</section>

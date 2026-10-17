@@ -1,0 +1,1 @@
+<sql:query var="decisiones" dataSource="${bd}">SELECT d.decision,d.observaciones,to_char(d.creado_en AT TIME ZONE 'America/Bogota','DD/MM/YYYY HH24:MI') AS fecha,u.nombre FROM grado.decision_idea d JOIN grado.usuario u ON u.id=d.responsable_id WHERE d.idea_id=CAST(? AS bigint) ORDER BY d.creado_en DESC<sql:param value="${param.id}" /></sql:query>

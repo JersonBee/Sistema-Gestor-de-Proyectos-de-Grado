@@ -1,0 +1,1 @@
+<sql:query var="resultado" dataSource="${bd}">SELECT * FROM grado.enviar_mensaje(?,CAST(? AS bigint),CAST(? AS bigint),?)<sql:param value="${sessionScope.tokenAcceso}" /><sql:param value="${param.id}" /><sql:param value="${param.destinatario}" /><sql:param value="${param.contenido}" /></sql:query>

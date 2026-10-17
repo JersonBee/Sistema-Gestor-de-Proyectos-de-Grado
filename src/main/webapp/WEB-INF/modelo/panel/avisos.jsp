@@ -1,0 +1,1 @@
+<sql:query var="avisos" dataSource="${bd}">SELECT asunto, cuerpo, creado_en FROM grado.notificacion WHERE destinatario_id = CAST(? AS bigint) AND leido_en IS NULL ORDER BY creado_en DESC LIMIT 5<sql:param value="${usuarioActual.id}" /></sql:query>

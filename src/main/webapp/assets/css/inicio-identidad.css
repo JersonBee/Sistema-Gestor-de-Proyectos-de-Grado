@@ -1,0 +1,85 @@
+/* Identidad del inicio privado: composición institucional, sin scripts. */
+.pagina-inicio { background:#edf0ee; }
+.pagina-inicio .aplicacion { grid-template-columns:236px minmax(0,1fr); }
+.pagina-inicio .lateral { background:#242b2b; border-right:0; padding:24px 16px; }
+.pagina-inicio .logo-panel { background:#fff; border:0; border-radius:4px; margin:0 0 30px; padding:16px 12px; }
+.pagina-inicio .logo-panel img { width:180px; max-width:100%; }
+.pagina-inicio .etiqueta-menu { color:#a6b1ac; font-size:9px; letter-spacing:.15em; margin-bottom:16px; }
+.pagina-inicio .enlace-menu { color:#cdd5d1; min-height:45px; border-left:0; padding:11px 12px; }
+.pagina-inicio .enlace-menu.activo { background:#c7d309; color:#202810; }
+.pagina-inicio .enlace-menu:hover:not(.activo) { background:#343e3b; color:#fff; }
+.pagina-inicio .pie-menu { border-color:#46504b; }
+.pagina-inicio .rol-cuenta { color:#a9b6ad; }
+.pagina-inicio .nombre-cuenta { color:#f7f9f6; }
+.pagina-inicio .boton-salir { color:#cdd5d1; }
+.pagina-inicio .barra-panel { background:#f8faf8; padding:16px 34px; min-height:65px; }
+.pagina-inicio .contenido-panel { padding:30px 34px 40px; max-width:1500px; }
+.inicio-bienvenida { display:grid; grid-template-columns:minmax(0,1fr) 200px; gap:40px; padding:34px 36px; margin-bottom:32px; background:#2a3331; color:#fff; border-top:4px solid #c7d309; border-radius:3px; position:relative; }
+.inicio-saludo { margin:0 0 20px; color:#c5cec8; font-size:12px; letter-spacing:.015em; }
+.inicio-bienvenida h1 { margin:0; font-size:clamp(30px,3.1vw,46px); font-weight:600; letter-spacing:-.035em; line-height:1.15; }
+.inicio-bienvenida h1 span { background:none; color:#d0dc30; padding:0; }
+.inicio-descripcion { max-width:460px; font-size:13px; line-height:1.8; color:#c6d0c9; margin:20px 0 25px; }
+.inicio-perfil { display:flex; flex-wrap:wrap; align-items:center; gap:9px; color:#c4cec7; font-size:10px; }
+.inicio-punto { width:6px; height:6px; background:#c7d309; border-radius:50%; }
+.inicio-separador { color:#78877d; padding:0 3px; }
+.inicio-indicadores { display:flex; flex-direction:column; justify-content:center; gap:0; margin:0; padding-left:30px; border-left:1px solid #56625b; }
+.inicio-indicadores>div { display:flex; flex-direction:row-reverse; align-items:center; justify-content:flex-end; gap:18px; padding:17px 0; border-bottom:1px solid #47544b; }
+.inicio-indicadores>div:last-child { border-bottom:0; }
+.inicio-indicadores dt { font-size:11px; color:#c5cfc8; line-height:1.5; }
+.inicio-indicadores dd { margin:0; font-size:34px; font-weight:500; line-height:1; min-width:38px; color:#f4f7ef; font-variant-numeric:tabular-nums; }
+.inicio-indicadores>div:first-child dd { color:#d0dc30; }
+.pagina-inicio .portal-inicio { background:transparent; border:0; border-radius:0; padding:0; margin:0 0 34px; }
+.pagina-inicio .portal-encabezado { text-align:left; padding:0; margin-bottom:20px; border:0; display:grid; grid-template-columns:1fr auto; gap:3px 20px; align-items:end; }
+.pagina-inicio .portal-encabezado .sobretitulo { grid-column:1; color:#737e77; font-size:9px; letter-spacing:.12em; margin:0 0 4px; }
+.pagina-inicio .portal-encabezado h2 { grid-column:1; font-size:23px; margin:0; font-weight:650; }
+.pagina-inicio .portal-encabezado>p:last-child { grid-column:2; grid-row:1 / 3; margin:0 0 3px; font-size:11px; }
+.pagina-inicio .accesos-inicio { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:15px; counter-reset:modulo; }
+.pagina-inicio .acceso-modulo { grid-column:span 6; counter-increment:modulo; position:relative; align-items:flex-start; text-align:left; padding:24px 26px; min-height:202px; background:#fff; border:1px solid #d9dfda; border-radius:3px; box-shadow:0 2px 2px #23312a03; transition:border-color .15s,box-shadow .15s; }
+.pagina-inicio .acceso-modulo::before { content:counter(modulo,decimal-leading-zero); position:absolute; top:25px; right:25px; color:#a1aaa3; font-size:11px; letter-spacing:.05em; }
+.pagina-inicio .acceso-modulo:first-child { grid-column:span 8; border-left:4px solid #aebd24; }
+.pagina-inicio .acceso-modulo:nth-child(2) { grid-column:span 4; background:#e6eadc; border-color:#d3dac4; }
+.pagina-inicio .acceso-modulo:last-child:nth-child(odd) { grid-column:span 12; }
+.pagina-inicio .acceso-modulo:hover { border-color:#9ba88b; box-shadow:0 4px 14px #23312a0c; }
+.pagina-inicio .acceso-icono { background:transparent; color:#57684a; width:28px; height:28px; margin-bottom:17px; border-radius:0; }
+.pagina-inicio .acceso-icono svg { width:25px; height:25px; }
+.pagina-inicio .acceso-modulo h3 { font-size:17px; margin:0 0 8px; letter-spacing:-.025em; }
+.pagina-inicio .acceso-modulo:first-child h3 { font-size:23px; }
+.pagina-inicio .acceso-modulo p { max-width:420px; font-size:12px; line-height:1.75; margin-bottom:20px; }
+.pagina-inicio .acceso-entrar { font-size:11px; color:#647b26; border-top:1px solid #e7ece4; width:100%; padding-top:12px; }
+.pagina-inicio .acceso-modulo:nth-child(2) .acceso-entrar { border-color:#cfd7bf; color:#4d6128; }
+.pagina-inicio .titulo-seguimiento-inicio { color:#717d75; text-transform:uppercase; letter-spacing:.1em; font-size:10px; margin:36px 0 18px; display:flex; align-items:center; gap:15px; }
+.pagina-inicio .titulo-seguimiento-inicio::after { content:""; height:1px; background:#ced7cf; flex:1; }
+.pagina-inicio .tarjeta { border-color:#d8dfd9; box-shadow:none; border-radius:3px; }
+.pagina-inicio .pie-panel { background:#e8ede8; border-color:#d4ddd4; }
+@media(max-width:1100px) {
+ .pagina-inicio .aplicacion { grid-template-columns:210px minmax(0,1fr); }
+ .pagina-inicio .contenido-panel { padding:24px; }
+ .inicio-bienvenida { grid-template-columns:minmax(0,1fr) 145px; gap:22px; padding:28px; }
+ .inicio-indicadores { padding-left:20px; }
+ .inicio-indicadores>div { gap:12px; }
+ .pagina-inicio .portal-encabezado { display:block; }
+ .pagina-inicio .portal-encabezado>p:last-child { margin-top:9px; }
+ .pagina-inicio .acceso-modulo:first-child,.pagina-inicio .acceso-modulo:nth-child(2) { grid-column:span 6; }
+}
+@media(max-width:760px) {
+ .pagina-inicio .aplicacion { display:block; }
+ .pagina-inicio .lateral { padding:18px 16px; }
+ .pagina-inicio .logo-panel { width:196px; padding:10px 12px; margin-bottom:16px; }
+ .pagina-inicio .contenido-panel { padding:20px 16px; }
+ .pagina-inicio .barra-panel { padding:12px 16px; min-height:52px; }
+ .inicio-bienvenida { grid-template-columns:1fr; gap:25px; padding:25px 22px; margin-bottom:25px; }
+ .inicio-bienvenida h1 { font-size:33px; }
+ .inicio-descripcion { margin:16px 0 22px; }
+ .inicio-indicadores { padding:18px 0 0; border-left:0; border-top:1px solid #56625b; display:grid; grid-template-columns:repeat(3,1fr); }
+ .inicio-indicadores>div { flex-direction:column-reverse; align-items:flex-start; justify-content:flex-end; gap:8px; border:0; padding:0 10px; border-left:1px solid #47544b; }
+ .inicio-indicadores>div:first-child { border-left:0; padding-left:0; }
+ .inicio-indicadores dt { font-size:10px; }
+ .inicio-indicadores dd { font-size:28px; }
+ .pagina-inicio .acceso-modulo { padding:22px; }
+}
+@media(max-width:520px) {
+ .pagina-inicio .acceso-modulo,.pagina-inicio .acceso-modulo:first-child,.pagina-inicio .acceso-modulo:nth-child(2) { grid-column:span 12; min-height:190px; }
+ .pagina-inicio .acceso-modulo:first-child h3 { font-size:21px; }
+}
+@media(prefers-reduced-motion:reduce) { .pagina-inicio .acceso-modulo { transition:none; } }
+@media print { .inicio-bienvenida { color:#000; background:#fff; } .inicio-bienvenida h1 span { color:#000; } }

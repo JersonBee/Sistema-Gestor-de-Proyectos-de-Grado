@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <CookieProcessor sameSiteCookies="lax" />
+    <!-- Sustitución por EnvironmentPropertySource; sin secretos en el WAR. -->
+    <Resource name="jdbc/Grado" auth="Container" type="javax.sql.DataSource"
+              factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+              driverClassName="org.postgresql.Driver"
+              url="${DB_JDBC_URL}" username="${DB_USER}" password="${DB_PASSWORD}"
+              initialSize="0" minIdle="0" maxIdle="2" maxActive="5" maxWait="10000"
+              testOnBorrow="true" validationQuery="SELECT 1"
+              defaultAutoCommit="true" />
+</Context>

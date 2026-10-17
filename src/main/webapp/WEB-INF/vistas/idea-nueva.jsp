@@ -1,0 +1,11 @@
+<%@ include file="/WEB-INF/vistas/comun/cabecera.jsp" %><%@ include file="/WEB-INF/vistas/comun/menu.jsp" %>
+<a class="volver" href="<c:url value='/ideas.jsp' />">← Banco de ideas</a><section class="bienvenida-panel"><div><p class="sobretitulo">DALE FORMA A TU PROPUESTA</p><h1>Una nueva idea.</h1><p>El Comité la revisará antes de que pueda convertirse en un proyecto.</p></div></section><%@ include file="/WEB-INF/vistas/comun/aviso.jsp" %>
+<form class="tarjeta formulario detalle-cuenta" method="post" action="<c:url value='/acciones/idea-crear.jsp' />"><input type="hidden" name="csrf" value="<c:out value='${sessionScope.csrf}' />">
+ <label for="titulo">Título</label><input id="titulo" name="titulo" maxlength="250" required>
+ <label for="modalidad">Modalidad</label><select name="modalidad" id="modalidad" required><option value="">Selecciona una modalidad</option><c:forEach items="${modalidades.rows}" var="m"><option value="${m.id}"><c:out value="${m.nombre}" /></option></c:forEach></select>
+ <div class="rejilla-formulario"><div class="campo"><label for="area">Área de experiencia</label><input id="area" name="area" list="lista-areas" maxlength="180" required><datalist id="lista-areas"><c:forEach items="${areas.rows}" var="a"><option value="<c:out value='${a.nombre}' />"></option></c:forEach></datalist></div><div class="campo"><label for="linea">Línea de investigación</label><input id="linea" name="linea" list="lista-lineas" maxlength="180" required><datalist id="lista-lineas"><c:forEach items="${lineas.rows}" var="l"><option value="<c:out value='${l.nombre}' />"></option></c:forEach></datalist></div></div>
+ <p class="ayuda">Usa un área y una línea existentes cuando correspondan: se usan para encontrar docentes aptos.</p>
+ <label for="descripcion">Descripción</label><textarea id="descripcion" name="descripcion" rows="4" maxlength="12000" required></textarea>
+ <label for="objetivos">Objetivos</label><textarea id="objetivos" name="objetivos" rows="4" maxlength="12000" required></textarea>
+ <label for="tecnologias">Tecnologías o herramientas previstas</label><textarea id="tecnologias" name="tecnologias" rows="3" maxlength="6000" required></textarea><button class="boton primario" type="submit">Enviar idea al Comité →</button>
+</form><%@ include file="/WEB-INF/vistas/comun/pie-panel.jsp" %>

@@ -1,0 +1,1 @@
+<sql:query var="resultado" dataSource="${bd}">SELECT * FROM grado.asignar_docentes(?,CAST(? AS bigint),CAST(? AS bigint),CAST(? AS bigint))<sql:param value="${sessionScope.tokenAcceso}" /><sql:param value="${param.id}" /><sql:param value="${param.director}" /><sql:param value="${param.evaluador}" /></sql:query>

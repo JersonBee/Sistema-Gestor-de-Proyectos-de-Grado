@@ -1,0 +1,1 @@
+<sql:query var="pausas" dataSource="${bd}">SELECT motivo,to_char(inicio_en AT TIME ZONE 'America/Bogota','DD/MM/YYYY HH24:MI') AS inicio,to_char(fin_en AT TIME ZONE 'America/Bogota','DD/MM/YYYY HH24:MI') AS fin FROM grado.pausa_proyecto WHERE proyecto_id=CAST(? AS bigint) ORDER BY inicio_en DESC<sql:param value="${param.id}" /></sql:query>

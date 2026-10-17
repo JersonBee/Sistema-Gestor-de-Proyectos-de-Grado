@@ -1,0 +1,1 @@
+<sql:query var="resultado" dataSource="${bd}">SELECT * FROM grado.cambiar_pausa(?,CAST(? AS bigint),CAST(? AS boolean),?)<sql:param value="${sessionScope.tokenAcceso}" /><sql:param value="${param.id}" /><sql:param value="${param.operacion eq 'pausar'}" /><sql:param value="${param.motivo}" /></sql:query>

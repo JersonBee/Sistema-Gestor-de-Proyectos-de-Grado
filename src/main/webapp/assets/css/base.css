@@ -1,0 +1,57 @@
+:root {
+    color-scheme: light;
+    --verde-institucional: #c7d309;
+    --verde-suave: #f3f6d6;
+    --blanco: #ffffff;
+    --fondo: #f7f8f5;
+    --texto: #222a25;
+    --texto-secundario: #59625b;
+    --borde: #dfe4dc;
+    --radio: 20px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--texto);
+    background: var(--fondo);
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--texto); outline-offset: 5px; }
+.saltar { position: absolute; left: 16px; top: -70px; background: var(--verde-institucional); padding: 12px; z-index: 2; }
+.saltar:focus { top: 12px; }
+.cabecera { max-width: 1240px; margin: auto; min-height: 116px; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--borde); }
+.marca { display: inline-flex; align-items: center; }
+.marca img { width: 160px; height: auto; display: block; }
+.nombre-sistema { color: var(--texto-secundario); font-size: 14px; }
+.nav-portada { display: flex; gap: 24px; align-items: center; font-size: 14px; }
+.nav-portada a { text-decoration: none; font-weight: 600; }
+.boton-portada { display: inline-flex; padding: 13px 20px; border-radius: 10px; background: var(--verde-institucional); color: var(--texto); text-decoration: none; font-weight: 650; }
+.boton-portada:hover { background: #b8c409; }
+.acciones-portada { display: flex; align-items: center; gap: 24px; margin: -25px 0 52px; font-size: 14px; }
+.portada { max-width: 1240px; margin: auto; padding: 72px 40px 80px; }
+.antetitulo { display: flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 600; margin: 0 0 24px; }
+.punto { width: 9px; height: 9px; border-radius: 50%; background: var(--verde-institucional); border: 1px solid #808900; }
+h1 { font-size: clamp(40px, 5.7vw, 76px); letter-spacing: -.055em; line-height: 1.08; font-weight: 650; margin: 0; }
+h1 span { background: linear-gradient(transparent 67%, var(--verde-institucional) 67%); padding-right: 6px; }
+.introduccion { max-width: 540px; margin: 28px 0 52px; font-size: 18px; color: var(--texto-secundario); line-height: 1.7; }
+.recorrido { border: 1px solid var(--borde); border-radius: var(--radio); background: var(--blanco); padding: 30px; }
+.encabezado-recorrido h2 { font-size: 19px; margin: 0 0 8px; letter-spacing: -.02em; }
+.encabezado-recorrido p { font-size: 14px; color: var(--texto-secundario); margin: 0; }
+.fases { list-style: none; display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; padding: 0; margin: 32px 0 0; }
+.fases li { display: flex; flex-direction: column; gap: 15px; font-size: 14px; font-weight: 600; }
+.numero { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid var(--borde); background: var(--fondo); border-radius: 11px; font-weight: 600; }
+.fases li:first-child .numero { background: var(--verde-institucional); border-color: var(--verde-institucional); }
+.pie { max-width: 1240px; margin: auto; padding: 24px 40px; border-top: 1px solid var(--borde); display: flex; justify-content: space-between; gap: 16px; font-size: 12px; color: var(--texto-secundario); }
+@media (max-width: 680px) {
+    .cabecera { padding: 16px 22px; min-height: 92px; }
+    .marca img { width: 130px; }
+    .nombre-sistema { max-width: 130px; text-align: right; font-size: 12px; }
+    .nav-portada { gap: 12px; font-size: 12px; }
+    .nav-portada .boton-portada { padding: 10px 12px; }
+    .portada { padding: 48px 22px; }
+    .introduccion { font-size: 16px; margin-bottom: 36px; }
+    .recorrido { padding: 24px; }
+    .fases { grid-template-columns: repeat(2, 1fr); gap: 24px 12px; }
+    .fases li { flex-direction: row; align-items: center; gap: 10px; }
+    .numero { flex-shrink: 0; }
+    .pie { padding: 24px 22px; flex-direction: column; }
+}

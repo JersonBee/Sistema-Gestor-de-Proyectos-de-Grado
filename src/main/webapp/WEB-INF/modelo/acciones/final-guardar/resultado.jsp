@@ -1,0 +1,1 @@
+<sql:query var="resultado" dataSource="${bd}">SELECT * FROM grado.guardar_entregable_final(?,CAST(? AS bigint),?,?)<sql:param value="${sessionScope.tokenAcceso}" /><sql:param value="${param.id}" /><sql:param value="${param.campo}" /><sql:param value="${param.valor}" /></sql:query>

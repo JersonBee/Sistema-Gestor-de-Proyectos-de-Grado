@@ -1,0 +1,1 @@
+<sql:query var="resultado" dataSource="${bd}">SELECT * FROM grado.crear_acta(?,CAST(? AS bigint),?,?,?,?)<sql:param value="${sessionScope.tokenAcceso}" /><sql:param value="${param.id}" /><sql:param value="${param.numero}" /><sql:param value="${param.fecha}" /><sql:param value="${param.descripcion}" /><sql:param value="${param.detalles}" /></sql:query>

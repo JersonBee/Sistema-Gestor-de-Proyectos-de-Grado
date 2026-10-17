@@ -1,0 +1,3 @@
+<sql:query var="revisiones" dataSource="${bd}">SELECT r.id,r.etapa,r.responsable_id,r.decision,r.reporte_respuesta,e.id AS entrega_id,coalesce(u.nombre,'Comité') AS responsable,
+ to_char(r.limite_en AT TIME ZONE 'America/Bogota','DD/MM/YYYY HH24:MI') AS limite,to_char(r.decidida_en AT TIME ZONE 'America/Bogota','DD/MM/YYYY HH24:MI') AS decidida
+ FROM grado.revision_entrega r JOIN grado.ciclo_revision c ON c.id=r.ciclo_id JOIN grado.entrega_revision e ON e.id=c.entrega_id LEFT JOIN grado.usuario u ON u.id=r.responsable_id WHERE e.fase_origen_id=CAST(? AS bigint) ORDER BY r.asignada_en,r.id<sql:param value="${proyecto.fase_id}" /></sql:query>

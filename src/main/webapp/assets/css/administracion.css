@@ -1,0 +1,180 @@
+/* Presentación administrativa compartida. Sin dependencias ni JavaScript. */
+:root {
+    --verde-institucional:#c7d309; --verde-suave:#f4f6df;
+    --fondo:#f2f4f6; --texto:#202a32; --texto-secundario:#586570;
+    --borde:#d8dfe4; --radio:6px;
+    font-family:"Segoe UI",Arial,sans-serif;
+    font-size:14px;
+}
+body { line-height:1.5; }
+h1,h2,h3 { letter-spacing:-.02em; }
+a { text-underline-offset:3px; }
+:focus-visible { outline:2px solid #626d00; outline-offset:3px; }
+.aplicacion { grid-template-columns:250px minmax(0,1fr); }
+.lateral { padding:24px 14px 18px; background:#fff; overflow-y:auto; }
+.logo-panel { display:block; padding:0 12px 22px; margin:0 0 20px; border-bottom:1px solid var(--borde); }
+.logo-panel img { width:207px; height:auto; }
+.etiqueta-menu { font-size:10px; letter-spacing:.09em; margin:4px 14px 12px; color:#727d86; }
+.enlace-menu { min-height:43px; border-radius:4px; padding:10px 12px; margin-bottom:4px; font-size:13px; gap:11px; border-left:3px solid transparent; color:#43515c; }
+.enlace-menu.activo { color:#263016; background:#f0f3de; border-left-color:#aab500; font-weight:650; }
+.enlace-menu:hover:not(.activo) { background:#f1f4f6; color:#202a32; }
+.icono-menu { width:19px; height:19px; flex-shrink:0; fill:none; stroke:currentColor; stroke-width:1.7; }
+.pie-menu { margin-top:auto; padding:18px 12px 0; border-top:1px solid var(--borde); }
+.rol-cuenta { margin:0 0 4px; font-size:10px; text-transform:uppercase; letter-spacing:.06em; }
+.nombre-cuenta { font-size:13px; margin:0 0 12px; font-weight:650; }
+.boton-salir { color:#52606a; font-size:12px; padding:7px 0; }
+.barra-panel { min-height:65px; padding:15px 32px; background:#fff; font-size:12px; }
+.sello-institucional { width:auto; height:auto; padding:5px 9px; border-radius:3px; background:#f4f6f7; border-color:#d8dfe4; letter-spacing:.08em; }
+.contenido-panel { padding:30px 32px 36px; max-width:1500px; margin:0 auto; }
+.bienvenida-panel { margin-bottom:24px; align-items:center; padding-bottom:22px; border-bottom:1px solid var(--borde); }
+.bienvenida-panel h1,.bienvenida-panel .titulo-proyecto { font-size:28px; letter-spacing:-.025em; font-weight:650; }
+.bienvenida-panel p:not(.sobretitulo) { margin-top:8px; font-size:13px; }
+.sobretitulo { font-size:10px; letter-spacing:.1em; margin-bottom:8px; color:#64717b; }
+.saludo-punto { display:none; }
+.tarjeta,.tarjeta-registro,.recorrido { border-radius:6px; padding:24px; border-color:var(--borde); box-shadow:0 1px 2px #17232c04; }
+.tarjeta { margin-bottom:22px; }
+.titulo-tarjeta { margin-bottom:18px; padding-bottom:14px; border-bottom:1px solid #e8ecef; }
+.titulo-tarjeta h2,.tarjeta>h2 { font-size:15px; font-weight:650; }
+.titulo-tarjeta>a { font-size:12px; color:#46545d; font-weight:600; }
+.tarjeta>h2 { margin-bottom:16px; }
+.metricas { gap:16px; margin-bottom:22px; }
+.metrica { border-radius:5px; padding:18px 22px; position:relative; border-top:3px solid #b8c409; }
+.metrica p { font-size:12px; margin-bottom:8px; }
+.metrica strong { font-size:29px; letter-spacing:-.03em; }
+.metrica span { margin-top:5px; }
+.columnas-panel { grid-template-columns:minmax(0,1fr) 310px; gap:22px; }
+.fila-proyecto { padding:16px 0; align-items:center; gap:18px; }
+.fila-proyecto>div:first-child { min-width:0; }
+.fila-proyecto h3 { font-size:14px; overflow-wrap:anywhere; }
+.fila-proyecto .boton { flex-shrink:0; }
+.identificador { font-size:10px; text-transform:uppercase; letter-spacing:.05em; margin-bottom:4px; }
+.insignia,.etiqueta-rol,.contador { border-radius:3px; font-size:11px; font-weight:600; border:1px solid #dde3d2; background:#f4f6eb; padding:4px 8px; }
+.etiqueta-rol { background:#fff; border-color:var(--borde); padding:6px 10px; }
+.contador { background:#f2f4f6; border-color:#e2e6e9; }
+.estado-proyecto { min-width:90px; }
+.boton,.boton-portada { min-height:38px; border-radius:4px; padding:8px 15px; gap:9px; font-size:12px; font-weight:600; line-height:1.5; background:#fff; color:#283640; border:1px solid #cbd4da; box-shadow:0 1px 1px #17232c04; align-self:flex-start; text-align:center; transition:background-color .12s,border-color .12s; }
+.boton:hover,.boton-portada:hover { border-color:#8e9ca5; background:#f0f3f5; }
+.boton.primario,.boton-portada { background:var(--verde-institucional); border-color:#b8c308; color:#252c0c; }
+.boton.primario:hover,.boton-portada:hover { background:#b8c409; border-color:#a8b208; }
+.boton:active,.boton-portada:active { transform:translateY(1px); }
+.boton:disabled { opacity:.5; cursor:not-allowed; }
+.boton.ancho { width:100%; }
+.acciones-documento { gap:10px; margin:16px 0 0; }
+.formulario label,.formulario legend { font-size:12px; margin-bottom:7px; }
+.formulario input:not([type=hidden]):not([type=checkbox]),.formulario select,.formulario textarea,.barra-filtros input,.barra-filtros select { border-radius:4px; padding:10px 12px; font-size:13px; min-height:40px; border-color:#cbd4da; margin-bottom:18px; }
+.formulario input:focus,.formulario select:focus,.formulario textarea:focus { outline:2px solid #a5ae5066; outline-offset:1px; border-color:#828c20; }
+.formulario .boton { margin-top:4px; }
+.rejilla-formulario { gap:0 24px; }
+.formulario.tarjeta { max-width:1100px; }
+.barra-filtros { background:#fff; padding:18px 20px; border:1px solid var(--borde); border-radius:5px; gap:14px; margin-bottom:20px; }
+.barra-filtros input,.barra-filtros select { margin-bottom:0; }
+fieldset,.seccion-desplegable { border-radius:4px; }
+.seccion-desplegable summary { font-size:13px; }
+.lista-datos { margin:18px 0 20px; grid-template-columns:190px minmax(0,1fr); gap:0 24px; font-size:13px; }
+.lista-datos dt,.lista-datos dd { border-bottom:1px solid #edf0f2; padding:11px 0; }
+.lista-datos dt { font-size:12px; font-weight:600; }
+.lista-datos dd { white-space:normal; }
+.aviso { border-radius:4px; background:#f7f8e9; border-color:#e0e5bd; border-left:3px solid #a6b000; }
+.aviso.error { background:#faf1f0; border-color:#ead7d4; border-left-color:#a95349; }
+.aviso.exito { border-left-color:#7b8b34; }
+.aviso-panel { padding:14px 0 4px; }
+.aviso-panel h3 { font-weight:600; }
+.texto-largo { font-size:13px; line-height:1.75; }
+.paginacion { justify-content:flex-end; gap:14px; margin:20px 0; }
+.numero { border-radius:4px; width:30px; height:30px; font-size:12px; }
+.fases { gap:12px; }
+.fases li { font-size:12px; gap:10px; }
+.detalle-fases li { padding:12px 0; }
+.pie-panel { padding:16px 32px; font-size:10px; background:#f7f8f9; }
+.volver { font-size:12px; margin-bottom:18px; }
+.cabecera { max-width:none; background:#fff; min-height:100px; padding:18px max(32px,calc((100vw - 1180px)/2)); border-top:4px solid var(--verde-institucional); }
+.marca img { width:225px; height:auto; }
+.portada { max-width:1180px; padding:65px 32px 70px; }
+.portada h1 { font-size:46px; line-height:1.16; letter-spacing:-.035em; max-width:800px; }
+.portada h1 span { background:none; padding:0; }
+.portada .introduccion { font-size:16px; max-width:650px; margin:22px 0 32px; }
+.acciones-portada { margin:0 0 40px; gap:20px; }
+.pie { max-width:1180px; padding:22px 32px; }
+.pagina-acceso { grid-template-columns:minmax(350px, .9fr) 1.1fr; }
+.presentacion-acceso { background:#e9edef; padding:45px 55px; border-top:5px solid var(--verde-institucional); gap:40px; }
+.logo-acceso { width:250px; height:auto; }
+.presentacion-acceso h1 { font-size:38px; line-height:1.2; letter-spacing:-.025em; }
+.presentacion-acceso p:not(.antetitulo) { font-size:14px; }
+.formulario-acceso { max-width:440px; padding:55px 32px; }
+.formulario-acceso h2 { font-size:26px; letter-spacing:-.025em; }
+.registro-cabecera img { width:215px; height:auto; }
+.registro-contenedor { padding-top:28px; }
+.tarjeta-registro { padding:30px; }
+.tarjeta-registro h1 { font-size:28px; letter-spacing:-.025em; }
+.selector-registro { border-radius:4px; padding:3px; }
+.selector-registro a { border-radius:3px; }
+@media(max-width:1100px) {
+ .aplicacion { grid-template-columns:225px minmax(0,1fr); }
+ .logo-panel img { width:180px; }
+ .contenido-panel,.barra-panel { padding-left:24px; padding-right:24px; }
+ .columnas-panel { grid-template-columns:1fr; }
+}
+@media(max-width:760px) {
+ .aplicacion,.pagina-acceso { display:block; }
+ .lateral { position:static; height:auto; padding:16px; overflow:visible; }
+ .logo-panel { border:0; padding:0; margin:0 0 14px; }
+ .logo-panel img { width:190px; }
+ .lateral nav { display:flex; flex-wrap:wrap; gap:4px; }
+ .enlace-menu { min-height:37px; padding:8px 9px; font-size:12px; margin:0; }
+ .icono-menu { width:16px; height:16px; }
+ .pie-menu { border:0; padding:4px 0 0; }
+ .contenido-panel { padding:22px 16px; }
+ .barra-panel { min-height:52px; padding:12px 16px; }
+ .bienvenida-panel { flex-direction:row; gap:14px; align-items:flex-start; }
+ .bienvenida-panel h1,.bienvenida-panel .titulo-proyecto { font-size:24px; }
+ .tarjeta { padding:18px; }
+ .metricas { gap:8px; }
+ .metrica { padding:14px 10px; }
+ .metrica strong { font-size:25px; }
+ .lista-datos { display:block; }
+ .lista-datos dt { border:0; padding-bottom:0; margin:0; }
+ .lista-datos dd { padding-top:4px; }
+ .fila-proyecto { flex-wrap:wrap; }
+ .estado-proyecto { align-items:flex-start; }
+ .presentacion-acceso { padding:24px; }
+ .logo-acceso { width:220px; }
+ .cabecera { padding:18px 20px; gap:16px; flex-wrap:wrap; }
+ .marca img { width:205px; }
+ .portada { padding:40px 20px; }
+ .portada h1 { font-size:34px; }
+ .registro-cabecera img { width:185px; }
+ .nav-portada { gap:15px; }
+ .formulario-acceso { padding:36px 24px; }
+ .paginacion { justify-content:center; }
+}
+.fase-abrir { display:flex; align-items:center; gap:16px; flex:1; text-align:left; border:0; padding:8px 0; background:transparent; font-weight:650; font-size:13px; color:var(--texto); cursor:pointer; }
+.fase-abrir:hover { color:#626d00; text-decoration:underline; }
+.fase-indicacion { font-size:11px; font-weight:400; color:var(--texto-secundario); }
+.fase-futura { color:#7e8992; font-weight:500; }
+.ventana-fase { width:min(820px,calc(100vw - 32px)); max-height:calc(100dvh - 40px); padding:0; border:1px solid #bfc9d0; border-radius:7px; color:var(--texto); background:#fff; box-shadow:0 20px 80px #14212d40; overflow:auto; }
+.ventana-fase::backdrop { background:#17232c80; }
+.ventana-cabecera { position:sticky; top:0; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:20px 24px; background:#fff; border-bottom:1px solid var(--borde); z-index:1; }
+.ventana-cabecera h2 { font-size:22px; margin:0; }
+.ventana-cabecera .sobretitulo { margin:0 0 4px; }
+.ventana-contenido { padding:6px 24px 24px; }
+.ventana-contenido h3 { font-size:14px; border-top:1px solid var(--borde); padding-top:20px; margin-top:24px; }
+.ventana-pie { padding:16px 24px; border-top:1px solid var(--borde); background:#f7f8f9; }
+.ventana-contenido .lista-documentos li { padding:14px 0; border-bottom:1px solid #edf0f2; }
+@media(max-width:600px) { .fase-abrir { display:block; } .fase-indicacion { display:block; margin-top:3px; } .ventana-cabecera,.ventana-contenido,.ventana-pie { padding-left:16px; padding-right:16px; } }
+.portal-inicio { background:#fff; border:1px solid var(--borde); border-radius:6px; padding:28px; margin-bottom:30px; }
+.portal-encabezado { text-align:center; border-bottom:1px solid #e4e9ec; padding-bottom:22px; margin-bottom:24px; }
+.portal-encabezado h2 { font-size:23px; font-weight:650; margin:8px 0; }
+.portal-encabezado>p:last-child { font-size:13px; color:var(--texto-secundario); margin:10px 0 0; }
+.accesos-inicio { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.acceso-modulo { display:flex; flex-direction:column; align-items:center; text-align:center; padding:26px 20px 22px; border:1px solid #dce2e6; border-radius:5px; text-decoration:none; color:var(--texto); border-top:3px solid #dce2e6; min-width:0; transition:border-color .15s,background-color .15s; }
+.acceso-modulo:hover { background:#fafbf5; border-color:#aeb846; }
+.acceso-icono { display:grid; place-items:center; width:48px; height:48px; border-radius:6px; background:#f1f4e4; color:#646f20; margin-bottom:15px; }
+.acceso-icono svg { width:26px; height:26px; fill:none; stroke:currentColor; stroke-width:1.7; }
+.acceso-modulo h3 { font-size:15px; font-weight:650; margin:0 0 10px; }
+.acceso-modulo p { font-size:12px; line-height:1.7; color:var(--texto-secundario); margin:0 0 18px; max-width:270px; }
+.acceso-entrar { font-size:11px; font-weight:650; color:#536016; margin-top:auto; }
+.titulo-seguimiento-inicio { font-size:15px; color:#53606b; margin:0 0 16px; }
+@media(max-width:1050px) { .accesos-inicio { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:560px) { .portal-inicio { padding:18px; } .accesos-inicio { grid-template-columns:1fr; gap:12px; } .portal-encabezado h2 { font-size:20px; } .acceso-modulo { padding:20px 18px; } }
+@media(prefers-reduced-motion:reduce) { .boton,.boton-portada,.acceso-modulo { transition:none; } }
+@media print { .documento-acta { max-width:none; } .lista-datos dt,.lista-datos dd { break-inside:avoid; } }

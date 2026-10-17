@@ -1,0 +1,10 @@
+* text=auto
+mvnw text eol=lf
+mvnw.cmd text eol=crlf
+Dockerfile.vercel text eol=lf
+*.sh text eol=lf
+*.sql text eol=lf
+*.jsp text eol=lf
+*.png binary
+*.jpg binary
+*.crt text eol=lf

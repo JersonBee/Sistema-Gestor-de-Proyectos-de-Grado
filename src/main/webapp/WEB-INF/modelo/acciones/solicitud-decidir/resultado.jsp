@@ -1,0 +1,1 @@
+<sql:query var="resultado" dataSource="${bd}">SELECT * FROM grado.decidir_solicitud(?,CAST(? AS bigint),?,?)<sql:param value="${sessionScope.tokenAcceso}" /><sql:param value="${param.solicitud}" /><sql:param value="${param.decision}" /><sql:param value="${param.respuesta}" /></sql:query>

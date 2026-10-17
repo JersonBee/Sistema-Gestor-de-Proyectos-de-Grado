@@ -1,0 +1,19 @@
+services:
+  bd_pruebas:
+    image: postgres:18
+    env_file: .tools/pruebas.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pruebas -d grado_pruebas"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+  app_pruebas:
+    build:
+      context: .
+      dockerfile: Dockerfile.vercel
+    env_file: .tools/pruebas.env
+    ports:
+      - "127.0.0.1:8082:8080"
+    depends_on:
+      bd_pruebas:
+        condition: service_healthy

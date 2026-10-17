@@ -1,0 +1,1 @@
+<sql:query var="aptos" dataSource="${bd}">SELECT u.nombre,u.rol_codigo FROM grado.docente_apto_idea a JOIN grado.usuario u ON u.id=a.docente_id WHERE a.idea_id=CAST(? AS bigint) ORDER BY u.rol_codigo,u.nombre<sql:param value="${param.id}" /></sql:query>

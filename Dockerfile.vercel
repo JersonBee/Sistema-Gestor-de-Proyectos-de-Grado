@@ -1,0 +1,25 @@
+# syntax=docker/dockerfile:1
+FROM eclipse-temurin:21-jdk-noble@sha256:b468c3fc688b14450571494f588bd939378e7fd542ed5a73f8efc13f17872a87 AS compilacion
+RUN apt-get update && apt-get install -y --no-install-recommends unzip \
+    && rm -rf /var/lib/apt/lists/*
+WORKDIR /proyecto
+COPY .mvn/ .mvn/
+COPY mvnw pom.xml ./
+RUN chmod +x mvnw && ./mvnw -B -ntp dependency:go-offline
+COPY src/ src/
+RUN ./mvnw -B -ntp package
+
+FROM tomcat:11.0.27-jdk21-temurin-noble@sha256:eaad3aaf03a79837917d1c09e4bf5baedfbc3c6392f89a1c32a054cebb7b9d75 AS aplicacion
+ENV PORT=8080
+WORKDIR /usr/local/tomcat
+# No se copian aplicaciones de ejemplo/administracion a webapps.
+COPY --from=compilacion /proyecto/target/proyectos-grado.war webapps/ROOT.war
+COPY --from=compilacion /proyecto/target/tomcat-lib/ lib/
+COPY docker/context.xml conf/Catalina/localhost/ROOT.xml
+COPY docker/certs/supabase-ca.crt conf/ssl/supabase-ca.crt
+RUN printf '\norg.apache.tomcat.util.digester.PROPERTY_SOURCE=org.apache.tomcat.util.digester.EnvironmentPropertySource\n' >> conf/catalina.properties \
+    && groupadd --system grado && useradd --system --gid grado --home-dir /usr/local/tomcat grado \
+    && chown -R grado:grado /usr/local/tomcat
+USER grado
+EXPOSE 8080
+CMD ["catalina.sh", "run"]

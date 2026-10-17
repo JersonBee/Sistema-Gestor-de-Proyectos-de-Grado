@@ -1,0 +1,1 @@
+<sql:query var="participantesPago" dataSource="${bd}">SELECT nombre_en_pago,documento_en_pago,correo_en_pago,telefono_en_pago FROM grado.participante_proyecto WHERE proyecto_id=CAST(? AS bigint) AND retiro_en IS NULL ORDER BY plaza<sql:param value="${param.id}" /></sql:query>

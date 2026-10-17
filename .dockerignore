@@ -1,0 +1,16 @@
+.git
+.tools
+tmp
+target
+.env
+.env.*
+!.env.example
+database
+docs
+README.md
+.vercel
+entrega
+.github
+.vscode
+.idea
+scripts

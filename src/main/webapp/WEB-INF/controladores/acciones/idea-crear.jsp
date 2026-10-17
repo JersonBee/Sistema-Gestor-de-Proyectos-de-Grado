@@ -1,0 +1,4 @@
+<%@ include file="/WEB-INF/controladores/comun/inicio.jsp" %><c:set var="rolesPermitidos" value=",estudiante,director," /><%@ include file="/WEB-INF/controladores/comun/seguridad.jsp" %><%@ include file="/WEB-INF/controladores/comun/post.jsp" %>
+<c:catch var="falloOperacion"><%@ include file="/WEB-INF/modelo/acciones/idea-crear/resultado.jsp" %></c:catch>
+<c:if test="${not empty falloOperacion}"><c:set var="avisoFlujo" value="No se pudo guardar la idea. Intenta de nuevo." scope="session" /><c:redirect url="/idea-nueva.jsp" /></c:if>
+<c:set var="avisoFlujo" value="${resultado.rows[0].mensaje}" scope="session" /><c:if test="${not resultado.rows[0].ok}"><c:redirect url="/idea-nueva.jsp" /></c:if><c:redirect url="/idea.jsp"><c:param name="id" value="${resultado.rows[0].recurso_id}" /></c:redirect>

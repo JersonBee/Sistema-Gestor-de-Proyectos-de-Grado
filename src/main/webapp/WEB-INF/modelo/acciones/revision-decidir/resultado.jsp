@@ -1,0 +1,1 @@
+<sql:query var="resultado" dataSource="${bd}">SELECT * FROM grado.decidir_revision(?,CAST(? AS bigint),?,?)<sql:param value="${sessionScope.tokenAcceso}" /><sql:param value="${param.revision}" /><sql:param value="${param.decision}" /><sql:param value="${param.reporte}" /></sql:query>

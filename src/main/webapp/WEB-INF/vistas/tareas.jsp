@@ -1,0 +1,5 @@
+<%@ include file="/WEB-INF/vistas/comun/cabecera.jsp" %><%@ include file="/WEB-INF/vistas/comun/menu.jsp" %>
+<section class="bienvenida-panel"><div><p class="sobretitulo">TU TRABAJO PENDIENTE</p><h1>Mis tareas.</h1><p>Acciones que corresponden a tu cuenta. Las revisiones con plazo aparecen primero.</p></div></section>
+<section class="tarjeta"><div class="titulo-tarjeta"><h2>Por atender</h2><c:if test="${not empty tareas.rows}"><span class="contador"><c:out value="${tareas.rows[0].total}" /></span></c:if></div><%@ include file="/WEB-INF/vistas/comun/lista-tareas.jsp" %></section>
+<nav class="paginacion" aria-label="Páginas de tareas"><c:if test="${paginaTareas gt 1}"><a class="boton" href="<c:url value='/tareas.jsp'><c:param name='pagina' value='${paginaTareas-1}' /></c:url>">← Anterior</a></c:if><span class="dato-secundario">Página <c:out value="${paginaTareas}" /></span><c:if test="${tareas.rowCount gt 20}"><a class="boton" href="<c:url value='/tareas.jsp'><c:param name='pagina' value='${paginaTareas+1}' /></c:url>">Siguiente →</a></c:if></nav>
+<%@ include file="/WEB-INF/vistas/comun/pie-panel.jsp" %>

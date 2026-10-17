@@ -1,0 +1,1 @@
+<sql:update dataSource="${bd}">UPDATE grado.notificacion n SET leido_en=coalesce(n.leido_en,CURRENT_TIMESTAMP) FROM grado.validar_sesion(?) s WHERE n.id=CAST(? AS bigint) AND n.destinatario_id=s.id<sql:param value="${sessionScope.tokenAcceso}" /><sql:param value="${param.id}" /></sql:update>

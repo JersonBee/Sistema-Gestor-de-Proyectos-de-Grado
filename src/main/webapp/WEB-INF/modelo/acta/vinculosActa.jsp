@@ -1,0 +1,1 @@
+<sql:query var="vinculosActa" dataSource="${bd}">SELECT p.id,p.titulo FROM grado.acta_proyecto ap JOIN grado.proyecto p ON p.id=ap.proyecto_id WHERE ap.acta_id=CAST(? AS bigint) AND grado.puede_consultar_proyecto(CAST(? AS bigint),p.id)<sql:param value="${param.acta}" /><sql:param value="${usuarioActual.id}" /></sql:query>

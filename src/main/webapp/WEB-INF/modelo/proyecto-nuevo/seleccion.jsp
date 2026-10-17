@@ -1,0 +1,1 @@
+<sql:query var="seleccion" dataSource="${bd}">SELECT i.id,i.titulo FROM grado.idea i WHERE i.id=CAST(? AS bigint) AND i.estado='aprobada' AND NOT EXISTS(SELECT 1 FROM grado.proyecto p WHERE p.idea_id=i.id AND p.estado<>'cancelado')<sql:param value="${param.idea}" /></sql:query>

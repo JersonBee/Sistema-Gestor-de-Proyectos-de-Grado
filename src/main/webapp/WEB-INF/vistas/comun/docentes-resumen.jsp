@@ -1,0 +1,1 @@
+<c:forEach items="${docentes.rows}" var="docente"><dt>${docente.funcion eq 'director' ? 'Director' : 'Evaluador'}</dt><dd><c:out value="${docente.nombre}" default="Por asignar" /><c:if test="${docente.historica}"><span class="dato-secundario"> · Última asignación del proyecto</span></c:if></dd></c:forEach>

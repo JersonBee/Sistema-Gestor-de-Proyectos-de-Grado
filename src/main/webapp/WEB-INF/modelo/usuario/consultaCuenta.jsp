@@ -1,0 +1,1 @@
+<sql:query var="consultaCuenta" dataSource="${bd}">SELECT u.id,u.nombre,u.correo,u.numero_documento,u.telefono,u.rol_codigo,u.estado,EXISTS(SELECT 1 FROM grado.perfil_docente p WHERE p.usuario_id=u.id) AS tiene_perfil FROM grado.usuario u WHERE u.id=CAST(? AS bigint)<sql:param value="${param.usuario}" /></sql:query>
