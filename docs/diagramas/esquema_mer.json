@@ -1,0 +1,3247 @@
+{
+  "esquema": "grado",
+  "fecha": "2026-10-19",
+  "fuente": "Metadatos de Supabase; no contiene filas ni credenciales",
+  "columnas": [
+    {
+      "data_type": "bigint",
+      "table_name": "acta",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "text",
+      "table_name": "acta",
+      "column_name": "numero",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "date",
+      "table_name": "acta",
+      "column_name": "fecha",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "text",
+      "table_name": "acta",
+      "column_name": "descripcion",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "text",
+      "table_name": "acta",
+      "column_name": "detalles",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "acta",
+      "column_name": "creada_por",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "acta",
+      "column_name": "aprobada_por",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "acta",
+      "column_name": "aprobada_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 8
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "acta",
+      "column_name": "creado_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 9
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "acta_proyecto",
+      "column_name": "acta_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "acta_proyecto",
+      "column_name": "proyecto_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "area_experiencia",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "text",
+      "table_name": "area_experiencia",
+      "column_name": "nombre",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "asignacion_proyecto",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "asignacion_proyecto",
+      "column_name": "proyecto_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "asignacion_proyecto",
+      "column_name": "docente_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "text",
+      "table_name": "asignacion_proyecto",
+      "column_name": "funcion",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "asignacion_proyecto",
+      "column_name": "asignado_por",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "asignacion_proyecto",
+      "column_name": "inicio_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "asignacion_proyecto",
+      "column_name": "fin_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "ciclo_revision",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "ciclo_revision",
+      "column_name": "entrega_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "integer",
+      "table_name": "ciclo_revision",
+      "column_name": "numero",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "ciclo_revision",
+      "column_name": "iniciado_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "ciclo_revision",
+      "column_name": "finalizado_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "datos_pago",
+      "column_name": "proyecto_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "datos_pago",
+      "column_name": "director_propuesto_id",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "datos_pago",
+      "column_name": "aprobado_por",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "datos_pago",
+      "column_name": "aprobado_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "decision_idea",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "decision_idea",
+      "column_name": "idea_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "decision_idea",
+      "column_name": "responsable_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "text",
+      "table_name": "decision_idea",
+      "column_name": "decision",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "text",
+      "table_name": "decision_idea",
+      "column_name": "observaciones",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "decision_idea",
+      "column_name": "creado_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "docente_area",
+      "column_name": "docente_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "docente_area",
+      "column_name": "area_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "docente_linea",
+      "column_name": "docente_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "docente_linea",
+      "column_name": "linea_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "docente_modalidad",
+      "column_name": "docente_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "docente_modalidad",
+      "column_name": "modalidad_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "documento",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "documento",
+      "column_name": "proyecto_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "documento",
+      "column_name": "proyecto_fase_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "text",
+      "table_name": "documento",
+      "column_name": "tipo_codigo",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "text",
+      "table_name": "documento",
+      "column_name": "etiqueta",
+      "is_nullable": "NO",
+      "column_default": "''::text",
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "documento_version",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "documento_version",
+      "column_name": "documento_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "integer",
+      "table_name": "documento_version",
+      "column_name": "numero",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "text",
+      "table_name": "documento_version",
+      "column_name": "url",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "documento_version",
+      "column_name": "registrado_por",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "documento_version",
+      "column_name": "creado_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "entrega_documento_version",
+      "column_name": "entrega_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "entrega_documento_version",
+      "column_name": "proyecto_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "entrega_documento_version",
+      "column_name": "documento_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "entrega_documento_version",
+      "column_name": "version_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "entrega_final",
+      "column_name": "proyecto_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "text",
+      "table_name": "entrega_final",
+      "column_name": "tipo_licencia",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "text",
+      "table_name": "entrega_final",
+      "column_name": "repositorio_url",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "entrega_final",
+      "column_name": "repositorio_registrado_por",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "entrega_final",
+      "column_name": "repositorio_registrado_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "entrega_revision",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "entrega_revision",
+      "column_name": "proyecto_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "entrega_revision",
+      "column_name": "fase_origen_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "integer",
+      "table_name": "entrega_revision",
+      "column_name": "numero",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "entrega_revision",
+      "column_name": "presentada_por",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "entrega_revision",
+      "column_name": "presentada_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "evento_auditoria",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "evento_auditoria",
+      "column_name": "proyecto_id",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "evento_auditoria",
+      "column_name": "actor_id",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "text",
+      "table_name": "evento_auditoria",
+      "column_name": "origen",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "text",
+      "table_name": "evento_auditoria",
+      "column_name": "accion",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "text",
+      "table_name": "evento_auditoria",
+      "column_name": "entidad",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "evento_auditoria",
+      "column_name": "entidad_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "data_type": "jsonb",
+      "table_name": "evento_auditoria",
+      "column_name": "datos_anteriores",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 8
+    },
+    {
+      "data_type": "jsonb",
+      "table_name": "evento_auditoria",
+      "column_name": "datos_nuevos",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 9
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "evento_auditoria",
+      "column_name": "creado_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 10
+    },
+    {
+      "data_type": "text",
+      "table_name": "fase",
+      "column_name": "codigo",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "text",
+      "table_name": "fase",
+      "column_name": "nombre",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "smallint",
+      "table_name": "fase",
+      "column_name": "orden",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "idea",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "idea",
+      "column_name": "autor_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "idea",
+      "column_name": "modalidad_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "idea",
+      "column_name": "area_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "idea",
+      "column_name": "linea_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "text",
+      "table_name": "idea",
+      "column_name": "titulo",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "text",
+      "table_name": "idea",
+      "column_name": "descripcion",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "data_type": "text",
+      "table_name": "idea",
+      "column_name": "objetivos",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 8
+    },
+    {
+      "data_type": "text",
+      "table_name": "idea",
+      "column_name": "tecnologias",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 9
+    },
+    {
+      "data_type": "text",
+      "table_name": "idea",
+      "column_name": "estado",
+      "is_nullable": "NO",
+      "column_default": "'pendiente'::text",
+      "ordinal_position": 10
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "idea",
+      "column_name": "creado_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 11
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "intento_acceso",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "text",
+      "table_name": "intento_acceso",
+      "column_name": "correo_hash",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "intento_acceso",
+      "column_name": "creado_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "linea_investigacion",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "text",
+      "table_name": "linea_investigacion",
+      "column_name": "nombre",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "mensaje",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "mensaje",
+      "column_name": "proyecto_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "mensaje",
+      "column_name": "remitente_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "mensaje",
+      "column_name": "destinatario_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "text",
+      "table_name": "mensaje",
+      "column_name": "contenido",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "mensaje",
+      "column_name": "enviado_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "mensaje",
+      "column_name": "leido_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "modalidad",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "text",
+      "table_name": "modalidad",
+      "column_name": "codigo",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "text",
+      "table_name": "modalidad",
+      "column_name": "nombre",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "notificacion",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "notificacion",
+      "column_name": "evento_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "notificacion",
+      "column_name": "destinatario_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "text",
+      "table_name": "notificacion",
+      "column_name": "asunto",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "text",
+      "table_name": "notificacion",
+      "column_name": "cuerpo",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "notificacion",
+      "column_name": "creado_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "notificacion",
+      "column_name": "leido_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "participante_proyecto",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "participante_proyecto",
+      "column_name": "proyecto_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "participante_proyecto",
+      "column_name": "estudiante_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "text",
+      "table_name": "participante_proyecto",
+      "column_name": "nombre_en_pago",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "text",
+      "table_name": "participante_proyecto",
+      "column_name": "documento_en_pago",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "text",
+      "table_name": "participante_proyecto",
+      "column_name": "correo_en_pago",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "text",
+      "table_name": "participante_proyecto",
+      "column_name": "telefono_en_pago",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "data_type": "smallint",
+      "table_name": "participante_proyecto",
+      "column_name": "plaza",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 8
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "participante_proyecto",
+      "column_name": "ingreso_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 9
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "participante_proyecto",
+      "column_name": "retiro_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 10
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "pausa_proyecto",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "pausa_proyecto",
+      "column_name": "proyecto_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "pausa_proyecto",
+      "column_name": "pausado_por",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "pausa_proyecto",
+      "column_name": "inicio_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "text",
+      "table_name": "pausa_proyecto",
+      "column_name": "motivo",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "pausa_proyecto",
+      "column_name": "reanudado_por",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "pausa_proyecto",
+      "column_name": "fin_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "perfil_docente",
+      "column_name": "usuario_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "text",
+      "table_name": "perfil_docente",
+      "column_name": "cursos",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "text",
+      "table_name": "perfil_docente",
+      "column_name": "titulos_academicos",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "text",
+      "table_name": "perfil_docente",
+      "column_name": "temas_preferencia",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "plazo_correccion",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "plazo_correccion",
+      "column_name": "revision_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "plazo_correccion",
+      "column_name": "inicio_en",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "plazo_correccion",
+      "column_name": "limite_en",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "plazo_correccion",
+      "column_name": "entrega_reenvio_id",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "plazo_correccion",
+      "column_name": "alertada_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "proyecto",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "proyecto",
+      "column_name": "idea_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "proyecto",
+      "column_name": "modalidad_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "text",
+      "table_name": "proyecto",
+      "column_name": "titulo",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "text",
+      "table_name": "proyecto",
+      "column_name": "objetivos",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "text",
+      "table_name": "proyecto",
+      "column_name": "descripcion",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "proyecto",
+      "column_name": "creado_por",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "data_type": "text",
+      "table_name": "proyecto",
+      "column_name": "estado",
+      "is_nullable": "NO",
+      "column_default": "'activo'::text",
+      "ordinal_position": 8
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "proyecto",
+      "column_name": "inicio_vigencia_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 9
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "proyecto",
+      "column_name": "informe_habilitado_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 10
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "proyecto",
+      "column_name": "vence_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 11
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "proyecto",
+      "column_name": "informe_aprobado_comite_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 12
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "proyecto",
+      "column_name": "finalizado_por",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 13
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "proyecto",
+      "column_name": "finalizado_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 14
+    },
+    {
+      "data_type": "text",
+      "table_name": "proyecto",
+      "column_name": "motivo_desactivacion",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 15
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "proyecto",
+      "column_name": "creado_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 16
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "proyecto",
+      "column_name": "actualizado_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 17
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "proyecto",
+      "column_name": "aviso_informe_habilitado_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 18
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "proyecto_fase",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "proyecto_fase",
+      "column_name": "proyecto_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "text",
+      "table_name": "proyecto_fase",
+      "column_name": "fase_codigo",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "text",
+      "table_name": "proyecto_fase",
+      "column_name": "estado",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "proyecto_fase",
+      "column_name": "iniciada_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "proyecto_fase",
+      "column_name": "finalizada_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "respuesta_solicitud",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "respuesta_solicitud",
+      "column_name": "solicitud_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "respuesta_solicitud",
+      "column_name": "responsable_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "text",
+      "table_name": "respuesta_solicitud",
+      "column_name": "estado_resultante",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "text",
+      "table_name": "respuesta_solicitud",
+      "column_name": "respuesta",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "respuesta_solicitud",
+      "column_name": "creado_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "revision_entrega",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "revision_entrega",
+      "column_name": "ciclo_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "text",
+      "table_name": "revision_entrega",
+      "column_name": "etapa",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "revision_entrega",
+      "column_name": "responsable_id",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "revision_entrega",
+      "column_name": "asignada_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "revision_entrega",
+      "column_name": "limite_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "text",
+      "table_name": "revision_entrega",
+      "column_name": "decision",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "data_type": "text",
+      "table_name": "revision_entrega",
+      "column_name": "reporte_respuesta",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 8
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "revision_entrega",
+      "column_name": "decidida_en",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 9
+    },
+    {
+      "data_type": "text",
+      "table_name": "rol",
+      "column_name": "codigo",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "text",
+      "table_name": "rol",
+      "column_name": "nombre",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "text",
+      "table_name": "sesion_acceso",
+      "column_name": "token_hash",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "sesion_acceso",
+      "column_name": "usuario_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "sesion_acceso",
+      "column_name": "creada_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "sesion_acceso",
+      "column_name": "vence_en",
+      "is_nullable": "NO",
+      "column_default": "(CURRENT_TIMESTAMP + '08:00:00'::interval)",
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "boolean",
+      "table_name": "sesion_acceso",
+      "column_name": "revocada",
+      "is_nullable": "NO",
+      "column_default": "false",
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "character varying",
+      "table_name": "sesion_http",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "character varying",
+      "table_name": "sesion_http",
+      "column_name": "aplicacion",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bytea",
+      "table_name": "sesion_http",
+      "column_name": "datos",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "character",
+      "table_name": "sesion_http",
+      "column_name": "valida",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "integer",
+      "table_name": "sesion_http",
+      "column_name": "inactividad_maxima",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "sesion_http",
+      "column_name": "ultimo_acceso",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "solicitud",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "solicitud",
+      "column_name": "proyecto_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "solicitud",
+      "column_name": "solicitante_id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "text",
+      "table_name": "solicitud",
+      "column_name": "tipo",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "text",
+      "table_name": "solicitud",
+      "column_name": "descripcion",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "solicitud",
+      "column_name": "docente_preferido_id",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "text",
+      "table_name": "solicitud",
+      "column_name": "estado",
+      "is_nullable": "NO",
+      "column_default": "'pendiente'::text",
+      "ordinal_position": 7
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "solicitud",
+      "column_name": "creado_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 8
+    },
+    {
+      "data_type": "text",
+      "table_name": "tipo_documento",
+      "column_name": "codigo",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "text",
+      "table_name": "tipo_documento",
+      "column_name": "nombre",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "bigint",
+      "table_name": "usuario",
+      "column_name": "id",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 1
+    },
+    {
+      "data_type": "text",
+      "table_name": "usuario",
+      "column_name": "rol_codigo",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 2
+    },
+    {
+      "data_type": "text",
+      "table_name": "usuario",
+      "column_name": "nombre",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 3
+    },
+    {
+      "data_type": "text",
+      "table_name": "usuario",
+      "column_name": "numero_documento",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 4
+    },
+    {
+      "data_type": "text",
+      "table_name": "usuario",
+      "column_name": "telefono",
+      "is_nullable": "YES",
+      "column_default": null,
+      "ordinal_position": 5
+    },
+    {
+      "data_type": "text",
+      "table_name": "usuario",
+      "column_name": "correo",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 6
+    },
+    {
+      "data_type": "text",
+      "table_name": "usuario",
+      "column_name": "contrasena_hash",
+      "is_nullable": "NO",
+      "column_default": null,
+      "ordinal_position": 7
+    },
+    {
+      "data_type": "text",
+      "table_name": "usuario",
+      "column_name": "estado",
+      "is_nullable": "NO",
+      "column_default": "'pendiente'::text",
+      "ordinal_position": 8
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "usuario",
+      "column_name": "creado_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 9
+    },
+    {
+      "data_type": "timestamp with time zone",
+      "table_name": "usuario",
+      "column_name": "actualizado_en",
+      "is_nullable": "NO",
+      "column_default": "CURRENT_TIMESTAMP",
+      "ordinal_position": 10
+    }
+  ],
+  "restricciones": [
+    {
+      "tabla": "acta",
+      "conname": "acta_aprobada_por_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (aprobada_por) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "acta",
+      "conname": "acta_check",
+      "contype": "c",
+      "definicion": "CHECK (((aprobada_por IS NULL) = (aprobada_en IS NULL)))"
+    },
+    {
+      "tabla": "acta",
+      "conname": "acta_creada_por_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (creada_por) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "acta",
+      "conname": "acta_numero_key",
+      "contype": "u",
+      "definicion": "UNIQUE (numero)"
+    },
+    {
+      "tabla": "acta",
+      "conname": "acta_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "acta_proyecto",
+      "conname": "acta_proyecto_acta_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (acta_id) REFERENCES acta(id)"
+    },
+    {
+      "tabla": "acta_proyecto",
+      "conname": "acta_proyecto_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (acta_id, proyecto_id)"
+    },
+    {
+      "tabla": "acta_proyecto",
+      "conname": "acta_proyecto_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (proyecto_id) REFERENCES proyecto(id)"
+    },
+    {
+      "tabla": "area_experiencia",
+      "conname": "area_experiencia_nombre_key",
+      "contype": "u",
+      "definicion": "UNIQUE (nombre)"
+    },
+    {
+      "tabla": "area_experiencia",
+      "conname": "area_experiencia_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "asignacion_proyecto",
+      "conname": "asignacion_proyecto_asignado_por_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (asignado_por) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "asignacion_proyecto",
+      "conname": "asignacion_proyecto_check",
+      "contype": "c",
+      "definicion": "CHECK (((fin_en IS NULL) OR (fin_en >= inicio_en)))"
+    },
+    {
+      "tabla": "asignacion_proyecto",
+      "conname": "asignacion_proyecto_docente_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (docente_id) REFERENCES perfil_docente(usuario_id)"
+    },
+    {
+      "tabla": "asignacion_proyecto",
+      "conname": "asignacion_proyecto_funcion_check",
+      "contype": "c",
+      "definicion": "CHECK ((funcion = ANY (ARRAY['director'::text, 'evaluador'::text])))"
+    },
+    {
+      "tabla": "asignacion_proyecto",
+      "conname": "asignacion_proyecto_id_proyecto_id_key",
+      "contype": "u",
+      "definicion": "UNIQUE (id, proyecto_id)"
+    },
+    {
+      "tabla": "asignacion_proyecto",
+      "conname": "asignacion_proyecto_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "asignacion_proyecto",
+      "conname": "asignacion_proyecto_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (proyecto_id) REFERENCES proyecto(id)"
+    },
+    {
+      "tabla": "ciclo_revision",
+      "conname": "ciclo_revision_check",
+      "contype": "c",
+      "definicion": "CHECK (((finalizado_en IS NULL) OR (finalizado_en >= iniciado_en)))"
+    },
+    {
+      "tabla": "ciclo_revision",
+      "conname": "ciclo_revision_entrega_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (entrega_id) REFERENCES entrega_revision(id)"
+    },
+    {
+      "tabla": "ciclo_revision",
+      "conname": "ciclo_revision_entrega_id_numero_key",
+      "contype": "u",
+      "definicion": "UNIQUE (entrega_id, numero)"
+    },
+    {
+      "tabla": "ciclo_revision",
+      "conname": "ciclo_revision_numero_check",
+      "contype": "c",
+      "definicion": "CHECK ((numero > 0))"
+    },
+    {
+      "tabla": "ciclo_revision",
+      "conname": "ciclo_revision_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "datos_pago",
+      "conname": "datos_pago_aprobado_por_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (aprobado_por) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "datos_pago",
+      "conname": "datos_pago_check",
+      "contype": "c",
+      "definicion": "CHECK (((aprobado_por IS NULL) = (aprobado_en IS NULL)))"
+    },
+    {
+      "tabla": "datos_pago",
+      "conname": "datos_pago_director_propuesto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (director_propuesto_id) REFERENCES perfil_docente(usuario_id)"
+    },
+    {
+      "tabla": "datos_pago",
+      "conname": "datos_pago_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (proyecto_id)"
+    },
+    {
+      "tabla": "datos_pago",
+      "conname": "datos_pago_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (proyecto_id) REFERENCES proyecto(id)"
+    },
+    {
+      "tabla": "decision_idea",
+      "conname": "decision_idea_decision_check",
+      "contype": "c",
+      "definicion": "CHECK ((decision = ANY (ARRAY['aprobada'::text, 'rechazada'::text])))"
+    },
+    {
+      "tabla": "decision_idea",
+      "conname": "decision_idea_idea_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (idea_id) REFERENCES idea(id)"
+    },
+    {
+      "tabla": "decision_idea",
+      "conname": "decision_idea_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "decision_idea",
+      "conname": "decision_idea_responsable_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (responsable_id) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "docente_area",
+      "conname": "docente_area_area_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (area_id) REFERENCES area_experiencia(id)"
+    },
+    {
+      "tabla": "docente_area",
+      "conname": "docente_area_docente_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (docente_id) REFERENCES perfil_docente(usuario_id)"
+    },
+    {
+      "tabla": "docente_area",
+      "conname": "docente_area_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (docente_id, area_id)"
+    },
+    {
+      "tabla": "docente_linea",
+      "conname": "docente_linea_docente_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (docente_id) REFERENCES perfil_docente(usuario_id)"
+    },
+    {
+      "tabla": "docente_linea",
+      "conname": "docente_linea_linea_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (linea_id) REFERENCES linea_investigacion(id)"
+    },
+    {
+      "tabla": "docente_linea",
+      "conname": "docente_linea_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (docente_id, linea_id)"
+    },
+    {
+      "tabla": "docente_modalidad",
+      "conname": "docente_modalidad_docente_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (docente_id) REFERENCES perfil_docente(usuario_id)"
+    },
+    {
+      "tabla": "docente_modalidad",
+      "conname": "docente_modalidad_modalidad_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (modalidad_id) REFERENCES modalidad(id)"
+    },
+    {
+      "tabla": "docente_modalidad",
+      "conname": "docente_modalidad_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (docente_id, modalidad_id)"
+    },
+    {
+      "tabla": "documento",
+      "conname": "documento_check",
+      "contype": "c",
+      "definicion": "CHECK (((tipo_codigo <> 'adicional'::text) OR (btrim(etiqueta) <> ''::text)))"
+    },
+    {
+      "tabla": "documento",
+      "conname": "documento_id_proyecto_id_key",
+      "contype": "u",
+      "definicion": "UNIQUE (id, proyecto_id)"
+    },
+    {
+      "tabla": "documento",
+      "conname": "documento_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "documento",
+      "conname": "documento_proyecto_fase_id_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (proyecto_fase_id, proyecto_id) REFERENCES proyecto_fase(id, proyecto_id)"
+    },
+    {
+      "tabla": "documento",
+      "conname": "documento_proyecto_fase_id_tipo_codigo_etiqueta_key",
+      "contype": "u",
+      "definicion": "UNIQUE (proyecto_fase_id, tipo_codigo, etiqueta)"
+    },
+    {
+      "tabla": "documento",
+      "conname": "documento_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (proyecto_id) REFERENCES proyecto(id)"
+    },
+    {
+      "tabla": "documento",
+      "conname": "documento_tipo_codigo_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (tipo_codigo) REFERENCES tipo_documento(codigo)"
+    },
+    {
+      "tabla": "documento_version",
+      "conname": "documento_version_documento_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (documento_id) REFERENCES documento(id)"
+    },
+    {
+      "tabla": "documento_version",
+      "conname": "documento_version_documento_id_numero_key",
+      "contype": "u",
+      "definicion": "UNIQUE (documento_id, numero)"
+    },
+    {
+      "tabla": "documento_version",
+      "conname": "documento_version_id_documento_id_key",
+      "contype": "u",
+      "definicion": "UNIQUE (id, documento_id)"
+    },
+    {
+      "tabla": "documento_version",
+      "conname": "documento_version_numero_check",
+      "contype": "c",
+      "definicion": "CHECK ((numero > 0))"
+    },
+    {
+      "tabla": "documento_version",
+      "conname": "documento_version_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "documento_version",
+      "conname": "documento_version_registrado_por_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (registrado_por) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "documento_version",
+      "conname": "documento_version_url_check",
+      "contype": "c",
+      "definicion": "CHECK ((url ~* '^https?://[^[:space:]]+$'::text))"
+    },
+    {
+      "tabla": "entrega_documento_version",
+      "conname": "entrega_documento_version_documento_id_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (documento_id, proyecto_id) REFERENCES documento(id, proyecto_id)"
+    },
+    {
+      "tabla": "entrega_documento_version",
+      "conname": "entrega_documento_version_entrega_id_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (entrega_id, proyecto_id) REFERENCES entrega_revision(id, proyecto_id)"
+    },
+    {
+      "tabla": "entrega_documento_version",
+      "conname": "entrega_documento_version_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (entrega_id, documento_id)"
+    },
+    {
+      "tabla": "entrega_documento_version",
+      "conname": "entrega_documento_version_version_id_documento_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (version_id, documento_id) REFERENCES documento_version(id, documento_id)"
+    },
+    {
+      "tabla": "entrega_final",
+      "conname": "entrega_final_check",
+      "contype": "c",
+      "definicion": "CHECK ((((repositorio_url IS NULL) AND (repositorio_registrado_por IS NULL) AND (repositorio_registrado_en IS NULL)) OR ((repositorio_url IS NOT NULL) AND (repositorio_registrado_por IS NOT NULL) AND (repositorio_registrado_en IS NOT NULL))))"
+    },
+    {
+      "tabla": "entrega_final",
+      "conname": "entrega_final_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (proyecto_id)"
+    },
+    {
+      "tabla": "entrega_final",
+      "conname": "entrega_final_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (proyecto_id) REFERENCES proyecto(id)"
+    },
+    {
+      "tabla": "entrega_final",
+      "conname": "entrega_final_repositorio_registrado_por_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (repositorio_registrado_por) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "entrega_final",
+      "conname": "entrega_final_repositorio_url_check",
+      "contype": "c",
+      "definicion": "CHECK ((repositorio_url ~* '^https?://[^[:space:]]+$'::text))"
+    },
+    {
+      "tabla": "entrega_revision",
+      "conname": "entrega_revision_fase_origen_id_numero_key",
+      "contype": "u",
+      "definicion": "UNIQUE (fase_origen_id, numero)"
+    },
+    {
+      "tabla": "entrega_revision",
+      "conname": "entrega_revision_fase_origen_id_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (fase_origen_id, proyecto_id) REFERENCES proyecto_fase(id, proyecto_id)"
+    },
+    {
+      "tabla": "entrega_revision",
+      "conname": "entrega_revision_id_proyecto_id_key",
+      "contype": "u",
+      "definicion": "UNIQUE (id, proyecto_id)"
+    },
+    {
+      "tabla": "entrega_revision",
+      "conname": "entrega_revision_numero_check",
+      "contype": "c",
+      "definicion": "CHECK ((numero > 0))"
+    },
+    {
+      "tabla": "entrega_revision",
+      "conname": "entrega_revision_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "entrega_revision",
+      "conname": "entrega_revision_presentada_por_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (presentada_por) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "entrega_revision",
+      "conname": "entrega_revision_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (proyecto_id) REFERENCES proyecto(id)"
+    },
+    {
+      "tabla": "evento_auditoria",
+      "conname": "evento_auditoria_actor_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (actor_id) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "evento_auditoria",
+      "conname": "evento_auditoria_check",
+      "contype": "c",
+      "definicion": "CHECK ((((origen = 'usuario'::text) AND (actor_id IS NOT NULL)) OR ((origen = 'sistema'::text) AND (actor_id IS NULL))))"
+    },
+    {
+      "tabla": "evento_auditoria",
+      "conname": "evento_auditoria_origen_check",
+      "contype": "c",
+      "definicion": "CHECK ((origen = ANY (ARRAY['usuario'::text, 'sistema'::text])))"
+    },
+    {
+      "tabla": "evento_auditoria",
+      "conname": "evento_auditoria_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "evento_auditoria",
+      "conname": "evento_auditoria_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (proyecto_id) REFERENCES proyecto(id)"
+    },
+    {
+      "tabla": "fase",
+      "conname": "fase_nombre_key",
+      "contype": "u",
+      "definicion": "UNIQUE (nombre)"
+    },
+    {
+      "tabla": "fase",
+      "conname": "fase_orden_check",
+      "contype": "c",
+      "definicion": "CHECK ((orden > 0))"
+    },
+    {
+      "tabla": "fase",
+      "conname": "fase_orden_key",
+      "contype": "u",
+      "definicion": "UNIQUE (orden)"
+    },
+    {
+      "tabla": "fase",
+      "conname": "fase_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (codigo)"
+    },
+    {
+      "tabla": "idea",
+      "conname": "idea_area_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (area_id) REFERENCES area_experiencia(id)"
+    },
+    {
+      "tabla": "idea",
+      "conname": "idea_autor_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (autor_id) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "idea",
+      "conname": "idea_estado_check",
+      "contype": "c",
+      "definicion": "CHECK ((estado = ANY (ARRAY['pendiente'::text, 'aprobada'::text, 'rechazada'::text])))"
+    },
+    {
+      "tabla": "idea",
+      "conname": "idea_linea_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (linea_id) REFERENCES linea_investigacion(id)"
+    },
+    {
+      "tabla": "idea",
+      "conname": "idea_modalidad_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (modalidad_id) REFERENCES modalidad(id)"
+    },
+    {
+      "tabla": "idea",
+      "conname": "idea_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "idea",
+      "conname": "idea_titulo_check",
+      "contype": "c",
+      "definicion": "CHECK ((btrim(titulo) <> ''::text))"
+    },
+    {
+      "tabla": "intento_acceso",
+      "conname": "intento_acceso_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "linea_investigacion",
+      "conname": "linea_investigacion_nombre_key",
+      "contype": "u",
+      "definicion": "UNIQUE (nombre)"
+    },
+    {
+      "tabla": "linea_investigacion",
+      "conname": "linea_investigacion_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "mensaje",
+      "conname": "mensaje_check",
+      "contype": "c",
+      "definicion": "CHECK ((remitente_id <> destinatario_id))"
+    },
+    {
+      "tabla": "mensaje",
+      "conname": "mensaje_check1",
+      "contype": "c",
+      "definicion": "CHECK (((leido_en IS NULL) OR (leido_en >= enviado_en)))"
+    },
+    {
+      "tabla": "mensaje",
+      "conname": "mensaje_contenido_check",
+      "contype": "c",
+      "definicion": "CHECK ((btrim(contenido) <> ''::text))"
+    },
+    {
+      "tabla": "mensaje",
+      "conname": "mensaje_destinatario_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (destinatario_id) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "mensaje",
+      "conname": "mensaje_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "mensaje",
+      "conname": "mensaje_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (proyecto_id) REFERENCES proyecto(id)"
+    },
+    {
+      "tabla": "mensaje",
+      "conname": "mensaje_remitente_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (remitente_id) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "modalidad",
+      "conname": "modalidad_codigo_key",
+      "contype": "u",
+      "definicion": "UNIQUE (codigo)"
+    },
+    {
+      "tabla": "modalidad",
+      "conname": "modalidad_nombre_key",
+      "contype": "u",
+      "definicion": "UNIQUE (nombre)"
+    },
+    {
+      "tabla": "modalidad",
+      "conname": "modalidad_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "notificacion",
+      "conname": "notificacion_check",
+      "contype": "c",
+      "definicion": "CHECK (((leido_en IS NULL) OR (leido_en >= creado_en)))"
+    },
+    {
+      "tabla": "notificacion",
+      "conname": "notificacion_destinatario_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (destinatario_id) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "notificacion",
+      "conname": "notificacion_evento_id_destinatario_id_key",
+      "contype": "u",
+      "definicion": "UNIQUE (evento_id, destinatario_id)"
+    },
+    {
+      "tabla": "notificacion",
+      "conname": "notificacion_evento_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (evento_id) REFERENCES evento_auditoria(id)"
+    },
+    {
+      "tabla": "notificacion",
+      "conname": "notificacion_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "participante_proyecto",
+      "conname": "participante_proyecto_check",
+      "contype": "c",
+      "definicion": "CHECK (((retiro_en IS NULL) OR (retiro_en >= ingreso_en)))"
+    },
+    {
+      "tabla": "participante_proyecto",
+      "conname": "participante_proyecto_correo_en_pago_check",
+      "contype": "c",
+      "definicion": "CHECK ((correo_en_pago ~~ '%@%'::text))"
+    },
+    {
+      "tabla": "participante_proyecto",
+      "conname": "participante_proyecto_estudiante_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (estudiante_id) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "participante_proyecto",
+      "conname": "participante_proyecto_nombre_en_pago_check",
+      "contype": "c",
+      "definicion": "CHECK ((btrim(nombre_en_pago) <> ''::text))"
+    },
+    {
+      "tabla": "participante_proyecto",
+      "conname": "participante_proyecto_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "participante_proyecto",
+      "conname": "participante_proyecto_plaza_check",
+      "contype": "c",
+      "definicion": "CHECK ((plaza = ANY (ARRAY[1, 2])))"
+    },
+    {
+      "tabla": "participante_proyecto",
+      "conname": "participante_proyecto_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (proyecto_id) REFERENCES proyecto(id)"
+    },
+    {
+      "tabla": "pausa_proyecto",
+      "conname": "pausa_proyecto_check",
+      "contype": "c",
+      "definicion": "CHECK (((fin_en IS NULL) = (reanudado_por IS NULL)))"
+    },
+    {
+      "tabla": "pausa_proyecto",
+      "conname": "pausa_proyecto_check1",
+      "contype": "c",
+      "definicion": "CHECK (((fin_en IS NULL) OR (fin_en >= inicio_en)))"
+    },
+    {
+      "tabla": "pausa_proyecto",
+      "conname": "pausa_proyecto_motivo_check",
+      "contype": "c",
+      "definicion": "CHECK ((btrim(motivo) <> ''::text))"
+    },
+    {
+      "tabla": "pausa_proyecto",
+      "conname": "pausa_proyecto_pausado_por_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (pausado_por) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "pausa_proyecto",
+      "conname": "pausa_proyecto_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "pausa_proyecto",
+      "conname": "pausa_proyecto_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (proyecto_id) REFERENCES proyecto(id)"
+    },
+    {
+      "tabla": "pausa_proyecto",
+      "conname": "pausa_proyecto_reanudado_por_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (reanudado_por) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "perfil_docente",
+      "conname": "perfil_docente_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (usuario_id)"
+    },
+    {
+      "tabla": "perfil_docente",
+      "conname": "perfil_docente_usuario_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (usuario_id) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "plazo_correccion",
+      "conname": "plazo_correccion_check",
+      "contype": "c",
+      "definicion": "CHECK ((limite_en > inicio_en))"
+    },
+    {
+      "tabla": "plazo_correccion",
+      "conname": "plazo_correccion_entrega_reenvio_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (entrega_reenvio_id) REFERENCES entrega_revision(id)"
+    },
+    {
+      "tabla": "plazo_correccion",
+      "conname": "plazo_correccion_entrega_reenvio_id_key",
+      "contype": "u",
+      "definicion": "UNIQUE (entrega_reenvio_id)"
+    },
+    {
+      "tabla": "plazo_correccion",
+      "conname": "plazo_correccion_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "plazo_correccion",
+      "conname": "plazo_correccion_revision_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (revision_id) REFERENCES revision_entrega(id)"
+    },
+    {
+      "tabla": "plazo_correccion",
+      "conname": "plazo_correccion_revision_id_key",
+      "contype": "u",
+      "definicion": "UNIQUE (revision_id)"
+    },
+    {
+      "tabla": "proyecto",
+      "conname": "proyecto_check",
+      "contype": "c",
+      "definicion": "CHECK ((((inicio_vigencia_en IS NULL) AND (informe_habilitado_en IS NULL) AND (vence_en IS NULL)) OR ((inicio_vigencia_en IS NOT NULL) AND (informe_habilitado_en IS NOT NULL) AND (vence_en IS NOT NULL) AND (informe_habilitado_en > inicio_vigencia_en) AND (vence_en > informe_habilitado_en))))"
+    },
+    {
+      "tabla": "proyecto",
+      "conname": "proyecto_check1",
+      "contype": "c",
+      "definicion": "CHECK (((informe_aprobado_comite_en IS NULL) OR ((inicio_vigencia_en IS NOT NULL) AND (informe_aprobado_comite_en >= inicio_vigencia_en))))"
+    },
+    {
+      "tabla": "proyecto",
+      "conname": "proyecto_check2",
+      "contype": "c",
+      "definicion": "CHECK ((((estado = 'finalizado'::text) AND (finalizado_por IS NOT NULL) AND (finalizado_en IS NOT NULL)) OR ((estado <> 'finalizado'::text) AND (finalizado_por IS NULL) AND (finalizado_en IS NULL))))"
+    },
+    {
+      "tabla": "proyecto",
+      "conname": "proyecto_creado_por_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (creado_por) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "proyecto",
+      "conname": "proyecto_estado_check",
+      "contype": "c",
+      "definicion": "CHECK ((estado = ANY (ARRAY['activo'::text, 'desactivado'::text, 'cancelado'::text, 'finalizado'::text])))"
+    },
+    {
+      "tabla": "proyecto",
+      "conname": "proyecto_finalizado_por_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (finalizado_por) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "proyecto",
+      "conname": "proyecto_idea_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (idea_id) REFERENCES idea(id)"
+    },
+    {
+      "tabla": "proyecto",
+      "conname": "proyecto_modalidad_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (modalidad_id) REFERENCES modalidad(id)"
+    },
+    {
+      "tabla": "proyecto",
+      "conname": "proyecto_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "proyecto",
+      "conname": "proyecto_titulo_check",
+      "contype": "c",
+      "definicion": "CHECK ((btrim(titulo) <> ''::text))"
+    },
+    {
+      "tabla": "proyecto_fase",
+      "conname": "proyecto_fase_check",
+      "contype": "c",
+      "definicion": "CHECK (((finalizada_en IS NULL) OR ((iniciada_en IS NOT NULL) AND (finalizada_en >= iniciada_en))))"
+    },
+    {
+      "tabla": "proyecto_fase",
+      "conname": "proyecto_fase_estado_check",
+      "contype": "c",
+      "definicion": "CHECK ((estado = ANY (ARRAY['aprobado'::text, 'rechazado'::text, 'aplicado'::text])))"
+    },
+    {
+      "tabla": "proyecto_fase",
+      "conname": "proyecto_fase_fase_codigo_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (fase_codigo) REFERENCES fase(codigo)"
+    },
+    {
+      "tabla": "proyecto_fase",
+      "conname": "proyecto_fase_id_proyecto_id_key",
+      "contype": "u",
+      "definicion": "UNIQUE (id, proyecto_id)"
+    },
+    {
+      "tabla": "proyecto_fase",
+      "conname": "proyecto_fase_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "proyecto_fase",
+      "conname": "proyecto_fase_proyecto_id_fase_codigo_key",
+      "contype": "u",
+      "definicion": "UNIQUE (proyecto_id, fase_codigo)"
+    },
+    {
+      "tabla": "proyecto_fase",
+      "conname": "proyecto_fase_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (proyecto_id) REFERENCES proyecto(id)"
+    },
+    {
+      "tabla": "respuesta_solicitud",
+      "conname": "respuesta_solicitud_estado_resultante_check",
+      "contype": "c",
+      "definicion": "CHECK ((estado_resultante = ANY (ARRAY['pendiente'::text, 'aprobada'::text, 'rechazada'::text, 'atendida'::text])))"
+    },
+    {
+      "tabla": "respuesta_solicitud",
+      "conname": "respuesta_solicitud_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "respuesta_solicitud",
+      "conname": "respuesta_solicitud_responsable_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (responsable_id) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "respuesta_solicitud",
+      "conname": "respuesta_solicitud_respuesta_check",
+      "contype": "c",
+      "definicion": "CHECK ((btrim(respuesta) <> ''::text))"
+    },
+    {
+      "tabla": "respuesta_solicitud",
+      "conname": "respuesta_solicitud_solicitud_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (solicitud_id) REFERENCES solicitud(id)"
+    },
+    {
+      "tabla": "revision_entrega",
+      "conname": "revision_entrega_check",
+      "contype": "c",
+      "definicion": "CHECK (((limite_en IS NULL) OR (limite_en > asignada_en)))"
+    },
+    {
+      "tabla": "revision_entrega",
+      "conname": "revision_entrega_check1",
+      "contype": "c",
+      "definicion": "CHECK ((((decision IS NULL) AND (decidida_en IS NULL)) OR ((decision IS NOT NULL) AND (decidida_en IS NOT NULL))))"
+    },
+    {
+      "tabla": "revision_entrega",
+      "conname": "revision_entrega_check2",
+      "contype": "c",
+      "definicion": "CHECK (((decidida_en IS NULL) OR (decidida_en >= asignada_en)))"
+    },
+    {
+      "tabla": "revision_entrega",
+      "conname": "revision_entrega_check3",
+      "contype": "c",
+      "definicion": "CHECK (((decision IS NULL) OR (decision = 'aplicado'::text) OR (length(btrim(COALESCE(reporte_respuesta, ''::text))) > 0)))"
+    },
+    {
+      "tabla": "revision_entrega",
+      "conname": "revision_entrega_ciclo_id_etapa_key",
+      "contype": "u",
+      "definicion": "UNIQUE (ciclo_id, etapa)"
+    },
+    {
+      "tabla": "revision_entrega",
+      "conname": "revision_entrega_ciclo_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (ciclo_id) REFERENCES ciclo_revision(id)"
+    },
+    {
+      "tabla": "revision_entrega",
+      "conname": "revision_entrega_decision_check",
+      "contype": "c",
+      "definicion": "CHECK ((decision = ANY (ARRAY['aprobado'::text, 'rechazado'::text, 'aplicado'::text])))"
+    },
+    {
+      "tabla": "revision_entrega",
+      "conname": "revision_entrega_etapa_check",
+      "contype": "c",
+      "definicion": "CHECK ((etapa = ANY (ARRAY['director'::text, 'evaluador'::text, 'comite'::text])))"
+    },
+    {
+      "tabla": "revision_entrega",
+      "conname": "revision_entrega_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "revision_entrega",
+      "conname": "revision_entrega_responsable_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (responsable_id) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "revision_entrega",
+      "conname": "revision_responsable_docente",
+      "contype": "c",
+      "definicion": "CHECK (((etapa = 'comite'::text) OR (responsable_id IS NOT NULL)))"
+    },
+    {
+      "tabla": "rol",
+      "conname": "rol_nombre_key",
+      "contype": "u",
+      "definicion": "UNIQUE (nombre)"
+    },
+    {
+      "tabla": "rol",
+      "conname": "rol_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (codigo)"
+    },
+    {
+      "tabla": "sesion_acceso",
+      "conname": "sesion_acceso_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (token_hash)"
+    },
+    {
+      "tabla": "sesion_acceso",
+      "conname": "sesion_acceso_usuario_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (usuario_id) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "sesion_http",
+      "conname": "sesion_http_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id, aplicacion)"
+    },
+    {
+      "tabla": "solicitud",
+      "conname": "solicitud_check",
+      "contype": "c",
+      "definicion": "CHECK (((tipo <> ALL (ARRAY['cambio_director'::text, 'cambio_evaluador'::text])) OR (docente_preferido_id IS NOT NULL)))"
+    },
+    {
+      "tabla": "solicitud",
+      "conname": "solicitud_descripcion_check",
+      "contype": "c",
+      "definicion": "CHECK ((btrim(descripcion) <> ''::text))"
+    },
+    {
+      "tabla": "solicitud",
+      "conname": "solicitud_docente_preferido_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (docente_preferido_id) REFERENCES perfil_docente(usuario_id)"
+    },
+    {
+      "tabla": "solicitud",
+      "conname": "solicitud_estado_check",
+      "contype": "c",
+      "definicion": "CHECK ((estado = ANY (ARRAY['pendiente'::text, 'aprobada'::text, 'rechazada'::text, 'atendida'::text])))"
+    },
+    {
+      "tabla": "solicitud",
+      "conname": "solicitud_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "solicitud",
+      "conname": "solicitud_proyecto_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (proyecto_id) REFERENCES proyecto(id)"
+    },
+    {
+      "tabla": "solicitud",
+      "conname": "solicitud_solicitante_id_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (solicitante_id) REFERENCES usuario(id)"
+    },
+    {
+      "tabla": "solicitud",
+      "conname": "solicitud_tipo_check",
+      "contype": "c",
+      "definicion": "CHECK ((tipo = ANY (ARRAY['cambio_director'::text, 'cambio_evaluador'::text, 'retiro'::text, 'reclamo'::text, 'queja'::text, 'solicitud'::text])))"
+    },
+    {
+      "tabla": "tipo_documento",
+      "conname": "tipo_documento_nombre_key",
+      "contype": "u",
+      "definicion": "UNIQUE (nombre)"
+    },
+    {
+      "tabla": "tipo_documento",
+      "conname": "tipo_documento_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (codigo)"
+    },
+    {
+      "tabla": "usuario",
+      "conname": "usuario_contrasena_hash_check",
+      "contype": "c",
+      "definicion": "CHECK ((btrim(contrasena_hash) <> ''::text))"
+    },
+    {
+      "tabla": "usuario",
+      "conname": "usuario_correo_check",
+      "contype": "c",
+      "definicion": "CHECK (((correo = btrim(correo)) AND (correo ~~ '%@%'::text)))"
+    },
+    {
+      "tabla": "usuario",
+      "conname": "usuario_estado_check",
+      "contype": "c",
+      "definicion": "CHECK ((estado = ANY (ARRAY['pendiente'::text, 'activo'::text, 'inactivo'::text])))"
+    },
+    {
+      "tabla": "usuario",
+      "conname": "usuario_nombre_check",
+      "contype": "c",
+      "definicion": "CHECK ((btrim(nombre) <> ''::text))"
+    },
+    {
+      "tabla": "usuario",
+      "conname": "usuario_pkey",
+      "contype": "p",
+      "definicion": "PRIMARY KEY (id)"
+    },
+    {
+      "tabla": "usuario",
+      "conname": "usuario_rol_codigo_fkey",
+      "contype": "f",
+      "definicion": "FOREIGN KEY (rol_codigo) REFERENCES rol(codigo)"
+    }
+  ],
+  "indices": [
+    {
+      "indexdef": "CREATE UNIQUE INDEX acta_numero_key ON grado.acta USING btree (numero)",
+      "indexname": "acta_numero_key",
+      "tablename": "acta"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX acta_pkey ON grado.acta USING btree (id)",
+      "indexname": "acta_pkey",
+      "tablename": "acta"
+    },
+    {
+      "indexdef": "CREATE INDEX acta_proyecto_consulta ON grado.acta_proyecto USING btree (proyecto_id, acta_id)",
+      "indexname": "acta_proyecto_consulta",
+      "tablename": "acta_proyecto"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX acta_proyecto_pkey ON grado.acta_proyecto USING btree (acta_id, proyecto_id)",
+      "indexname": "acta_proyecto_pkey",
+      "tablename": "acta_proyecto"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX area_experiencia_nombre_key ON grado.area_experiencia USING btree (nombre)",
+      "indexname": "area_experiencia_nombre_key",
+      "tablename": "area_experiencia"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX area_experiencia_pkey ON grado.area_experiencia USING btree (id)",
+      "indexname": "area_experiencia_pkey",
+      "tablename": "area_experiencia"
+    },
+    {
+      "indexdef": "CREATE INDEX asignacion_docente ON grado.asignacion_proyecto USING btree (docente_id, funcion, proyecto_id)",
+      "indexname": "asignacion_docente",
+      "tablename": "asignacion_proyecto"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX asignacion_funcion_activa ON grado.asignacion_proyecto USING btree (proyecto_id, funcion) WHERE (fin_en IS NULL)",
+      "indexname": "asignacion_funcion_activa",
+      "tablename": "asignacion_proyecto"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX asignacion_persona_distinta ON grado.asignacion_proyecto USING btree (proyecto_id, docente_id) WHERE (fin_en IS NULL)",
+      "indexname": "asignacion_persona_distinta",
+      "tablename": "asignacion_proyecto"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX asignacion_proyecto_id_proyecto_id_key ON grado.asignacion_proyecto USING btree (id, proyecto_id)",
+      "indexname": "asignacion_proyecto_id_proyecto_id_key",
+      "tablename": "asignacion_proyecto"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX asignacion_proyecto_pkey ON grado.asignacion_proyecto USING btree (id)",
+      "indexname": "asignacion_proyecto_pkey",
+      "tablename": "asignacion_proyecto"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX ciclo_revision_abierto ON grado.ciclo_revision USING btree (entrega_id) WHERE (finalizado_en IS NULL)",
+      "indexname": "ciclo_revision_abierto",
+      "tablename": "ciclo_revision"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX ciclo_revision_entrega_id_numero_key ON grado.ciclo_revision USING btree (entrega_id, numero)",
+      "indexname": "ciclo_revision_entrega_id_numero_key",
+      "tablename": "ciclo_revision"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX ciclo_revision_pkey ON grado.ciclo_revision USING btree (id)",
+      "indexname": "ciclo_revision_pkey",
+      "tablename": "ciclo_revision"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX datos_pago_pkey ON grado.datos_pago USING btree (proyecto_id)",
+      "indexname": "datos_pago_pkey",
+      "tablename": "datos_pago"
+    },
+    {
+      "indexdef": "CREATE INDEX decision_idea_historial ON grado.decision_idea USING btree (idea_id, creado_en)",
+      "indexname": "decision_idea_historial",
+      "tablename": "decision_idea"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX decision_idea_pkey ON grado.decision_idea USING btree (id)",
+      "indexname": "decision_idea_pkey",
+      "tablename": "decision_idea"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX docente_area_pkey ON grado.docente_area USING btree (docente_id, area_id)",
+      "indexname": "docente_area_pkey",
+      "tablename": "docente_area"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX docente_linea_pkey ON grado.docente_linea USING btree (docente_id, linea_id)",
+      "indexname": "docente_linea_pkey",
+      "tablename": "docente_linea"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX docente_modalidad_pkey ON grado.docente_modalidad USING btree (docente_id, modalidad_id)",
+      "indexname": "docente_modalidad_pkey",
+      "tablename": "docente_modalidad"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX documento_id_proyecto_id_key ON grado.documento USING btree (id, proyecto_id)",
+      "indexname": "documento_id_proyecto_id_key",
+      "tablename": "documento"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX documento_institucional_unico ON grado.documento USING btree (proyecto_fase_id, tipo_codigo) WHERE (tipo_codigo <> 'adicional'::text)",
+      "indexname": "documento_institucional_unico",
+      "tablename": "documento"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX documento_pkey ON grado.documento USING btree (id)",
+      "indexname": "documento_pkey",
+      "tablename": "documento"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX documento_proyecto_fase_id_tipo_codigo_etiqueta_key ON grado.documento USING btree (proyecto_fase_id, tipo_codigo, etiqueta)",
+      "indexname": "documento_proyecto_fase_id_tipo_codigo_etiqueta_key",
+      "tablename": "documento"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX documento_version_documento_id_numero_key ON grado.documento_version USING btree (documento_id, numero)",
+      "indexname": "documento_version_documento_id_numero_key",
+      "tablename": "documento_version"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX documento_version_id_documento_id_key ON grado.documento_version USING btree (id, documento_id)",
+      "indexname": "documento_version_id_documento_id_key",
+      "tablename": "documento_version"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX documento_version_pkey ON grado.documento_version USING btree (id)",
+      "indexname": "documento_version_pkey",
+      "tablename": "documento_version"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX entrega_documento_version_pkey ON grado.entrega_documento_version USING btree (entrega_id, documento_id)",
+      "indexname": "entrega_documento_version_pkey",
+      "tablename": "entrega_documento_version"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX entrega_final_pkey ON grado.entrega_final USING btree (proyecto_id)",
+      "indexname": "entrega_final_pkey",
+      "tablename": "entrega_final"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX entrega_revision_fase_origen_id_numero_key ON grado.entrega_revision USING btree (fase_origen_id, numero)",
+      "indexname": "entrega_revision_fase_origen_id_numero_key",
+      "tablename": "entrega_revision"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX entrega_revision_id_proyecto_id_key ON grado.entrega_revision USING btree (id, proyecto_id)",
+      "indexname": "entrega_revision_id_proyecto_id_key",
+      "tablename": "entrega_revision"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX entrega_revision_pkey ON grado.entrega_revision USING btree (id)",
+      "indexname": "entrega_revision_pkey",
+      "tablename": "entrega_revision"
+    },
+    {
+      "indexdef": "CREATE INDEX auditoria_entidad ON grado.evento_auditoria USING btree (entidad, entidad_id, creado_en)",
+      "indexname": "auditoria_entidad",
+      "tablename": "evento_auditoria"
+    },
+    {
+      "indexdef": "CREATE INDEX auditoria_proyecto ON grado.evento_auditoria USING btree (proyecto_id, creado_en, id)",
+      "indexname": "auditoria_proyecto",
+      "tablename": "evento_auditoria"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX evento_auditoria_pkey ON grado.evento_auditoria USING btree (id)",
+      "indexname": "evento_auditoria_pkey",
+      "tablename": "evento_auditoria"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX fase_nombre_key ON grado.fase USING btree (nombre)",
+      "indexname": "fase_nombre_key",
+      "tablename": "fase"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX fase_orden_key ON grado.fase USING btree (orden)",
+      "indexname": "fase_orden_key",
+      "tablename": "fase"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX fase_pkey ON grado.fase USING btree (codigo)",
+      "indexname": "fase_pkey",
+      "tablename": "fase"
+    },
+    {
+      "indexdef": "CREATE INDEX idea_busqueda ON grado.idea USING btree (estado, modalidad_id)",
+      "indexname": "idea_busqueda",
+      "tablename": "idea"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX idea_pkey ON grado.idea USING btree (id)",
+      "indexname": "idea_pkey",
+      "tablename": "idea"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX intento_acceso_pkey ON grado.intento_acceso USING btree (id)",
+      "indexname": "intento_acceso_pkey",
+      "tablename": "intento_acceso"
+    },
+    {
+      "indexdef": "CREATE INDEX intento_acceso_ventana ON grado.intento_acceso USING btree (correo_hash, creado_en)",
+      "indexname": "intento_acceso_ventana",
+      "tablename": "intento_acceso"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX linea_investigacion_nombre_key ON grado.linea_investigacion USING btree (nombre)",
+      "indexname": "linea_investigacion_nombre_key",
+      "tablename": "linea_investigacion"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX linea_investigacion_pkey ON grado.linea_investigacion USING btree (id)",
+      "indexname": "linea_investigacion_pkey",
+      "tablename": "linea_investigacion"
+    },
+    {
+      "indexdef": "CREATE INDEX mensaje_bandeja ON grado.mensaje USING btree (destinatario_id, enviado_en)",
+      "indexname": "mensaje_bandeja",
+      "tablename": "mensaje"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX mensaje_pkey ON grado.mensaje USING btree (id)",
+      "indexname": "mensaje_pkey",
+      "tablename": "mensaje"
+    },
+    {
+      "indexdef": "CREATE INDEX mensaje_proyecto ON grado.mensaje USING btree (proyecto_id, enviado_en)",
+      "indexname": "mensaje_proyecto",
+      "tablename": "mensaje"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX modalidad_codigo_key ON grado.modalidad USING btree (codigo)",
+      "indexname": "modalidad_codigo_key",
+      "tablename": "modalidad"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX modalidad_nombre_key ON grado.modalidad USING btree (nombre)",
+      "indexname": "modalidad_nombre_key",
+      "tablename": "modalidad"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX modalidad_pkey ON grado.modalidad USING btree (id)",
+      "indexname": "modalidad_pkey",
+      "tablename": "modalidad"
+    },
+    {
+      "indexdef": "CREATE INDEX notificacion_bandeja ON grado.notificacion USING btree (destinatario_id, creado_en)",
+      "indexname": "notificacion_bandeja",
+      "tablename": "notificacion"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX notificacion_evento_id_destinatario_id_key ON grado.notificacion USING btree (evento_id, destinatario_id)",
+      "indexname": "notificacion_evento_id_destinatario_id_key",
+      "tablename": "notificacion"
+    },
+    {
+      "indexdef": "CREATE INDEX notificacion_pendiente ON grado.notificacion USING btree (destinatario_id, creado_en) WHERE (leido_en IS NULL)",
+      "indexname": "notificacion_pendiente",
+      "tablename": "notificacion"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX notificacion_pkey ON grado.notificacion USING btree (id)",
+      "indexname": "notificacion_pkey",
+      "tablename": "notificacion"
+    },
+    {
+      "indexdef": "CREATE INDEX participante_busqueda ON grado.participante_proyecto USING btree (estudiante_id, proyecto_id)",
+      "indexname": "participante_busqueda",
+      "tablename": "participante_proyecto"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX participante_estudiante_activo ON grado.participante_proyecto USING btree (estudiante_id) WHERE (retiro_en IS NULL)",
+      "indexname": "participante_estudiante_activo",
+      "tablename": "participante_proyecto"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX participante_plaza_activa ON grado.participante_proyecto USING btree (proyecto_id, plaza) WHERE (retiro_en IS NULL)",
+      "indexname": "participante_plaza_activa",
+      "tablename": "participante_proyecto"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX participante_proyecto_pkey ON grado.participante_proyecto USING btree (id)",
+      "indexname": "participante_proyecto_pkey",
+      "tablename": "participante_proyecto"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX pausa_proyecto_pkey ON grado.pausa_proyecto USING btree (id)",
+      "indexname": "pausa_proyecto_pkey",
+      "tablename": "pausa_proyecto"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX pausa_unica_abierta ON grado.pausa_proyecto USING btree (proyecto_id) WHERE (fin_en IS NULL)",
+      "indexname": "pausa_unica_abierta",
+      "tablename": "pausa_proyecto"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX perfil_docente_pkey ON grado.perfil_docente USING btree (usuario_id)",
+      "indexname": "perfil_docente_pkey",
+      "tablename": "perfil_docente"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX plazo_correccion_entrega_reenvio_id_key ON grado.plazo_correccion USING btree (entrega_reenvio_id)",
+      "indexname": "plazo_correccion_entrega_reenvio_id_key",
+      "tablename": "plazo_correccion"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX plazo_correccion_pkey ON grado.plazo_correccion USING btree (id)",
+      "indexname": "plazo_correccion_pkey",
+      "tablename": "plazo_correccion"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX plazo_correccion_revision_id_key ON grado.plazo_correccion USING btree (revision_id)",
+      "indexname": "plazo_correccion_revision_id_key",
+      "tablename": "plazo_correccion"
+    },
+    {
+      "indexdef": "CREATE INDEX proyecto_busqueda ON grado.proyecto USING btree (estado, modalidad_id, creado_en)",
+      "indexname": "proyecto_busqueda",
+      "tablename": "proyecto"
+    },
+    {
+      "indexdef": "CREATE INDEX proyecto_idea ON grado.proyecto USING btree (idea_id)",
+      "indexname": "proyecto_idea",
+      "tablename": "proyecto"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX proyecto_pkey ON grado.proyecto USING btree (id)",
+      "indexname": "proyecto_pkey",
+      "tablename": "proyecto"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX proyecto_reserva_idea ON grado.proyecto USING btree (idea_id) WHERE (estado <> 'cancelado'::text)",
+      "indexname": "proyecto_reserva_idea",
+      "tablename": "proyecto"
+    },
+    {
+      "indexdef": "CREATE INDEX proyecto_vencimiento ON grado.proyecto USING btree (vence_en) WHERE ((estado = 'activo'::text) AND (informe_aprobado_comite_en IS NULL))",
+      "indexname": "proyecto_vencimiento",
+      "tablename": "proyecto"
+    },
+    {
+      "indexdef": "CREATE INDEX fase_estado ON grado.proyecto_fase USING btree (fase_codigo, estado)",
+      "indexname": "fase_estado",
+      "tablename": "proyecto_fase"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX proyecto_fase_id_proyecto_id_key ON grado.proyecto_fase USING btree (id, proyecto_id)",
+      "indexname": "proyecto_fase_id_proyecto_id_key",
+      "tablename": "proyecto_fase"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX proyecto_fase_pkey ON grado.proyecto_fase USING btree (id)",
+      "indexname": "proyecto_fase_pkey",
+      "tablename": "proyecto_fase"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX proyecto_fase_proyecto_id_fase_codigo_key ON grado.proyecto_fase USING btree (proyecto_id, fase_codigo)",
+      "indexname": "proyecto_fase_proyecto_id_fase_codigo_key",
+      "tablename": "proyecto_fase"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX proyecto_una_fase_en_curso ON grado.proyecto_fase USING btree (proyecto_id) WHERE ((iniciada_en IS NOT NULL) AND (finalizada_en IS NULL))",
+      "indexname": "proyecto_una_fase_en_curso",
+      "tablename": "proyecto_fase"
+    },
+    {
+      "indexdef": "CREATE INDEX respuesta_historial ON grado.respuesta_solicitud USING btree (solicitud_id, creado_en)",
+      "indexname": "respuesta_historial",
+      "tablename": "respuesta_solicitud"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX respuesta_solicitud_pkey ON grado.respuesta_solicitud USING btree (id)",
+      "indexname": "respuesta_solicitud_pkey",
+      "tablename": "respuesta_solicitud"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX revision_entrega_ciclo_id_etapa_key ON grado.revision_entrega USING btree (ciclo_id, etapa)",
+      "indexname": "revision_entrega_ciclo_id_etapa_key",
+      "tablename": "revision_entrega"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX revision_entrega_pkey ON grado.revision_entrega USING btree (id)",
+      "indexname": "revision_entrega_pkey",
+      "tablename": "revision_entrega"
+    },
+    {
+      "indexdef": "CREATE INDEX revision_pendiente ON grado.revision_entrega USING btree (responsable_id, limite_en) WHERE (decision IS NULL)",
+      "indexname": "revision_pendiente",
+      "tablename": "revision_entrega"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX revision_una_pendiente_por_ciclo ON grado.revision_entrega USING btree (ciclo_id) WHERE (decision IS NULL)",
+      "indexname": "revision_una_pendiente_por_ciclo",
+      "tablename": "revision_entrega"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX rol_nombre_key ON grado.rol USING btree (nombre)",
+      "indexname": "rol_nombre_key",
+      "tablename": "rol"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX rol_pkey ON grado.rol USING btree (codigo)",
+      "indexname": "rol_pkey",
+      "tablename": "rol"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX sesion_acceso_pkey ON grado.sesion_acceso USING btree (token_hash)",
+      "indexname": "sesion_acceso_pkey",
+      "tablename": "sesion_acceso"
+    },
+    {
+      "indexdef": "CREATE INDEX sesion_acceso_usuario ON grado.sesion_acceso USING btree (usuario_id, vence_en)",
+      "indexname": "sesion_acceso_usuario",
+      "tablename": "sesion_acceso"
+    },
+    {
+      "indexdef": "CREATE INDEX sesion_http_aplicacion ON grado.sesion_http USING btree (aplicacion)",
+      "indexname": "sesion_http_aplicacion",
+      "tablename": "sesion_http"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX sesion_http_pkey ON grado.sesion_http USING btree (id, aplicacion)",
+      "indexname": "sesion_http_pkey",
+      "tablename": "sesion_http"
+    },
+    {
+      "indexdef": "CREATE INDEX solicitud_bandeja ON grado.solicitud USING btree (estado, proyecto_id, creado_en)",
+      "indexname": "solicitud_bandeja",
+      "tablename": "solicitud"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX solicitud_pkey ON grado.solicitud USING btree (id)",
+      "indexname": "solicitud_pkey",
+      "tablename": "solicitud"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX tipo_documento_nombre_key ON grado.tipo_documento USING btree (nombre)",
+      "indexname": "tipo_documento_nombre_key",
+      "tablename": "tipo_documento"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX tipo_documento_pkey ON grado.tipo_documento USING btree (codigo)",
+      "indexname": "tipo_documento_pkey",
+      "tablename": "tipo_documento"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX usuario_correo_unico ON grado.usuario USING btree (lower(correo))",
+      "indexname": "usuario_correo_unico",
+      "tablename": "usuario"
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX usuario_pkey ON grado.usuario USING btree (id)",
+      "indexname": "usuario_pkey",
+      "tablename": "usuario"
+    }
+  ]
+}

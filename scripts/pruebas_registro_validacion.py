@@ -16,13 +16,13 @@ def verificar_registro():
         estado,url,html,_=c.pedir('/acciones/registrar.jsp',datos|{'csrf':c.token('/registro.jsp?tipo=docente')})
         assert estado==200 and '/no-disponible.jsp' not in url,('Registro',sufijo,estado,url)
         return correo,c,url,html
-    invalidos=[{'areas':', , ,'}, {'lineas':',,,'}, {'areas':' \t,\n, '}, {'modalidad':['inexistente']},
+    invalidos=[{'nombre':'\t\t'}, {'cursos':'\t\r\n'}, {'titulos':'\t\n'}, {'temas':'\r\n'}, {'areas':', , ,'}, {'lineas':',,,'}, {'areas':' \t,\n, '}, {'modalidad':['inexistente']},
       {'cursos':''}, {'rol':'comite'}, {'rol':'secretaria'}, {'confirmacion':'diferente'}, {'contrasena':'corta','confirmacion':'corta'}]
     for n,datos in enumerate(invalidos):
         correo,_,url,_=registrar('invalido'+str(n),datos)
         assert '/registro.jsp' in url and 'aviso=registro' not in url,('Aceptó registro inválido',datos)
         assert sql('SELECT count(*) FROM grado.usuario WHERE correo='+literal(correo)+';').strip()=='0',('Creó cuenta inválida',n)
-    correo,c,url,_=registrar('valido',{})
+    correo,c,url,_=registrar('valido',{'areas':'\tValidación Software\t, \t, Validación Datos\t','lineas':'Validación Investigación, \t, Validación Sistemas'})
     assert 'aviso=registro' in url,'No completó el registro de Evaluador'
     uid=sql('SELECT id FROM grado.usuario WHERE correo='+literal(correo)+';').strip()
     assert sql('SELECT estado FROM grado.usuario WHERE id='+uid+';').strip()=='activo'

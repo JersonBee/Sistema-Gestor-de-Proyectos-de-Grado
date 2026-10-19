@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2640" height="4489" viewBox="0 0 2640 4489">
+<rect width="100%" height="100%" fill="white"/>
+<text x="70" y="58" font-family="Arial, sans-serif" font-size="38" font-weight="700" fill="#176B4A" text-anchor="start" dominant-baseline="central">SECUENCIA · PRESENTACIÓN Y REVISIÓN DE DOCUMENTOS</text>
+<text x="70" y="107" font-family="Arial, sans-serif" font-size="25" font-weight="400" fill="#566C61" text-anchor="start" dominant-baseline="central">Sistema Gestor de Proyectos de Grado · MVC con JSP / JSTL y PostgreSQL</text>
+<text x="70" y="147" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#566C61" text-anchor="start" dominant-baseline="central">Flecha continua: petición o llamada · Flecha discontinua: respuesta · Lectura de arriba hacia abajo</text>
+<line x1="235" y1="300" x2="235" y2="6480" stroke="#B8C8BF" stroke-width="2" stroke-dasharray="9 8"/>
+<rect x="15" y="190" width="440" height="104" rx="10" fill="#176B4A" stroke="#176B4A" stroke-width="2"/>
+<text x="235" y="222" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="white" text-anchor="middle" dominant-baseline="central">USUARIO / NAVEGADOR</text>
+<text x="235" y="263" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="white" text-anchor="middle" dominant-baseline="central">Estudiante o responsable de revisión</text>
+<line x1="775" y1="300" x2="775" y2="6480" stroke="#B8C8BF" stroke-width="2" stroke-dasharray="9 8"/>
+<rect x="555" y="190" width="440" height="104" rx="10" fill="#176B4A" stroke="#176B4A" stroke-width="2"/>
+<text x="775" y="222" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="white" text-anchor="middle" dominant-baseline="central">CONTROLADOR</text>
+<text x="775" y="263" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="white" text-anchor="middle" dominant-baseline="central">JSP pública → WEB-INF/controladores</text>
+<line x1="1320" y1="300" x2="1320" y2="6480" stroke="#B8C8BF" stroke-width="2" stroke-dasharray="9 8"/>
+<rect x="1100" y="190" width="440" height="104" rx="10" fill="#176B4A" stroke="#176B4A" stroke-width="2"/>
+<text x="1320" y="222" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="white" text-anchor="middle" dominant-baseline="central">VISTA</text>
+<text x="1320" y="263" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="white" text-anchor="middle" dominant-baseline="central">WEB-INF/vistas · HTML + JSTL / EL</text>
+<line x1="1855" y1="300" x2="1855" y2="6480" stroke="#B8C8BF" stroke-width="2" stroke-dasharray="9 8"/>
+<rect x="1635" y="190" width="440" height="104" rx="10" fill="#176B4A" stroke="#176B4A" stroke-width="2"/>
+<text x="1855" y="222" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="white" text-anchor="middle" dominant-baseline="central">MODELO DE ACCESO</text>
+<text x="1855" y="263" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="white" text-anchor="middle" dominant-baseline="central">WEB-INF/modelo · JSTL SQL / JNDI</text>
+<line x1="2390" y1="300" x2="2390" y2="6480" stroke="#B8C8BF" stroke-width="2" stroke-dasharray="9 8"/>
+<rect x="2170" y="190" width="440" height="104" rx="10" fill="#176B4A" stroke="#176B4A" stroke-width="2"/>
+<text x="2390" y="222" font-family="Arial, sans-serif" font-size="25" font-weight="700" fill="white" text-anchor="middle" dominant-baseline="central">POSTGRESQL</text>
+<text x="2390" y="263" font-family="Arial, sans-serif" font-size="19" font-weight="400" fill="white" text-anchor="middle" dominant-baseline="central">Esquema grado · reglas y persistencia</text>
+<rect x="55" y="326" width="2530" height="76" rx="5" fill="#E7F1EA" stroke="#D2E2D8" stroke-width="2"/>
+<text x="80" y="351" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#176B4A" text-anchor="start" dominant-baseline="central">1. EL ESTUDIANTE PRESENTA EL CONJUNTO</text>
+<text x="80" y="381" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#566C61" text-anchor="start" dominant-baseline="central">Propuesta: F-DC-124 + Turnitin · Informe: F-DC-125 + F-DC-129 + Turnitin · Adicionales opcionales</text>
+<rect x="258.0" y="417" width="494" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="505.0" y="430" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">POST /acciones/documentos-enviar.jsp</text>
+<line x1="235" y1="470" x2="775" y2="470" stroke="#566C61" stroke-width="3"/>
+<polygon points="775,470 760,462 760,478" fill="#566C61"/>
+<rect x="798.0" y="495" width="1034" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="1315.0" y="508" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Solicitar validación de sesión</text>
+<line x1="775" y1="548" x2="1855" y2="548" stroke="#566C61" stroke-width="3"/>
+<polygon points="1855,548 1840,540 1840,556" fill="#566C61"/>
+<rect x="1878.0" y="573" width="489" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="2122.5" y="586" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">SELECT grado.validar_sesion(?)</text>
+<line x1="1855" y1="626" x2="2390" y2="626" stroke="#566C61" stroke-width="3"/>
+<polygon points="2390,626 2375,618 2375,634" fill="#566C61"/>
+<rect x="1878.0" y="651" width="489" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="2122.5" y="664" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Usuario y rol vigentes</text>
+<line x1="2390" y1="704" x2="1855" y2="704" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="1855,704 1870,696 1870,712" fill="#566C61"/>
+<rect x="798.0" y="729" width="1034" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="1315.0" y="742" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Identidad autorizada</text>
+<line x1="1855" y1="782" x2="775" y2="782" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="775,782 790,774 790,790" fill="#566C61"/>
+<rect x="490.0" y="816" width="570" height="92" rx="10" fill="#FFF7E7" stroke="#D7C7A5" stroke-width="2"/>
+<text x="775" y="837" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Valida rol estudiante, método POST, CSRF,</text>
+<text x="775" y="866" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">identificador y tipo de seguimiento.</text>
+<rect x="798.0" y="921" width="1034" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="1315.0" y="934" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Presentar proyecto, enlaces y adicionales</text>
+<line x1="775" y1="974" x2="1855" y2="974" stroke="#566C61" stroke-width="3"/>
+<polygon points="1855,974 1840,966 1840,982" fill="#566C61"/>
+<rect x="1878.0" y="999" width="489" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="2122.5" y="1012" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">SELECT grado.presentar_documentos(...)</text>
+<line x1="1855" y1="1052" x2="2390" y2="1052" stroke="#566C61" stroke-width="3"/>
+<polygon points="2390,1052 2375,1044 2375,1060" fill="#566C61"/>
+<rect x="1785.0" y="1086" width="790" height="121" rx="10" fill="#ECF5EE" stroke="#D7C7A5" stroke-width="2"/>
+<text x="2180" y="1107" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Operación atómica: comprueba participación, fase, plazos y formatos.</text>
+<text x="2180" y="1136" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Registra versiones, entrega y ciclo; asigna la revisión al director.</text>
+<text x="2180" y="1165" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Conserva auditoría y genera avisos internos.</text>
+<rect x="1878.0" y="1220" width="489" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="2122.5" y="1233" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">ok, mensaje, recurso_id</text>
+<line x1="2390" y1="1273" x2="1855" y2="1273" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="1855,1273 1870,1265 1870,1281" fill="#566C61"/>
+<rect x="798.0" y="1298" width="1034" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="1315.0" y="1311" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Resultado de la operación</text>
+<line x1="1855" y1="1351" x2="775" y2="1351" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="775,1351 790,1343 790,1359" fill="#566C61"/>
+<rect x="258.0" y="1376" width="494" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="505.0" y="1389" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">302 → /seguimiento.jsp?id=…&amp;tipo=…</text>
+<line x1="775" y1="1429" x2="235" y2="1429" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="235,1429 250,1421 250,1437" fill="#566C61"/>
+<rect x="55" y="1467" width="2530" height="76" rx="5" fill="#E7F1EA" stroke="#D2E2D8" stroke-width="2"/>
+<text x="80" y="1492" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#176B4A" text-anchor="start" dominant-baseline="central">2. CONSULTA DESPUÉS DEL ENVÍO · POST / REDIRECT / GET</text>
+<text x="80" y="1522" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#566C61" text-anchor="start" dominant-baseline="central">El navegador consulta la página de destino; recargar no repite el POST.</text>
+<rect x="258.0" y="1558" width="494" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="505.0" y="1571" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">GET /seguimiento.jsp?id=…&amp;tipo=…</text>
+<line x1="235" y1="1611" x2="775" y2="1611" stroke="#566C61" stroke-width="3"/>
+<polygon points="775,1611 760,1603 760,1619" fill="#566C61"/>
+<rect x="798.0" y="1636" width="1034" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="1315.0" y="1649" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Consultar seguimiento autorizado</text>
+<line x1="775" y1="1689" x2="1855" y2="1689" stroke="#566C61" stroke-width="3"/>
+<polygon points="1855,1689 1840,1681 1840,1697" fill="#566C61"/>
+<rect x="1878.0" y="1714" width="489" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="2122.5" y="1727" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">SELECT de proyecto, entregas y revisiones</text>
+<line x1="1855" y1="1767" x2="2390" y2="1767" stroke="#566C61" stroke-width="3"/>
+<polygon points="2390,1767 2375,1759 2375,1775" fill="#566C61"/>
+<rect x="1878.0" y="1792" width="489" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="2122.5" y="1805" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Datos y responsable pendiente</text>
+<line x1="2390" y1="1845" x2="1855" y2="1845" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="1855,1845 1870,1837 1870,1853" fill="#566C61"/>
+<rect x="798.0" y="1870" width="1034" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="1315.0" y="1883" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Resultados preparados</text>
+<line x1="1855" y1="1923" x2="775" y2="1923" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="775,1923 790,1915 790,1931" fill="#566C61"/>
+<rect x="798.0" y="1948" width="499" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="1047.5" y="1961" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Seleccionar vista y entregar datos</text>
+<line x1="775" y1="2001" x2="1320" y2="2001" stroke="#566C61" stroke-width="3"/>
+<polygon points="1320,2001 1305,1993 1305,2009" fill="#566C61"/>
+<rect x="798.0" y="2026" width="499" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="1047.5" y="2039" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">HTML con textos escapados</text>
+<line x1="1320" y1="2079" x2="775" y2="2079" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="775,2079 790,2071 790,2087" fill="#566C61"/>
+<rect x="258.0" y="2104" width="494" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="505.0" y="2117" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">200 · seguimiento actualizado</text>
+<line x1="775" y1="2157" x2="235" y2="2157" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="235,2157 250,2149 250,2165" fill="#566C61"/>
+<rect x="55" y="2195" width="2530" height="76" rx="5" fill="#E7F1EA" stroke="#D2E2D8" stroke-width="2"/>
+<text x="80" y="2220" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#176B4A" text-anchor="start" dominant-baseline="central">3. EL RESPONSABLE REVISA EL CONJUNTO</text>
+<text x="80" y="2250" font-family="Arial, sans-serif" font-size="21" font-weight="400" fill="#566C61" text-anchor="start" dominant-baseline="central">Esta secuencia se repite por separado: Director → Evaluador → Comité; cada uno inicia sesión con su cuenta.</text>
+<rect x="258.0" y="2286" width="494" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="505.0" y="2299" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">POST /acciones/revision-decidir.jsp</text>
+<line x1="235" y1="2339" x2="775" y2="2339" stroke="#566C61" stroke-width="3"/>
+<polygon points="775,2339 760,2331 760,2347" fill="#566C61"/>
+<rect x="798.0" y="2364" width="1034" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="1315.0" y="2377" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Solicitar validación de sesión</text>
+<line x1="775" y1="2417" x2="1855" y2="2417" stroke="#566C61" stroke-width="3"/>
+<polygon points="1855,2417 1840,2409 1840,2425" fill="#566C61"/>
+<rect x="1878.0" y="2442" width="489" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="2122.5" y="2455" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">SELECT grado.validar_sesion(?)</text>
+<line x1="1855" y1="2495" x2="2390" y2="2495" stroke="#566C61" stroke-width="3"/>
+<polygon points="2390,2495 2375,2487 2375,2503" fill="#566C61"/>
+<rect x="1878.0" y="2520" width="489" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="2122.5" y="2533" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Usuario y rol vigentes</text>
+<line x1="2390" y1="2573" x2="1855" y2="2573" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="1855,2573 1870,2565 1870,2581" fill="#566C61"/>
+<rect x="798.0" y="2598" width="1034" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="1315.0" y="2611" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Identidad autorizada</text>
+<line x1="1855" y1="2651" x2="775" y2="2651" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="775,2651 790,2643 790,2659" fill="#566C61"/>
+<rect x="415.0" y="2685" width="720" height="63" rx="10" fill="#FFF7E7" stroke="#D7C7A5" stroke-width="2"/>
+<text x="775" y="2706" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Comprueba rol de revisión, método POST, CSRF y parámetros.</text>
+<rect x="798.0" y="2761" width="1034" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="1315.0" y="2774" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Comprobar contexto de la revisión</text>
+<line x1="775" y1="2814" x2="1855" y2="2814" stroke="#566C61" stroke-width="3"/>
+<polygon points="1855,2814 1840,2806 1840,2822" fill="#566C61"/>
+<rect x="1878.0" y="2839" width="489" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="2122.5" y="2852" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">SELECT vínculo revisión / proyecto / tipo</text>
+<line x1="1855" y1="2892" x2="2390" y2="2892" stroke="#566C61" stroke-width="3"/>
+<polygon points="2390,2892 2375,2884 2375,2900" fill="#566C61"/>
+<rect x="1878.0" y="2917" width="489" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="2122.5" y="2930" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Contexto coincidente o resultado vacío</text>
+<line x1="2390" y1="2970" x2="1855" y2="2970" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="1855,2970 1870,2962 1870,2978" fill="#566C61"/>
+<rect x="798.0" y="2995" width="1034" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="1315.0" y="3008" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Resultado de la comprobación</text>
+<line x1="1855" y1="3048" x2="775" y2="3048" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="775,3048 790,3040 790,3056" fill="#566C61"/>
+<rect x="415.0" y="3082" width="720" height="92" rx="10" fill="#FFF7E7" stroke="#D7C7A5" stroke-width="2"/>
+<text x="775" y="3103" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Si la revisión no pertenece al proyecto o al recorrido indicado, rechaza</text>
+<text x="775" y="3132" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">con 403 antes de decidir.</text>
+<rect x="798.0" y="3187" width="1034" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="1315.0" y="3200" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Registrar decisión y reporte obligatorio</text>
+<line x1="775" y1="3240" x2="1855" y2="3240" stroke="#566C61" stroke-width="3"/>
+<polygon points="1855,3240 1840,3232 1840,3248" fill="#566C61"/>
+<rect x="1878.0" y="3265" width="489" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="2122.5" y="3278" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">SELECT grado.decidir_revision(...)</text>
+<line x1="1855" y1="3318" x2="2390" y2="3318" stroke="#566C61" stroke-width="3"/>
+<polygon points="2390,3318 2375,3310 2375,3326" fill="#566C61"/>
+<rect x="1450" y="3356" width="1110" height="380" rx="2" fill="#FAFCFA" stroke="#799F88" stroke-width="2"/>
+<rect x="1450" y="3356" width="470" height="42" rx="2" fill="#E5EFE8" stroke="#799F88" stroke-width="2"/>
+<text x="1470" y="3377" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#176B4A" text-anchor="start" dominant-baseline="central">alt · decisión académica en PostgreSQL</text>
+<text x="1480" y="3432" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#176B4A" text-anchor="start" dominant-baseline="central">[APROBADO]</text>
+<text x="1480" y="3471" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="start" dominant-baseline="central">Director: abre revisión del evaluador en fase II.</text>
+<text x="1480" y="3502" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="start" dominant-baseline="central">Evaluador: el conjunto pasa al Comité.</text>
+<text x="1480" y="3533" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="start" dominant-baseline="central">Comité: aprueba y avanza a Informe I o a Final.</text>
+<line x1="1450" y1="3561" x2="2560" y2="3561" stroke="#799F88" stroke-width="2" stroke-dasharray="9 8"/>
+<text x="1480" y="3595" font-family="Arial, sans-serif" font-size="23" font-weight="700" fill="#92513B" text-anchor="start" dominant-baseline="central">[RECHAZADO]</text>
+<text x="1480" y="3634" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="start" dominant-baseline="central">Cierra el ciclo y devuelve el trámite al estudiante.</text>
+<text x="1480" y="3665" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="start" dominant-baseline="central">Registra reporte y plazo de corrección de tres días.</text>
+<text x="1480" y="3696" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="start" dominant-baseline="central">Reenvío completo → nueva revisión desde el director.</text>
+<rect x="1785.0" y="3762" width="790" height="92" rx="10" fill="#ECF5EE" stroke="#D7C7A5" stroke-width="2"/>
+<text x="2180" y="3783" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">En ambos casos se conservan las decisiones, el historial y los avisos</text>
+<text x="2180" y="3812" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">internos.</text>
+<rect x="1878.0" y="3867" width="489" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="2122.5" y="3880" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">ok, mensaje, recurso_id</text>
+<line x1="2390" y1="3920" x2="1855" y2="3920" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="1855,3920 1870,3912 1870,3928" fill="#566C61"/>
+<rect x="798.0" y="3945" width="1034" height="38" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="1315.0" y="3958" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Resultado de la revisión</text>
+<line x1="1855" y1="3998" x2="775" y2="3998" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="775,3998 790,3990 790,4006" fill="#566C61"/>
+<rect x="258.0" y="4023" width="494" height="68" rx="2" fill="white" stroke="white" stroke-width="2"/>
+<text x="505.0" y="4036" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">302 → seguimiento; repetir consulta del bloque</text>
+<text x="505.0" y="4066" font-family="Arial, sans-serif" font-size="23" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">2</text>
+<line x1="775" y1="4106" x2="235" y2="4106" stroke="#566C61" stroke-width="3" stroke-dasharray="9 8"/>
+<polygon points="235,4106 250,4098 250,4114" fill="#566C61"/>
+<rect x="80.0" y="4140" width="2480" height="121" rx="10" fill="#FFF7E7" stroke="#D7C7A5" stroke-width="2"/>
+<text x="1320.0" y="4161" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">SI SE SOLICITAN CORRECCIONES</text>
+<text x="1320.0" y="4190" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">El estudiante revisa el reporte y vuelve al bloque 1 con el conjunto completo.</text>
+<text x="1320.0" y="4219" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Después de tres días recibe una alerta; el vencimiento no bloquea por sí solo el reenvío.</text>
+<rect x="80.0" y="4283" width="2480" height="150" rx="10" fill="#F1F4F2" stroke="#D7C7A5" stroke-width="2"/>
+<text x="1320.0" y="4304" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">ALCANCE</text>
+<text x="1320.0" y="4333" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Se representa una sesión válida y el flujo de propuesta / informe; Pago se revisa únicamente por el Comité.</text>
+<text x="1320.0" y="4362" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">PostgreSQL vuelve a verificar permisos y estado antes de escribir. Si una regla falla, devuelve ok=false y el controlador muestra el aviso sin avanzar.</text>
+<text x="1320.0" y="4391" font-family="Arial, sans-serif" font-size="22" font-weight="400" fill="#203A2E" text-anchor="middle" dominant-baseline="central">Los datos se acceden mediante el pool JNDI jdbc/Grado. No hay servlets ni DAOs propios.</text>
+</svg>

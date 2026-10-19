@@ -1,0 +1,54 @@
+digraph Arquitectura {
+ graph [rankdir=LR, bgcolor="white", pad="0.5", nodesep="0.55", ranksep="0.8", splines=polyline, outputorder=edgesfirst, dpi=160, fontname="DejaVu Sans", fontsize=22, labelloc=t, labeljust=l,
+ label=<<B>ARQUITECTURA DE LA APLICACIÓN</B><BR ALIGN="LEFT"/><FONT POINT-SIZE="16">Sistema Gestor de Proyectos de Grado · MVC con JSP / JSTL</FONT><BR ALIGN="LEFT"/><FONT POINT-SIZE="11">Basada en la configuración del repositorio · 19 de octubre de 2026<BR ALIGN="LEFT"/>Continua: ejecución · Trazos: construcción y despliegue · Punteada: control compartido</FONT>>];
+ node [shape=box, style="rounded,filled", fillcolor="#F3F7F5", color="#ABC5B6", fontcolor="#17352A", fontname="DejaVu Sans", fontsize=13, margin="0.22,0.18", penwidth=1.3];
+ edge [color="#557D68", penwidth=1.4, arrowsize=0.75, fontname="DejaVu Sans", fontsize=10, fontcolor="#40554B"];
+
+ navegador [fillcolor="#176B4A", color="#176B4A", fontcolor="white", label="NAVEGADOR\nEstudiante · Director · Evaluador\nComité · Secretaría\n\nHTML y CSS · formularios GET / POST\nCookie de sesión JSESSIONID"];
+
+ subgraph cluster_entrega {
+  label="CONSTRUCCIÓN Y ENTREGA"; fontname="DejaVu Sans"; fontsize=15; color="#D9DFE5"; fontcolor="#52616B"; style="rounded,dashed"; margin=20;
+  github [fillcolor="#F2F4F7", color="#BEC8D2", label="REPOSITORIO GITHUB\nFuentes JSP · SQL · CSS\npom.xml · Dockerfile.vercel"];
+  build [fillcolor="#F2F4F7", color="#BEC8D2", label="CONSTRUCCIÓN DOCKER\nMaven Wrapper + Java 21\nDependencias JSTL y PostgreSQL JDBC\n\nResultado: proyectos-grado.war\nCopiado como ROOT.war en Tomcat"];
+  github -> build [style=dashed, color="#7C8B9B", label="Vercel obtiene el código\ny construye la imagen"];
+ }
+
+ subgraph cluster_vercel {
+  label="VERCEL · DESPLIEGUE DE LA IMAGEN"; fontname="DejaVu Sans"; fontsize=17; fontcolor="#176B4A"; color="#B9D5C6"; style="rounded"; margin=24;
+  proxy [label="ACCESO HTTPS / ROUTER\nEncamina al puerto PORT\nPORT=8080 en la configuración"];
+  subgraph cluster_tomcat {
+   label="CONTENEDOR · JAVA 21 + APACHE TOMCAT 11"; fontname="DejaVu Sans"; fontsize=15; color="#D9E7DF"; style="rounded"; margin=22;
+   entrada [label="ENTRADAS PÚBLICAS\n/*.jsp y /acciones/*.jsp\n\nIncluyen un controlador interno\ncon una ruta constante"];
+   controlador [fillcolor="#DCEEE3", color="#6FA585", label="CONTROLADOR · JSP / JSTL\nWEB-INF/controladores/\n\nValida parámetros y método HTTP\nCoordina modelo y vista\nGestiona avisos y redirecciones"];
+   modelo [fillcolor="#E3EDF4", color="#8FAFC4", fontcolor="#274F68", label="MODELO DE ACCESO · JSTL SQL\nWEB-INF/modelo/\n\nConsultas y operaciones SQL\ncon parámetros sql:param\nInvoca funciones de negocio"];
+   vista [fillcolor="#EEE9F4", color="#B6A8C8", fontcolor="#57446B", label="VISTA · HTML + JSTL / EL\nWEB-INF/vistas/\n\nPresenta resultados y formularios\nEscapa textos con c:out\nCSS y SVG locales"];
+   seguridad [fillcolor="#FFF6E5", color="#D5BE86", fontcolor="#72551C", label="CONTROLES COMPARTIDOS\nSesión, cuenta activa y rol\nPOST + CSRF en operaciones\nWEB-INF sin acceso HTTP directo"];
+   pool [fillcolor="#E3EDF4", color="#8FAFC4", fontcolor="#274F68", label="DATASOURCE JNDI\njdbc/Grado\n\nPool JDBC nativo de Tomcat\nDriver PostgreSQL\nVariables DB_* externas al código"];
+   sesiones [label="SESIÓN HTTP NATIVA\nPersistentManager / PersistentValve\nDataSourceStore\n\nPersistencia por petición\nen grado.sesion_http"];
+   entrada -> controlador [label="include"];
+   controlador -> modelo [dir=both, label="operación / resultados"];
+   controlador -> vista [label="datos y selección\nde pantalla"];
+   controlador -> seguridad [style=dotted, arrowhead=none, constraint=false, label="aplica"];
+   modelo -> pool [dir=both, label="SQL parametrizado"];
+   sesiones -> pool [dir=both, label="guardar / restaurar\nla sesión"];
+  }
+  proxy -> entrada [dir=both, label="petición / HTML\no redirección"];
+ }
+
+ subgraph cluster_supabase {
+  label="SUPABASE"; fontname="DejaVu Sans"; fontsize=17; fontcolor="#176B4A"; color="#B9D5C6"; style="rounded"; margin=24;
+  bd [shape=cylinder, fillcolor="#DCEEE3", color="#6FA585", label="POSTGRESQL · ESQUEMA grado\n37 tablas y restricciones PK / FK / UNIQUE\n\nFunciones y transacciones de negocio\nAutenticación propia y hashes bcrypt\nProyectos, revisiones e historial\nAvisos y sesiones persistentes"];
+  cron [label="SUPABASE CRON\nTrabajo grado-procesar-plazos\n\nEjecuta grado.procesar_plazos()\ncada minuto\nNo requiere usuarios conectados"];
+  storage [fillcolor="#F0F5F1", label="STORAGE / ENLACES EXTERNOS\nArchivos públicos DEMO por URL\nFormatos Word, imágenes y textos\n\nLa aplicación guarda enlaces\nNo incorpora una subida de archivos"];
+  cron -> bd [label="plazos, estados\ny avisos internos"];
+ }
+
+ navegador -> proxy [dir=both, label="HTTPS\nsolicitud / respuesta"];
+ pool -> bd [dir=both, label="JDBC + TLS\nSession pooler de Supabase"];
+ navegador -> storage [dir=both, constraint=false, label="HTTPS · visor / abrir enlace\nEl navegador consulta el archivo"];
+ build -> entrada [style=dashed, color="#7C8B9B", constraint=false, label="imagen con WAR\ny configuración Tomcat"];
+
+ nota [shape=note, fillcolor="#FAFBFA", color="#D2DBD5", fontsize=11,
+ label="DECISIONES DE IMPLEMENTACIÓN\n• MVC con controladores de página JSP; sin servlets, DAOs ni scriptlets propios.\n• Tomcat compila las JSP internamente; no hay clases Java de aplicación.\n• Registro autoactivo de estudiantes y docentes; no se utiliza Supabase Auth.\n• Notificaciones dentro del sistema; no se envían correos.\n• Ejecución local con Docker Compose; las pruebas usan PostgreSQL aislado.\n• El modelo comprende acceso JSTL SQL y reglas de negocio en PostgreSQL.\n• Las migraciones SQL se aplican por separado del despliegue.\n• Las sesiones en PostgreSQL no implican bloqueo distribuido entre todas las instancias."];
+ { rank=same; navegador; github; nota; }
+}

@@ -127,7 +127,7 @@ BEGIN
  IF EXISTS(SELECT 1 FROM ciclo_revision c JOIN entrega_revision e ON e.id=c.entrega_id WHERE e.fase_origen_id=fase_id AND c.finalizado_en IS NULL) THEN
   RETURN QUERY SELECT false,'Tu conjunto de documentos ya está en revisión.'::text,NULL::bigint; RETURN;
  END IF;
- enlaces:=ARRAY[btrim(coalesce(p_comprobante,''))]||ARRAY(SELECT btrim(x) FROM regexp_split_to_table(coalesce(p_adicionales,''),E'\n') x WHERE btrim(x)<>'');
+ enlaces:=ARRAY[btrim(coalesce(p_comprobante,''))]||ARRAY(SELECT btrim(x,E' \t') FROM regexp_split_to_table(coalesce(p_adicionales,''),E'[\r\n]+') x WHERE btrim(x,E' \t')<>'');
  FOREACH enlace IN ARRAY enlaces LOOP
   IF enlace !~* '^https?://[^[:space:]]+$' THEN
    RETURN QUERY SELECT false,'Escribe enlaces web válidos que comiencen por http:// o https://.'::text,NULL::bigint; RETURN;

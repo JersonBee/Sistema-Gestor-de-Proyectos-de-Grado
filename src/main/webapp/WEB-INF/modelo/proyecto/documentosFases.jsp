@@ -1,8 +1,16 @@
 <sql:query var="documentosFases" dataSource="${bd}">
- WITH ultima AS(SELECT DISTINCT ON(e.fase_origen_id) e.id,e.fase_origen_id,e.numero FROM grado.entrega_revision e
- WHERE e.proyecto_id=CAST(? AS bigint) ORDER BY e.fase_origen_id,e.numero DESC)
- SELECT f.fase_codigo AS origen,t.nombre,d.etiqueta,v.id AS version_id,v.numero,v.url,ultima.numero AS entrega
- FROM ultima JOIN grado.proyecto_fase f ON f.id=ultima.fase_origen_id JOIN grado.entrega_documento_version ed ON ed.entrega_id=ultima.id
+ WITH base AS(SELECT e.id,e.numero,f.fase_codigo FROM grado.entrega_revision e
+ JOIN grado.proyecto_fase f ON f.id=e.fase_origen_id WHERE e.proyecto_id=CAST(? AS bigint)),
+ candidatas AS(
+  SELECT id,numero,fase_codigo AS origen FROM base
+  UNION ALL
+  SELECT b.id,b.numero,CASE WHEN b.fase_codigo='propuesta_1' THEN 'propuesta_2' ELSE 'informe_2' END
+  FROM base b WHERE b.fase_codigo IN('propuesta_1','informe_1')
+   AND EXISTS(SELECT 1 FROM grado.ciclo_revision c JOIN grado.revision_entrega r ON r.ciclo_id=c.id
+    WHERE c.entrega_id=b.id AND r.etapa IN('evaluador','comite'))
+ ),ultima AS(SELECT DISTINCT ON(origen) id,numero,origen FROM candidatas ORDER BY origen,numero DESC,id DESC)
+ SELECT ultima.origen,t.nombre,d.etiqueta,v.id AS version_id,v.numero,v.url,ultima.numero AS entrega
+ FROM ultima JOIN grado.entrega_documento_version ed ON ed.entrega_id=ultima.id
  JOIN grado.documento d ON d.id=ed.documento_id JOIN grado.documento_version v ON v.id=ed.version_id JOIN grado.tipo_documento t ON t.codigo=d.tipo_codigo
  UNION ALL
  SELECT f.fase_codigo,t.nombre,d.etiqueta,v.id,v.numero,v.url,NULL::integer

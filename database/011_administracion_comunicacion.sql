@@ -27,18 +27,18 @@ BEGIN
  END IF;
  IF p_rol IN('director','evaluador') AND NOT EXISTS(SELECT 1 FROM perfil_docente WHERE usuario_id=p_usuario) THEN
   FOREACH campo IN ARRAY ARRAY['areas','lineas','modalidades','cursos','titulos','temas'] LOOP
-   IF nullif(btrim(p_perfil->>campo),'') IS NULL THEN RETURN QUERY SELECT false,'Para asignar un rol docente, completa primero su perfil docente.'::text,NULL::bigint; RETURN; END IF;
+   IF nullif(regexp_replace(p_perfil->>campo, '^[[:space:]]+|[[:space:]]+$', '', 'g'),'') IS NULL THEN RETURN QUERY SELECT false,'Para asignar un rol docente, completa primero su perfil docente.'::text,NULL::bigint; RETURN; END IF;
   END LOOP;
-  INSERT INTO perfil_docente(usuario_id,cursos,titulos_academicos,temas_preferencia) VALUES(p_usuario,btrim(p_perfil->>'cursos'),btrim(p_perfil->>'titulos'),btrim(p_perfil->>'temas'));
-  FOR valor IN SELECT DISTINCT btrim(x) FROM regexp_split_to_table(p_perfil->>'areas',',') x WHERE btrim(x)<>'' LOOP
+  INSERT INTO perfil_docente(usuario_id,cursos,titulos_academicos,temas_preferencia) VALUES(p_usuario,regexp_replace(p_perfil->>'cursos', '^[[:space:]]+|[[:space:]]+$', '', 'g'),regexp_replace(p_perfil->>'titulos', '^[[:space:]]+|[[:space:]]+$', '', 'g'),regexp_replace(p_perfil->>'temas', '^[[:space:]]+|[[:space:]]+$', '', 'g'));
+  FOR valor IN SELECT DISTINCT regexp_replace(x, '^[[:space:]]+|[[:space:]]+$', '', 'g') FROM regexp_split_to_table(p_perfil->>'areas',',') x WHERE regexp_replace(x, '^[[:space:]]+|[[:space:]]+$', '', 'g')<>'' LOOP
    INSERT INTO area_experiencia(nombre) VALUES(valor) ON CONFLICT(nombre) DO UPDATE SET nombre=excluded.nombre RETURNING id INTO catalogo;
    INSERT INTO docente_area VALUES(p_usuario,catalogo);
   END LOOP;
-  FOR valor IN SELECT DISTINCT btrim(x) FROM regexp_split_to_table(p_perfil->>'lineas',',') x WHERE btrim(x)<>'' LOOP
+  FOR valor IN SELECT DISTINCT regexp_replace(x, '^[[:space:]]+|[[:space:]]+$', '', 'g') FROM regexp_split_to_table(p_perfil->>'lineas',',') x WHERE regexp_replace(x, '^[[:space:]]+|[[:space:]]+$', '', 'g')<>'' LOOP
    INSERT INTO linea_investigacion(nombre) VALUES(valor) ON CONFLICT(nombre) DO UPDATE SET nombre=excluded.nombre RETURNING id INTO catalogo;
    INSERT INTO docente_linea VALUES(p_usuario,catalogo);
   END LOOP;
-  FOR v_codigo IN SELECT DISTINCT btrim(x) FROM regexp_split_to_table(p_perfil->>'modalidades',',') x LOOP
+  FOR v_codigo IN SELECT DISTINCT regexp_replace(x, '^[[:space:]]+|[[:space:]]+$', '', 'g') FROM regexp_split_to_table(p_perfil->>'modalidades',',') x LOOP
    SELECT id INTO catalogo FROM modalidad WHERE modalidad.codigo=v_codigo;
    IF catalogo IS NULL THEN RAISE EXCEPTION 'Modalidad inválida'; END IF;
    INSERT INTO docente_modalidad VALUES(p_usuario,catalogo);

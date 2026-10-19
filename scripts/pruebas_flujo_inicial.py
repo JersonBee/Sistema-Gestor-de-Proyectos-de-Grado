@@ -69,15 +69,21 @@ def flujo():
     assert sql('SELECT count(*) FROM grado.entrega_revision;').strip()=='0', 'Aceptó URL peligrosa'
     assert tercero.pedir('/acciones/pago-enviar.jsp',{'csrf':tercero.token('/cuenta.jsp'),'id':proyecto,'comprobante':'https://ejemplo.invalid/ajeno'})[0]==403
     assert sql('SELECT count(*) FROM grado.entrega_revision;').strip()=='0', 'Permitió modificar proyecto ajeno'
-    _,cuerpo=post(estudiante,'pago-enviar.jsp',{'id':proyecto,'comprobante':'https://ejemplo.invalid/pago?archivo=1&v=2','adicionales':'https://ejemplo.invalid/a\nhttps://ejemplo.invalid/b'},pago)
+    _,cuerpo=post(estudiante,'pago-enviar.jsp',{'id':proyecto,'comprobante':'https://ejemplo.invalid/pago?archivo=1&v=2','adicionales':'https://ejemplo.invalid/a\r\n\r\nhttps://ejemplo.invalid/b\r\n'},pago)
     assert 'Conjunto enviado' in cuerpo, ('Presentar',cuerpo[-300:])
+    ver_resumen(estudiante,proyecto,['Revisar el conjunto completo','Comité','El conjunto está entregado'],['Presentar el conjunto de Pago'])
+    ver_tareas(revisor,['Revisar el conjunto · Pago'])
+    ver_tareas(estudiante,ausentes=['Presentar el conjunto · Pago'])
     entrega=sql(f'SELECT id FROM grado.entrega_revision WHERE proyecto_id={proyecto} ORDER BY numero DESC LIMIT 1;').strip()
     assert sql('SELECT count(*) FROM grado.entrega_documento_version;').strip()=='3'
+    assert sql("SELECT string_agg(v.url, ',' ORDER BY v.url) FROM grado.documento_version v JOIN grado.documento d ON d.id=v.documento_id WHERE d.tipo_codigo='adicional';").strip()=='https://ejemplo.invalid/a,https://ejemplo.invalid/b', 'CRLF altero o perdio enlaces adicionales de Pago'
     post(estudiante,'pago-enviar.jsp',{'id':proyecto,'comprobante':'https://ejemplo.invalid/duplicado'},pago)
     assert sql('SELECT count(*) FROM grado.entrega_revision;').strip()=='1', 'Duplicó envío en revisión'
     post(revisor,'pago-decidir.jsp',{'id':proyecto,'entrega':entrega,'decision':'rechazado','reporte':'Corrige el comprobante <b>por favor</b>'},pago)
     assert '&lt;b&gt;por favor&lt;/b&gt;' in estudiante.pedir(pago)[2], 'XSS en reporte'
     assert sql('SELECT count(*) FROM grado.plazo_correccion;').strip()=='1'
+    ver_tareas(estudiante,['Presentar el conjunto · Pago'])
+    ver_tareas(revisor,ausentes=['Revisar el conjunto · Pago'])
     post(segundo,'pago-enviar.jsp',{'id':proyecto,'comprobante':'https://ejemplo.invalid/pago-corregido','adicionales':'https://ejemplo.invalid/a\nhttps://ejemplo.invalid/b'},pago)
     assert sql('SELECT count(*) FROM grado.entrega_documento_version;').strip()=='6', 'No conservó conjunto completo/versiones'
     nueva=sql(f'SELECT id FROM grado.entrega_revision WHERE proyecto_id={proyecto} ORDER BY numero DESC LIMIT 1;').strip()

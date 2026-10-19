@@ -22,7 +22,7 @@ def revisiones(ctx):
     def decidir(c,decision='aprobado',tipo='propuesta',pid=proyecto,reporte='Revisión correcta'):
         return post(c,'revision-decidir.jsp',{'id':pid,'tipo':tipo,'revision':pendiente(pid),'decision':decision,'reporte':reporte},ruta(tipo,pid))
     def enviar(tipo='propuesta',c=alumno,pid=proyecto):
-        datos={'id':pid,'tipo':tipo,'turnitin':'https://documentos.invalid/turnitin','adicionales':'https://documentos.invalid/anexo'}
+        datos={'id':pid,'tipo':tipo,'turnitin':'https://documentos.invalid/turnitin','adicionales':'https://documentos.invalid/anexo\r\n\r\nhttps://documentos.invalid/segundo-anexo\r\n'}
         if tipo=='propuesta': datos['f_dc_124']='https://documentos.invalid/propuesta'
         else: datos|={'f_dc_125':'https://documentos.invalid/informe','f_dc_129':'https://documentos.invalid/evaluacion'}
         return post(c,'documentos-enviar.jsp',datos,ruta(tipo,pid))
@@ -35,6 +35,7 @@ def revisiones(ctx):
     post(alumno,'documentos-enviar.jsp',{'id':proyecto,'tipo':'propuesta','f_dc_124':'https://documentos.invalid/p'},ruta())
     assert sql('SELECT count(*) FROM grado.entrega_revision;').strip()==antes
     assert 'Conjunto enviado al director' in enviar()
+    assert sql(f"SELECT string_agg(v.url, ',' ORDER BY v.url) FROM grado.documento_version v JOIN grado.documento d ON d.id=v.documento_id WHERE d.proyecto_id={proyecto} AND d.tipo_codigo='adicional' AND d.proyecto_fase_id=(SELECT id FROM grado.proyecto_fase WHERE proyecto_id={proyecto} AND fase_codigo='propuesta_1');").strip()=='https://documentos.invalid/anexo,https://documentos.invalid/segundo-anexo', 'CRLF altero o perdio enlaces adicionales de propuesta'
     ver_resumen(alumno,proyecto,['Revisar el conjunto completo','director','Revisión hasta:','El conjunto está entregado'])
     ver_tareas(director,['Revisar el conjunto · Propuesta I','Revisión hasta'])
     ver_tareas(alumno,ausentes=['Presentar el conjunto · Propuesta I'])

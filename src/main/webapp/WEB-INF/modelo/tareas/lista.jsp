@@ -3,9 +3,11 @@
  fases AS(SELECT p.id,p.titulo,p.informe_habilitado_en,p.creado_en,pf.id AS fase_id,f.codigo,f.nombre
   FROM grado.proyecto p JOIN grado.proyecto_fase pf ON pf.proyecto_id=p.id JOIN grado.fase f ON f.codigo=pf.fase_codigo
   WHERE p.estado='activo' AND pf.iniciada_en IS NOT NULL AND pf.finalizada_en IS NULL),
- pendientes AS(SELECT e.proyecto_id,r.etapa,r.responsable_id,r.limite_en,r.asignada_en
-  FROM grado.revision_entrega r JOIN grado.ciclo_revision c ON c.id=r.ciclo_id JOIN grado.entrega_revision e ON e.id=c.entrega_id
-  WHERE c.finalizado_en IS NULL AND r.decision IS NULL),
+ pendientes AS(SELECT e.proyecto_id,coalesce(r.etapa,'comite') AS etapa,r.responsable_id,r.limite_en,coalesce(r.asignada_en,e.presentada_en) AS asignada_en
+  FROM grado.ciclo_revision c JOIN grado.entrega_revision e ON e.id=c.entrega_id
+  JOIN grado.proyecto_fase pf ON pf.id=e.fase_origen_id
+  LEFT JOIN grado.revision_entrega r ON r.ciclo_id=c.id
+  WHERE c.finalizado_en IS NULL AND r.decision IS NULL AND (r.id IS NOT NULL OR pf.fase_codigo='pago')),
  bandeja AS(
   SELECT 'revision'::text AS tipo,f.titulo,'Revisar el conjunto · '||f.nombre AS accion,
    CASE WHEN f.codigo='pago' THEN '/pago.jsp' ELSE '/seguimiento.jsp' END AS destino,f.id AS recurso,

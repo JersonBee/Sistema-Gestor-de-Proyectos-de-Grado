@@ -15,10 +15,13 @@
  LEFT JOIN grado.datos_pago dp ON dp.proyecto_id=p.id
  LEFT JOIN LATERAL(SELECT f.codigo,f.nombre,pf.estado FROM grado.proyecto_fase pf JOIN grado.fase f ON f.codigo=pf.fase_codigo
   WHERE pf.proyecto_id=p.id AND pf.iniciada_en IS NOT NULL ORDER BY (pf.finalizada_en IS NULL) DESC,f.orden DESC LIMIT 1) actual ON true
- LEFT JOIN LATERAL(SELECT r.etapa,r.responsable_id,r.limite_en,coalesce(u.nombre,'Comité') AS responsable
-  FROM grado.revision_entrega r JOIN grado.ciclo_revision c ON c.id=r.ciclo_id JOIN grado.entrega_revision e ON e.id=c.entrega_id
+ LEFT JOIN LATERAL(SELECT coalesce(r.etapa,'comite') AS etapa,r.responsable_id,r.limite_en,coalesce(u.nombre,'Comité') AS responsable
+  FROM grado.ciclo_revision c JOIN grado.entrega_revision e ON e.id=c.entrega_id
+  JOIN grado.proyecto_fase pf ON pf.id=e.fase_origen_id
+  LEFT JOIN grado.revision_entrega r ON r.ciclo_id=c.id
   LEFT JOIN grado.usuario u ON u.id=r.responsable_id
-  WHERE e.proyecto_id=p.id AND c.finalizado_en IS NULL AND r.decision IS NULL ORDER BY r.id DESC LIMIT 1) pendiente ON true
+  WHERE e.proyecto_id=p.id AND c.finalizado_en IS NULL AND r.decision IS NULL
+   AND (r.id IS NOT NULL OR pf.fase_codigo='pago') ORDER BY r.id DESC LIMIT 1) pendiente ON true
  LEFT JOIN LATERAL(SELECT pc.limite_en FROM grado.plazo_correccion pc JOIN grado.revision_entrega r ON r.id=pc.revision_id
   JOIN grado.ciclo_revision c ON c.id=r.ciclo_id JOIN grado.entrega_revision e ON e.id=c.entrega_id JOIN grado.proyecto_fase pf ON pf.id=e.fase_origen_id
   WHERE e.proyecto_id=p.id AND pf.fase_codigo=actual.codigo AND pc.entrega_reenvio_id IS NULL ORDER BY pc.id DESC LIMIT 1) correccion ON true

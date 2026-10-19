@@ -10,7 +10,7 @@ BEGIN
     IF p_rol IS NULL OR p_rol NOT IN ('estudiante', 'director', 'evaluador') THEN
         RETURN QUERY SELECT false, 'El tipo de cuenta no está permitido.'::text; RETURN;
     END IF;
-    IF length(btrim(coalesce(p_nombre,''))) NOT BETWEEN 2 AND 120
+    IF length(regexp_replace(coalesce(p_nombre,''), '^[[:space:]]+|[[:space:]]+$', '', 'g')) NOT BETWEEN 2 AND 120
         OR length(coalesce(p_correo,'')) > 254
         OR coalesce(p_correo,'') !~ '^[^[:space:]@]+@[^[:space:]@]+\.[^[:space:]@]+$'
         OR length(coalesce(p_contrasena,'')) < 8 OR octet_length(coalesce(p_contrasena,'')) > 72
@@ -19,9 +19,9 @@ BEGIN
         RETURN QUERY SELECT false, 'Revisa los datos. La contraseña debe tener al menos 8 caracteres y como máximo 72 bytes.'::text; RETURN;
     END IF;
     IF p_rol IN ('director','evaluador') AND (
-        btrim(coalesce(p_perfil->>'cursos','')) = '' OR btrim(coalesce(p_perfil->>'titulos','')) = ''
-        OR btrim(coalesce(p_perfil->>'temas','')) = '' OR btrim(coalesce(p_perfil->>'areas','')) = ''
-        OR btrim(coalesce(p_perfil->>'lineas','')) = '' OR btrim(coalesce(p_perfil->>'modalidades','')) = '') THEN
+        regexp_replace(coalesce(p_perfil->>'cursos',''), '^[[:space:]]+|[[:space:]]+$', '', 'g') = '' OR regexp_replace(coalesce(p_perfil->>'titulos',''), '^[[:space:]]+|[[:space:]]+$', '', 'g') = ''
+        OR regexp_replace(coalesce(p_perfil->>'temas',''), '^[[:space:]]+|[[:space:]]+$', '', 'g') = '' OR regexp_replace(coalesce(p_perfil->>'areas',''), '^[[:space:]]+|[[:space:]]+$', '', 'g') = ''
+        OR regexp_replace(coalesce(p_perfil->>'lineas',''), '^[[:space:]]+|[[:space:]]+$', '', 'g') = '' OR regexp_replace(coalesce(p_perfil->>'modalidades',''), '^[[:space:]]+|[[:space:]]+$', '', 'g') = '') THEN
         RETURN QUERY SELECT false, 'Completa los campos de tu perfil docente.'::text; RETURN;
     END IF;
     IF p_rol IN ('director','evaluador') AND (
@@ -32,20 +32,20 @@ BEGIN
         RETURN QUERY SELECT false, 'Registra al menos un área de experiencia y una línea de investigación.'::text; RETURN;
     END IF;
     INSERT INTO grado.usuario(nombre, correo, contrasena_hash, numero_documento, telefono, rol_codigo)
-    VALUES (btrim(p_nombre), lower(btrim(p_correo)), grado.crear_hash_contrasena(p_contrasena),
-        nullif(btrim(p_documento),''), nullif(btrim(p_telefono),''), p_rol) RETURNING id INTO cuenta_id;
+    VALUES (regexp_replace(p_nombre, '^[[:space:]]+|[[:space:]]+$', '', 'g'), lower(regexp_replace(p_correo, '^[[:space:]]+|[[:space:]]+$', '', 'g')), grado.crear_hash_contrasena(p_contrasena),
+        nullif(regexp_replace(p_documento, '^[[:space:]]+|[[:space:]]+$', '', 'g'),''), nullif(regexp_replace(p_telefono, '^[[:space:]]+|[[:space:]]+$', '', 'g'),''), p_rol) RETURNING id INTO cuenta_id;
     IF p_rol <> 'estudiante' THEN
         INSERT INTO grado.perfil_docente(usuario_id, cursos, titulos_academicos, temas_preferencia)
-            VALUES (cuenta_id, btrim(p_perfil->>'cursos'), btrim(p_perfil->>'titulos'), btrim(p_perfil->>'temas'));
-        FOR valor IN SELECT DISTINCT btrim(x) FROM regexp_split_to_table(p_perfil->>'areas', ',') x WHERE btrim(x) <> '' LOOP
+            VALUES (cuenta_id, regexp_replace(p_perfil->>'cursos', '^[[:space:]]+|[[:space:]]+$', '', 'g'), regexp_replace(p_perfil->>'titulos', '^[[:space:]]+|[[:space:]]+$', '', 'g'), regexp_replace(p_perfil->>'temas', '^[[:space:]]+|[[:space:]]+$', '', 'g'));
+        FOR valor IN SELECT DISTINCT regexp_replace(x, '^[[:space:]]+|[[:space:]]+$', '', 'g') FROM regexp_split_to_table(p_perfil->>'areas', ',') x WHERE regexp_replace(x, '^[[:space:]]+|[[:space:]]+$', '', 'g') <> '' LOOP
             INSERT INTO grado.area_experiencia(nombre) VALUES (valor) ON CONFLICT (nombre) DO UPDATE SET nombre = excluded.nombre RETURNING id INTO catalogo_id;
             INSERT INTO grado.docente_area VALUES (cuenta_id, catalogo_id);
         END LOOP;
-        FOR valor IN SELECT DISTINCT btrim(x) FROM regexp_split_to_table(p_perfil->>'lineas', ',') x WHERE btrim(x) <> '' LOOP
+        FOR valor IN SELECT DISTINCT regexp_replace(x, '^[[:space:]]+|[[:space:]]+$', '', 'g') FROM regexp_split_to_table(p_perfil->>'lineas', ',') x WHERE regexp_replace(x, '^[[:space:]]+|[[:space:]]+$', '', 'g') <> '' LOOP
             INSERT INTO grado.linea_investigacion(nombre) VALUES (valor) ON CONFLICT (nombre) DO UPDATE SET nombre = excluded.nombre RETURNING id INTO catalogo_id;
             INSERT INTO grado.docente_linea VALUES (cuenta_id, catalogo_id);
         END LOOP;
-        FOR codigo_modalidad IN SELECT DISTINCT btrim(x) FROM regexp_split_to_table(p_perfil->>'modalidades', ',') x LOOP
+        FOR codigo_modalidad IN SELECT DISTINCT regexp_replace(x, '^[[:space:]]+|[[:space:]]+$', '', 'g') FROM regexp_split_to_table(p_perfil->>'modalidades', ',') x LOOP
             SELECT m.id INTO catalogo_id FROM grado.modalidad m WHERE m.codigo = codigo_modalidad;
             IF catalogo_id IS NULL THEN RAISE EXCEPTION 'Modalidad inválida'; END IF;
             INSERT INTO grado.docente_modalidad VALUES (cuenta_id, catalogo_id);

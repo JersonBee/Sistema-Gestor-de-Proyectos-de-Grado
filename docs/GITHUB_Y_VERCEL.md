@@ -59,7 +59,7 @@ La [documentación oficial de Vercel](https://vercel.com/kb/guide/docker) descri
 
 Supabase ya tiene las migraciones hasta `012_validacion_perfil_docente.sql`. **No repetir la instalación inicial**. El despliegue no ejecuta SQL automáticamente. Cron continúa en Supabase aunque la aplicación esté detenida.
 
-Para una base completamente nueva, aplicar en orden los archivos de `database/`: 001, 002, 004, 006, 007, 008, 009, 010, 011 y 012. La 009 requiere pg_cron de Supabase. Los archivos de `database/supabase/` son auxiliares: leer sus encabezados y no ejecutarlos todos como si fueran migraciones nuevas.
+Para una base completamente nueva, aplicar en orden los archivos de `database/`: 001, 002, 004, 006, 007, 008, 009, 010, 011, 012, 013, 014 y 015. La 009 requiere pg_cron de Supabase. Los archivos de `database/supabase/` son auxiliares: leer sus encabezados y no ejecutarlos todos como si fueran migraciones nuevas.
 
 Si aún no existe una cuenta del Comité, crear la primera con `scripts/crear-comite.ps1` usando el contenedor local conectado a la misma base. No hay cuenta administrativa predeterminada. Las cuentas existentes se mantienen.
 
@@ -78,6 +78,8 @@ Si Logs indica `could not connect to $PORT=80` y detecta `8005, 8080`, Vercel y 
 La imagen corregida utiliza `docker/iniciar.sh` para validar `PORT` y pasarlo al conector HTTP de Tomcat. Hay que subir tanto ese archivo como `Dockerfile.vercel` para incorporar la corrección; el valor por defecto local sigue siendo 8080. La declaración `EXPOSE` o `ENV` dentro de la imagen no sustituye la configuración del puerto del router en Vercel.
 
 ## Sesiones compartidas y orden de actualización
+
+La migración `database/014_enlaces_adicionales_multilinea.sql` corrige la lectura de enlaces adicionales pegados en varias líneas: admite saltos CRLF de formularios HTML/Windows, LF y CR, líneas vacías y espacios/tabulaciones en los extremos. Reemplaza las funciones de presentación de Pago y propuesta/informe sin borrar datos ni cambiar sus firmas. En una base existente, aplicar solamente la 014 después de contar con las migraciones anteriores; no reinstalar 001. La 014 se aplicó y verificó en el Supabase de este proyecto el 19 de octubre de 2026. Para otros entornos debe aplicarse por separado: tener el archivo en Git no ejecuta la migración.
 
 La migración `database/013_sesiones_http.sql` ya se aplicó y verificó en el Supabase de este proyecto el 19 de octubre de 2026. En otra base, aplicarla antes de desplegar esta versión. Es una migración aditiva: crea el almacén de sesiones y no modifica cuentas ni sus estados. No repetir 001/002. La instalación inicial nueva debe incluir también la 013 después de la 012.
 
@@ -99,3 +101,8 @@ docker compose up --build -d
 ```
 
 Las pruebas funcionales se documentan en `RESULTADO_PRUEBAS_ROLES.md`; se ejecutan exclusivamente contra la base local aislada. Publicar el repositorio no ejecuta esas pruebas contra Supabase.
+
+
+## Validación de campos y listas docentes (015)
+
+`database/015_validacion_espacios_perfil.sql` reemplaza las funciones de registro y administración para recortar tabulaciones y saltos de línea exteriores, rechazar nombres/perfiles obligatorios vacíos y omitir elementos vacíos de áreas y líneas. No cambia la autoactivación, las firmas ni los datos de cuentas existentes. Aplicar después de las migraciones anteriores; no reinstalar el esquema inicial. La migración 015 se aplicó y verificó en Supabase el 19 de octubre de 2026, conservando firmas, propietarios y permisos de las dos funciones.

@@ -143,7 +143,7 @@ BEGIN
    RETURN QUERY SELECT false,'Presenta todos los formatos y Turnitin mediante enlaces http:// o https://.'::text,NULL::bigint; RETURN;
   END IF;
  END LOOP;
- adicionales:=ARRAY(SELECT btrim(x) FROM regexp_split_to_table(coalesce(p_adicionales,''),E'\n') x WHERE btrim(x)<>'');
+ adicionales:=ARRAY(SELECT btrim(x,E' \t') FROM regexp_split_to_table(coalesce(p_adicionales,''),E'[\r\n]+') x WHERE btrim(x,E' \t')<>'');
  FOREACH enlace IN ARRAY adicionales LOOP
   IF enlace !~* '^https?://[^[:space:]]+$' THEN RETURN QUERY SELECT false,'Revisa los enlaces adicionales.'::text,NULL::bigint; RETURN; END IF;
  END LOOP;
