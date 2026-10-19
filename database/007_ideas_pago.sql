@@ -18,17 +18,17 @@ BEGIN
   RETURN QUERY SELECT false,'No tienes permiso para proponer ideas.'::text,NULL::bigint; RETURN;
  END IF;
  FOREACH campo IN ARRAY ARRAY['titulo','descripcion','objetivos','tecnologias','area','linea','modalidad'] LOOP
-  IF nullif(btrim(p_datos->>campo),'') IS NULL THEN
+  IF nullif(regexp_replace(p_datos->>campo, '^[[:space:]]+|[[:space:]]+$', '', 'g'),'') IS NULL THEN
    RETURN QUERY SELECT false,'Completa todos los campos de la idea.'::text,NULL::bigint; RETURN;
   END IF;
  END LOOP;
  IF length(p_datos->>'titulo')>250 OR length(p_datos::text)>64000 THEN
   RETURN QUERY SELECT false,'El contenido es demasiado largo.'::text,NULL::bigint; RETURN;
  END IF;
- INSERT INTO area_experiencia(nombre) VALUES(btrim(p_datos->>'area')) ON CONFLICT(nombre) DO UPDATE SET nombre=excluded.nombre RETURNING id INTO area;
- INSERT INTO linea_investigacion(nombre) VALUES(btrim(p_datos->>'linea')) ON CONFLICT(nombre) DO UPDATE SET nombre=excluded.nombre RETURNING id INTO linea;
+ INSERT INTO area_experiencia(nombre) VALUES(regexp_replace(p_datos->>'area', '^[[:space:]]+|[[:space:]]+$', '', 'g')) ON CONFLICT(nombre) DO UPDATE SET nombre=excluded.nombre RETURNING id INTO area;
+ INSERT INTO linea_investigacion(nombre) VALUES(regexp_replace(p_datos->>'linea', '^[[:space:]]+|[[:space:]]+$', '', 'g')) ON CONFLICT(nombre) DO UPDATE SET nombre=excluded.nombre RETURNING id INTO linea;
  INSERT INTO idea(autor_id,modalidad_id,area_id,linea_id,titulo,descripcion,objetivos,tecnologias)
- VALUES(actor.id,(p_datos->>'modalidad')::bigint,area,linea,btrim(p_datos->>'titulo'),btrim(p_datos->>'descripcion'),btrim(p_datos->>'objetivos'),btrim(p_datos->>'tecnologias')) RETURNING id INTO nueva;
+ VALUES(actor.id,(p_datos->>'modalidad')::bigint,area,linea,regexp_replace(p_datos->>'titulo', '^[[:space:]]+|[[:space:]]+$', '', 'g'),regexp_replace(p_datos->>'descripcion', '^[[:space:]]+|[[:space:]]+$', '', 'g'),regexp_replace(p_datos->>'objetivos', '^[[:space:]]+|[[:space:]]+$', '', 'g'),regexp_replace(p_datos->>'tecnologias', '^[[:space:]]+|[[:space:]]+$', '', 'g')) RETURNING id INTO nueva;
  INSERT INTO evento_auditoria(actor_id,origen,accion,entidad,entidad_id) VALUES(actor.id,'usuario','proponer_idea','idea',nueva);
  RETURN QUERY SELECT true,'Idea enviada al Comité para su revisión.'::text,nueva;
 EXCEPTION WHEN foreign_key_violation OR invalid_text_representation THEN
@@ -48,14 +48,14 @@ BEGIN
  IF propuesta.id IS NULL OR propuesta.estado<>'pendiente' THEN
   RETURN QUERY SELECT false,'Esta idea ya fue revisada o no existe.'::text,NULL::bigint; RETURN;
  END IF;
- IF p_decision IS NULL OR p_decision NOT IN ('aprobada','rechazada') OR nullif(btrim(p_reporte),'') IS NULL THEN
+ IF p_decision IS NULL OR p_decision NOT IN ('aprobada','rechazada') OR nullif(regexp_replace(p_reporte, '^[[:space:]]+|[[:space:]]+$', '', 'g'),'') IS NULL THEN
   RETURN QUERY SELECT false,'Selecciona una decisión y escribe sus observaciones.'::text,NULL::bigint; RETURN;
  END IF;
- INSERT INTO decision_idea(idea_id,responsable_id,decision,observaciones) VALUES(p_idea,actor.id,p_decision,btrim(p_reporte));
+ INSERT INTO decision_idea(idea_id,responsable_id,decision,observaciones) VALUES(p_idea,actor.id,p_decision,regexp_replace(p_reporte, '^[[:space:]]+|[[:space:]]+$', '', 'g'));
  UPDATE idea SET estado=p_decision WHERE id=p_idea;
  INSERT INTO evento_auditoria(actor_id,origen,accion,entidad,entidad_id,datos_nuevos)
- VALUES(actor.id,'usuario','decidir_idea','idea',p_idea,jsonb_build_object('decision',p_decision,'reporte',btrim(p_reporte))) RETURNING id INTO evento;
- INSERT INTO notificacion(evento_id,destinatario_id,asunto,cuerpo) VALUES(evento,propuesta.autor_id,'Tu idea fue revisada',p_decision||': '||btrim(p_reporte));
+ VALUES(actor.id,'usuario','decidir_idea','idea',p_idea,jsonb_build_object('decision',p_decision,'reporte',regexp_replace(p_reporte, '^[[:space:]]+|[[:space:]]+$', '', 'g'))) RETURNING id INTO evento;
+ INSERT INTO notificacion(evento_id,destinatario_id,asunto,cuerpo) VALUES(evento,propuesta.autor_id,'Tu idea fue revisada',p_decision||': '||regexp_replace(p_reporte, '^[[:space:]]+|[[:space:]]+$', '', 'g'));
  RETURN QUERY SELECT true,'La decisión quedó registrada.'::text,p_idea;
 END; $$;
 
@@ -169,11 +169,11 @@ BEGIN
  IF proyecto_actual.estado IS DISTINCT FROM 'activo' OR ciclo IS NULL THEN
   RETURN QUERY SELECT false,'La entrega ya fue revisada o el proyecto no está activo.'::text,NULL::bigint; RETURN;
  END IF;
- IF p_decision IS NULL OR p_decision NOT IN ('aprobado','rechazado') OR nullif(btrim(p_reporte),'') IS NULL THEN
+ IF p_decision IS NULL OR p_decision NOT IN ('aprobado','rechazado') OR nullif(regexp_replace(p_reporte, '^[[:space:]]+|[[:space:]]+$', '', 'g'),'') IS NULL THEN
   RETURN QUERY SELECT false,'Selecciona una decisión y escribe el reporte para el estudiante.'::text,NULL::bigint; RETURN;
  END IF;
  INSERT INTO revision_entrega(ciclo_id,etapa,responsable_id,decision,reporte_respuesta,decidida_en)
- VALUES(ciclo,'comite',actor.id,p_decision,btrim(p_reporte),CURRENT_TIMESTAMP) RETURNING id INTO revision;
+ VALUES(ciclo,'comite',actor.id,p_decision,regexp_replace(p_reporte, '^[[:space:]]+|[[:space:]]+$', '', 'g'),CURRENT_TIMESTAMP) RETURNING id INTO revision;
  UPDATE ciclo_revision SET finalizado_en=CURRENT_TIMESTAMP WHERE id=ciclo;
  UPDATE proyecto_fase SET estado=p_decision WHERE proyecto_id=p_proyecto AND fase_codigo='pago';
  IF p_decision='aprobado' THEN
@@ -182,9 +182,9 @@ BEGIN
   INSERT INTO plazo_correccion(revision_id,inicio_en,limite_en) VALUES(revision,CURRENT_TIMESTAMP,limite_dias_calendario(CURRENT_TIMESTAMP,3));
  END IF;
  INSERT INTO evento_auditoria(proyecto_id,actor_id,origen,accion,entidad,entidad_id,datos_nuevos)
- VALUES(p_proyecto,actor.id,'usuario','decidir_pago','revision_entrega',revision,jsonb_build_object('decision',p_decision,'reporte',btrim(p_reporte))) RETURNING id INTO evento;
+ VALUES(p_proyecto,actor.id,'usuario','decidir_pago','revision_entrega',revision,jsonb_build_object('decision',p_decision,'reporte',regexp_replace(p_reporte, '^[[:space:]]+|[[:space:]]+$', '', 'g'))) RETURNING id INTO evento;
  INSERT INTO notificacion(evento_id,destinatario_id,asunto,cuerpo)
- SELECT evento,pp.estudiante_id,'El Comité revisó el pago',p_decision||': '||btrim(p_reporte) FROM participante_proyecto pp WHERE pp.proyecto_id=p_proyecto AND pp.retiro_en IS NULL;
+ SELECT evento,pp.estudiante_id,'El Comité revisó el pago',p_decision||': '||regexp_replace(p_reporte, '^[[:space:]]+|[[:space:]]+$', '', 'g') FROM participante_proyecto pp WHERE pp.proyecto_id=p_proyecto AND pp.retiro_en IS NULL;
  RETURN QUERY SELECT true,'Decisión guardada sobre el conjunto completo.'::text,p_proyecto;
 END; $$;
 

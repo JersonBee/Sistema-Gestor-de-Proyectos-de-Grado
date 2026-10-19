@@ -155,3 +155,42 @@ La vista ahora mantiene el aviso de plazo/reenvío solo para proyectos activos; 
 Pasaron también MVC (51 rutas) y `git diff --check`. No se repitieron la suite completa ni la matriz de roles en esta revisión, limitada a presentación. La rama de pausa se inspeccionó en código; esta prueba específica ejerce el caso cerrado.
 
 No requiere migración en Supabase. Falta desplegar la JSP actualizada en el aplicativo público; no se realizó push ni despliegue remoto.
+
+
+## Décima revisión: ideas y decisiones sin contenido visible
+
+Se reprodujo que `proponer_idea` aceptaba un título compuesto exclusivamente por tabulaciones y saltos de línea. La validación usaba `btrim`, que solo retiraba espacios comunes. El mismo patrón estaba en descripción, objetivos, tecnologías, área, línea y observaciones de decisión del Comité. Esto permitía ideas sin contenido visible y catálogos con nombres vacíos visualmente.
+
+Las dos funciones ahora recortan espacios, tabulaciones y saltos exteriores y rechazan el resultado vacío. Conservan los espacios y saltos interiores del texto. Se actualizaron sus definiciones en 007 y se añadió la migración 016 para bases instaladas. No se limpian ni modifican ideas históricas.
+
+`python -u scripts/pruebas_espacios_ideas.py` falló antes de la corrección al aceptar el título vacío. Después pasó los seis campos obligatorios, rechazo de observaciones vacías y aceptación/normalización de idea y decisión válidas. Ejecuta las funciones reales con usuarios temporales dentro de una transacción revertida, exclusivamente en `grado_pruebas`; no conserva registros de prueba. Se incorporó a la suite integral.
+
+La suite completa `python -u scripts/pruebas_completas.py` terminó correctamente, incluidos el recorrido académico, los plazos, la matriz de 731 comprobaciones de roles, paginación y sesiones entre instancias. También pasaron MVC (51 rutas), compilación Python de los scripts nuevos y revisión de espacios del diff. Esto no afirma que se hayan agotado todos los errores posibles.
+
+La migración 016 se aplicó en Supabase el 19 de octubre de 2026. Se verificó la nueva definición y que las firmas, propietarios y permisos de ambas funciones permanecieran iguales. No se crearon cuentas o proyectos de prueba en Supabase. El cambio de base ya está activo; no requiere desplegar nuevas JSP. No se realizó commit, push ni despliegue Vercel.
+
+
+## Undécima revisión: reportes y solicitudes sin contenido
+
+Se reprodujo que `decidir_pago` permitía rechazar una entrega con una tabulación como reporte. La decisión se registraba pese a no explicar la corrección. El mismo patrón `btrim` aparecía en `decidir_revision`, `crear_solicitud` y `decidir_solicitud`, dejando pasar textos visualmente vacíos.
+
+Las cuatro funciones ahora recortan espacios, tabulaciones y saltos exteriores antes de validar y guardar sus textos obligatorios. Conservan el contenido interior y las reglas de roles, decisiones y plazos. Se actualizaron 007, 008 y 010 y se añadió 017 para bases instaladas. No se cambian registros históricos.
+
+La prueba `python -u scripts/pruebas_textos_tramites.py` falló inicialmente porque Pago aceptó el reporte vacío. Con la corrección comprueba las cuatro operaciones, cinco variantes vacías por operación y los casos válidos. Verifica que los rechazos de validación no creen revisiones/solicitudes ni resuelvan las pendientes. Todos sus fixtures están dentro de una transacción revertida en `grado_pruebas`; no accede a Supabase. Quedó integrada en la suite completa.
+
+La suite integral terminó correctamente, incluidos el flujo académico, plazos, trámites, las 731 comprobaciones adicionales de permisos, paginación y sesiones entre instancias. Pasaron MVC (51 rutas), compilación Python y `git diff --check`.
+
+La migración 017 se aplicó y verificó en Supabase el 19 de octubre de 2026: se conservaron firmas, propietarios y permisos de las cuatro funciones. No se crearon fixtures remotos ni se modificaron datos históricos. La corrección SQL ya está activa sin requerir cambios JSP. No se realizó commit, push ni despliegue en Vercel.
+
+
+## Duodécima revisión: mensajes y actas sin contenido
+
+Se reprodujeron dos fallos de contenido: `enviar_mensaje` aceptaba una tabulación como mensaje y `crear_acta` admitía una tabulación como número obligatorio. Los demás campos obligatorios del acta usaban la misma validación incompleta.
+
+Se actualizaron ambas funciones en 011 y se añadió 018 para bases instaladas. Ahora rechazan textos compuestos solo por espacios, tabulaciones o saltos de línea y recortan esos caracteres exteriores. Los saltos interiores del mensaje y de los detalles del acta se conservan. No cambian destinatarios autorizados, roles, aprobación, fecha del acta ni registros existentes.
+
+La nueva prueba `python -u scripts/pruebas_textos_comunicacion.py` falló primero por el mensaje vacío; corregido este, falló por el número de acta vacío. Con ambas correcciones pasa cinco variantes vacías para mensajes y para cada uno de los tres campos de acta. Comprueba ausencia de mensajes/actas inválidos, textos válidos con saltos interiores, rechazo de fecha imposible y aprobación válida. Usa fixtures exclusivamente locales en una transacción revertida, sin persistirlos. Se incorporó a la suite para futuras ejecuciones.
+
+Pasaron MVC (51 rutas), compilación Python, `git diff --check` y la matriz HTTP de cinco roles con 731 comprobaciones adicionales. No se repitió toda la suite integral en esta revisión: se ejecutaron la regresión específica y los permisos.
+
+La migración 018 se aplicó y verificó en Supabase el 19 de octubre de 2026. Se conservaron firmas, propietarios y permisos de ambas funciones. No se insertaron fixtures remotos ni se modificaron datos históricos. La corrección SQL ya está activa; no requiere desplegar JSP. No se realizó commit, push ni despliegue Vercel.

@@ -59,7 +59,7 @@ La [documentación oficial de Vercel](https://vercel.com/kb/guide/docker) descri
 
 Supabase ya tiene las migraciones hasta `012_validacion_perfil_docente.sql`. **No repetir la instalación inicial**. El despliegue no ejecuta SQL automáticamente. Cron continúa en Supabase aunque la aplicación esté detenida.
 
-Para una base completamente nueva, aplicar en orden los archivos de `database/`: 001, 002, 004, 006, 007, 008, 009, 010, 011, 012, 013, 014 y 015. La 009 requiere pg_cron de Supabase. Los archivos de `database/supabase/` son auxiliares: leer sus encabezados y no ejecutarlos todos como si fueran migraciones nuevas.
+Para una base completamente nueva, aplicar en orden los archivos de `database/`: 001, 002, 004, 006, 007, 008, 009, 010, 011, 012, 013, 014, 015, 016, 017 y 018. La 009 requiere pg_cron de Supabase. Los archivos de `database/supabase/` son auxiliares: leer sus encabezados y no ejecutarlos todos como si fueran migraciones nuevas.
 
 Si aún no existe una cuenta del Comité, crear la primera con `scripts/crear-comite.ps1` usando el contenedor local conectado a la misma base. No hay cuenta administrativa predeterminada. Las cuentas existentes se mantienen.
 
@@ -106,3 +106,18 @@ Las pruebas funcionales se documentan en `RESULTADO_PRUEBAS_ROLES.md`; se ejecut
 ## Validación de campos y listas docentes (015)
 
 `database/015_validacion_espacios_perfil.sql` reemplaza las funciones de registro y administración para recortar tabulaciones y saltos de línea exteriores, rechazar nombres/perfiles obligatorios vacíos y omitir elementos vacíos de áreas y líneas. No cambia la autoactivación, las firmas ni los datos de cuentas existentes. Aplicar después de las migraciones anteriores; no reinstalar el esquema inicial. La migración 015 se aplicó y verificó en Supabase el 19 de octubre de 2026, conservando firmas, propietarios y permisos de las dos funciones.
+
+
+## Validación de contenido de ideas (016)
+
+`database/016_validacion_contenido_ideas.sql` reemplaza `proponer_idea` y `decidir_idea` para rechazar campos obligatorios y observaciones compuestos solo por espacios, tabulaciones o saltos de línea. Aplicar después de las migraciones anteriores, sin reinstalar el esquema. No modifica ideas existentes. Se aplicó y verificó en Supabase el 19 de octubre de 2026 conservando firmas, propietarios y permisos; otros entornos requieren ejecutar esta migración por separado.
+
+
+## Validación de reportes y solicitudes (017)
+
+`database/017_validacion_reportes_tramites.sql` reemplaza las funciones de decisión de Pago/revisión y creación/respuesta de solicitudes para rechazar textos obligatorios compuestos solo por espacios, tabulaciones o saltos. Aplicar después de las migraciones anteriores sin reinstalar el esquema. No limpia registros existentes. Se aplicó y verificó en Supabase el 19 de octubre de 2026, conservando firmas, propietarios y permisos de las cuatro funciones. Otros entornos requieren ejecutar la migración por separado.
+
+
+## Validación de mensajes y actas (018)
+
+`database/018_validacion_textos_comunicacion.sql` reemplaza `enviar_mensaje` y `crear_acta` para rechazar textos obligatorios compuestos solo por espacios, tabulaciones o saltos y conservar los saltos interiores de textos válidos. Aplicar después de las migraciones anteriores, sin reinstalar el esquema. No modifica registros existentes. Se aplicó y verificó en Supabase el 19 de octubre de 2026 conservando firmas, propietarios y permisos. Otros entornos deben ejecutarla por separado.

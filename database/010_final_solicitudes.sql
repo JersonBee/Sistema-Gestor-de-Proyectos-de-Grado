@@ -110,7 +110,7 @@ BEGIN
  END IF;
  PERFORM procesar_plazos_proyecto(p_proyecto,CURRENT_TIMESTAMP);
  SELECT * INTO p FROM proyecto WHERE id=p_proyecto;
- IF p.estado IS DISTINCT FROM 'activo' OR p_tipo IS NULL OR p_tipo NOT IN('cambio_director','cambio_evaluador','retiro','reclamo','queja','solicitud') OR nullif(btrim(p_descripcion),'') IS NULL OR length(p_descripcion)>12000 THEN
+ IF p.estado IS DISTINCT FROM 'activo' OR p_tipo IS NULL OR p_tipo NOT IN('cambio_director','cambio_evaluador','retiro','reclamo','queja','solicitud') OR nullif(regexp_replace(p_descripcion, '^[[:space:]]+|[[:space:]]+$', '', 'g'),'') IS NULL OR length(p_descripcion)>12000 THEN
   RETURN QUERY SELECT false,'Selecciona un proyecto activo, un tipo válido y escribe el motivo.'::text,NULL::bigint; RETURN;
  END IF;
  IF p_tipo IN('cambio_director','cambio_evaluador') THEN
@@ -122,8 +122,8 @@ BEGIN
   END IF;
  END IF;
  INSERT INTO solicitud(proyecto_id,solicitante_id,tipo,descripcion,docente_preferido_id)
- VALUES(p_proyecto,actor.id,p_tipo,btrim(p_descripcion),CASE WHEN p_tipo IN('cambio_director','cambio_evaluador') THEN p_preferido ELSE NULL END) RETURNING id INTO nueva;
- PERFORM avisar_proyecto(p_proyecto,actor.id,'crear_solicitud','solicitud',nueva,'Nueva solicitud para el Comité',replace(p_tipo,'_',' ')||': '||btrim(p_descripcion));
+ VALUES(p_proyecto,actor.id,p_tipo,regexp_replace(p_descripcion, '^[[:space:]]+|[[:space:]]+$', '', 'g'),CASE WHEN p_tipo IN('cambio_director','cambio_evaluador') THEN p_preferido ELSE NULL END) RETURNING id INTO nueva;
+ PERFORM avisar_proyecto(p_proyecto,actor.id,'crear_solicitud','solicitud',nueva,'Nueva solicitud para el Comité',replace(p_tipo,'_',' ')||': '||regexp_replace(p_descripcion, '^[[:space:]]+|[[:space:]]+$', '', 'g'));
  RETURN QUERY SELECT true,'Solicitud enviada al Comité.'::text,p_proyecto;
 END; $$;
 
@@ -140,7 +140,7 @@ BEGIN
  SELECT * INTO p FROM proyecto WHERE id=pid;
  SELECT * INTO s FROM solicitud WHERE id=p_solicitud FOR UPDATE;
  IF p.estado IS DISTINCT FROM 'activo' OR s.id IS NULL OR s.estado<>'pendiente' THEN RETURN QUERY SELECT false,'La solicitud ya fue resuelta o el proyecto no está activo.'::text,NULL::bigint; RETURN; END IF;
- IF p_decision IS NULL OR nullif(btrim(p_respuesta),'') IS NULL OR
+ IF p_decision IS NULL OR nullif(regexp_replace(p_respuesta, '^[[:space:]]+|[[:space:]]+$', '', 'g'),'') IS NULL OR
   (s.tipo IN('cambio_director','cambio_evaluador','retiro') AND p_decision NOT IN('aprobada','rechazada')) OR
   (s.tipo NOT IN('cambio_director','cambio_evaluador','retiro') AND p_decision NOT IN('atendida','rechazada')) THEN
   RETURN QUERY SELECT false,'Selecciona una decisión válida y escribe la respuesta.'::text,NULL::bigint; RETURN;
@@ -162,8 +162,8 @@ BEGIN
   PERFORM avisar_proyecto(pid,actor.id,'cambiar_docente','solicitud',s.id,'Cambió el docente asignado',v_funcion||': '||(SELECT nombre FROM usuario WHERE id=anterior)||' → '||(SELECT nombre FROM usuario WHERE id=s.docente_preferido_id)||'. La revisión pendiente dispone de cinco días calendario desde la reasignación.');
  END IF;
  UPDATE solicitud SET estado=p_decision WHERE id=s.id;
- INSERT INTO respuesta_solicitud(solicitud_id,responsable_id,estado_resultante,respuesta) VALUES(s.id,actor.id,p_decision,btrim(p_respuesta));
- PERFORM avisar_proyecto(pid,actor.id,'decidir_solicitud','solicitud',s.id,'El Comité respondió una solicitud',replace(s.tipo,'_',' ')||' · '||p_decision||': '||btrim(p_respuesta));
+ INSERT INTO respuesta_solicitud(solicitud_id,responsable_id,estado_resultante,respuesta) VALUES(s.id,actor.id,p_decision,regexp_replace(p_respuesta, '^[[:space:]]+|[[:space:]]+$', '', 'g'));
+ PERFORM avisar_proyecto(pid,actor.id,'decidir_solicitud','solicitud',s.id,'El Comité respondió una solicitud',replace(s.tipo,'_',' ')||' · '||p_decision||': '||regexp_replace(p_respuesta, '^[[:space:]]+|[[:space:]]+$', '', 'g'));
  IF p_decision='aprobada' AND s.tipo='retiro' THEN
   UPDATE participante_proyecto SET retiro_en=CURRENT_TIMESTAMP WHERE proyecto_id=pid AND estudiante_id=s.solicitante_id AND retiro_en IS NULL;
   PERFORM cerrar_solicitudes_pendientes(pid,actor.id,'El solicitante se retiró. No se aplicaron los cambios pendientes.',s.solicitante_id);

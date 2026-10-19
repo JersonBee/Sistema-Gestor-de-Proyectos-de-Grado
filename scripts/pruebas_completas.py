@@ -4,6 +4,9 @@ Ejecutar: python -u scripts/pruebas_completas.py
 Recrea exclusivamente el esquema local de fixtures mediante comprobar().
 """
 from pruebas_acceso import comprobar
+from pruebas_textos_comunicacion import verificar_textos_comunicacion
+from pruebas_textos_tramites import verificar_textos_tramites
+from pruebas_espacios_ideas import verificar_espacios_ideas
 from pruebas_limites_acceso import verificar_limites_acceso
 from pruebas_pago_historico import verificar_pago_historico
 from pruebas_documentos_fases import verificar_documentos_fases
@@ -32,6 +35,9 @@ if __name__=='__main__':
     verificar(contexto['clave'])
     verificar_registro()
     verificar_espacios_administracion()
+    verificar_espacios_ideas()
+    verificar_textos_tramites()
+    verificar_textos_comunicacion()
     verificar_paginacion(contexto['clave'])
     verificar_empates()
     verificar_contexto()

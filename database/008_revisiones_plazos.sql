@@ -186,11 +186,11 @@ BEGIN
   OR (r.etapa<>'comite' AND (r.responsable_id<>actor.id OR NOT EXISTS(SELECT 1 FROM asignacion_proyecto ap WHERE ap.proyecto_id=p.id AND ap.docente_id=actor.id AND ap.funcion=r.etapa AND ap.fin_en IS NULL))) THEN
   RETURN QUERY SELECT false,'La revisión no está disponible para tu rol o ya terminó.'::text,NULL::bigint; RETURN;
  END IF;
- IF p_decision IS NULL OR p_decision NOT IN('aprobado','rechazado') OR nullif(btrim(p_reporte),'') IS NULL THEN
+ IF p_decision IS NULL OR p_decision NOT IN('aprobado','rechazado') OR nullif(regexp_replace(p_reporte, '^[[:space:]]+|[[:space:]]+$', '', 'g'),'') IS NULL THEN
   RETURN QUERY SELECT false,'Selecciona una decisión y escribe el reporte de respuesta.'::text,NULL::bigint; RETURN;
  END IF;
  IF p_decision='rechazado' THEN
-  PERFORM devolver_revision(r.id,'rechazado',btrim(p_reporte),actor.id,CURRENT_TIMESTAMP);
+  PERFORM devolver_revision(r.id,'rechazado',regexp_replace(p_reporte, '^[[:space:]]+|[[:space:]]+$', '', 'g'),actor.id,CURRENT_TIMESTAMP);
   RETURN QUERY SELECT true,'Correcciones enviadas al estudiante. El ciclo reinicia con el director.'::text,p.id; RETURN;
  END IF;
  segunda:=CASE WHEN r.fase_codigo='propuesta_1' THEN 'propuesta_2' ELSE 'informe_2' END;
@@ -198,7 +198,7 @@ BEGIN
   SELECT ap.docente_id INTO docente FROM asignacion_proyecto ap JOIN usuario u ON u.id=ap.docente_id WHERE ap.proyecto_id=p.id AND ap.funcion='evaluador' AND ap.fin_en IS NULL AND u.estado='activo' AND u.rol_codigo='evaluador';
   IF docente IS NULL THEN RETURN QUERY SELECT false,'No hay un evaluador activo asignado.'::text,NULL::bigint; RETURN; END IF;
  END IF;
- UPDATE revision_entrega SET decision='aprobado',reporte_respuesta=btrim(p_reporte),decidida_en=CURRENT_TIMESTAMP,responsable_id=actor.id WHERE id=r.id;
+ UPDATE revision_entrega SET decision='aprobado',reporte_respuesta=regexp_replace(p_reporte, '^[[:space:]]+|[[:space:]]+$', '', 'g'),decidida_en=CURRENT_TIMESTAMP,responsable_id=actor.id WHERE id=r.id;
  IF r.etapa='director' THEN
   UPDATE proyecto_fase SET estado='aprobado',finalizada_en=CURRENT_TIMESTAMP WHERE id=r.fase_origen_id;
   INSERT INTO proyecto_fase(proyecto_id,fase_codigo,iniciada_en) VALUES(p.id,segunda,CURRENT_TIMESTAMP)
@@ -215,7 +215,7 @@ BEGIN
    UPDATE proyecto SET inicio_vigencia_en=CURRENT_TIMESTAMP,informe_habilitado_en=habilitacion_informe(CURRENT_TIMESTAMP),vence_en=limite_dias_calendario(CURRENT_TIMESTAMP,180) WHERE id=p.id;
   ELSE UPDATE proyecto SET informe_aprobado_comite_en=CURRENT_TIMESTAMP WHERE id=p.id; END IF;
  END IF;
- PERFORM avisar_proyecto(p.id,actor.id,'aprobar_revision','revision_entrega',r.id,'Revisión aprobada',btrim(p_reporte));
+ PERFORM avisar_proyecto(p.id,actor.id,'aprobar_revision','revision_entrega',r.id,'Revisión aprobada',regexp_replace(p_reporte, '^[[:space:]]+|[[:space:]]+$', '', 'g'));
  RETURN QUERY SELECT true,CASE WHEN r.etapa='director' THEN 'El conjunto pasó al evaluador.' WHEN r.etapa='evaluador' THEN 'El conjunto pasó al Comité.' WHEN siguiente='informe_1' THEN 'Propuesta aprobada. Comenzó Informe I y su vigencia de 180 días.' ELSE 'Informe aprobado. El proyecto avanzó a la fase Final.' END,p.id;
 END; $$;
 

@@ -63,7 +63,7 @@ def comprobar():
     sql("ALTER ROLE pruebas WITH PASSWORD '"+clave_bd+"';")
     # Recreación del esquema únicamente en esta base de prueba nombrada y aislada.
     sql('DROP SCHEMA IF EXISTS grado CASCADE;')
-    for nombre in ['001_estructura.sql', '002_catalogos.sql', '004_utilidades.sql', '006_acceso.sql', '007_ideas_pago.sql', '008_revisiones_plazos.sql', '010_final_solicitudes.sql', '011_administracion_comunicacion.sql', '012_validacion_perfil_docente.sql', '013_sesiones_http.sql', '014_enlaces_adicionales_multilinea.sql', '015_validacion_espacios_perfil.sql']:
+    for nombre in ['001_estructura.sql', '002_catalogos.sql', '004_utilidades.sql', '006_acceso.sql', '007_ideas_pago.sql', '008_revisiones_plazos.sql', '010_final_solicitudes.sql', '011_administracion_comunicacion.sql', '012_validacion_perfil_docente.sql', '013_sesiones_http.sql', '014_enlaces_adicionales_multilinea.sql', '015_validacion_espacios_perfil.sql', '016_validacion_contenido_ideas.sql', '017_validacion_reportes_tramites.sql', '018_validacion_textos_comunicacion.sql']:
         sql((RAIZ/'database'/nombre).read_text(encoding='utf-8'))
     sql((RAIZ/'database/003_verificacion.sql').read_text(encoding='utf-8'))
     sql((RAIZ/'database/005_verificacion_utilidades.sql').read_text(encoding='utf-8'))

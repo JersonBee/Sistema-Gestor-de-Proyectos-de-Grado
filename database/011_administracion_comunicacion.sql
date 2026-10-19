@@ -65,10 +65,10 @@ BEGIN
  IF actor.id IS NULL OR actor.rol_codigo<>'comite' THEN RETURN QUERY SELECT false,'Solo el Comité registra actas.'::text,NULL::bigint; RETURN; END IF;
  SELECT * INTO p FROM proyecto WHERE id=p_proyecto FOR UPDATE;
  IF p.id IS NULL OR p.estado='desactivado' THEN RETURN QUERY SELECT false,'El proyecto no existe o está en pausa.'::text,NULL::bigint; RETURN; END IF;
- IF nullif(btrim(p_numero),'') IS NULL OR nullif(btrim(p_descripcion),'') IS NULL OR nullif(btrim(p_detalles),'') IS NULL OR p_fecha IS NULL OR p_fecha!~ '^\d{4}-\d{2}-\d{2}$' THEN
+ IF nullif(regexp_replace(p_numero, '^[[:space:]]+|[[:space:]]+$', '', 'g'),'') IS NULL OR nullif(regexp_replace(p_descripcion, '^[[:space:]]+|[[:space:]]+$', '', 'g'),'') IS NULL OR nullif(regexp_replace(p_detalles, '^[[:space:]]+|[[:space:]]+$', '', 'g'),'') IS NULL OR p_fecha IS NULL OR p_fecha!~ '^\d{4}-\d{2}-\d{2}$' THEN
   RETURN QUERY SELECT false,'Completa número, fecha, descripción y detalles del acta.'::text,NULL::bigint; RETURN;
  END IF;
- INSERT INTO acta(numero,fecha,descripcion,detalles,creada_por) VALUES(btrim(p_numero),p_fecha::date,btrim(p_descripcion),btrim(p_detalles),actor.id) RETURNING id INTO nueva;
+ INSERT INTO acta(numero,fecha,descripcion,detalles,creada_por) VALUES(regexp_replace(p_numero, '^[[:space:]]+|[[:space:]]+$', '', 'g'),p_fecha::date,regexp_replace(p_descripcion, '^[[:space:]]+|[[:space:]]+$', '', 'g'),regexp_replace(p_detalles, '^[[:space:]]+|[[:space:]]+$', '', 'g'),actor.id) RETURNING id INTO nueva;
  INSERT INTO acta_proyecto(acta_id,proyecto_id) VALUES(nueva,p_proyecto);
  INSERT INTO evento_auditoria(proyecto_id,actor_id,origen,accion,entidad,entidad_id) VALUES(p_proyecto,actor.id,'usuario','registrar_acta','acta',nueva);
  RETURN QUERY SELECT true,'Acta registrada. Falta la aprobación del Comité.'::text,nueva;
@@ -123,10 +123,10 @@ BEGIN
  END IF;
  PERFORM procesar_plazos_proyecto(p_proyecto,CURRENT_TIMESTAMP);
  SELECT * INTO p FROM proyecto WHERE id=p_proyecto;
- IF p.estado IS DISTINCT FROM 'activo' OR nullif(btrim(p_contenido),'') IS NULL OR length(p_contenido)>12000 THEN
+ IF p.estado IS DISTINCT FROM 'activo' OR nullif(regexp_replace(p_contenido, '^[[:space:]]+|[[:space:]]+$', '', 'g'),'') IS NULL OR length(p_contenido)>12000 THEN
   RETURN QUERY SELECT false,'Escribe un mensaje para un proyecto activo.'::text,NULL::bigint; RETURN;
  END IF;
- INSERT INTO mensaje(proyecto_id,remitente_id,destinatario_id,contenido) VALUES(p_proyecto,actor.id,p_destinatario,btrim(p_contenido)) RETURNING id INTO nuevo;
+ INSERT INTO mensaje(proyecto_id,remitente_id,destinatario_id,contenido) VALUES(p_proyecto,actor.id,p_destinatario,regexp_replace(p_contenido, '^[[:space:]]+|[[:space:]]+$', '', 'g')) RETURNING id INTO nuevo;
  INSERT INTO evento_auditoria(proyecto_id,actor_id,origen,accion,entidad,entidad_id,datos_nuevos)
  VALUES(p_proyecto,actor.id,'usuario','enviar_mensaje','mensaje',nuevo,jsonb_build_object('detalle','Se envió un mensaje por el canal privado.')) RETURNING id INTO evento;
  INSERT INTO notificacion(evento_id,destinatario_id,asunto,cuerpo) VALUES(evento,p_destinatario,'Tienes un mensaje nuevo','Abre Mensajes en el proyecto para leerlo.');
