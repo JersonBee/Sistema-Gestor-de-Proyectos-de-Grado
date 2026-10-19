@@ -16,7 +16,7 @@ psql -X -v ON_ERROR_STOP=1 -d nombre_base -f database/005_verificacion_utilidade
 
 001, 002 y 004 se ejecutan una sola vez; cada archivo usa su propia transacción. No eliminan datos existentes. 003 está pensado para una base de desarrollo recién creada: verifica restricciones y revierte sus datos, aunque puede consumir valores de secuencias. 005 verifica las utilidades y los hashes sin crear cuentas. 004 requiere poder habilitar `pgcrypto` en el esquema `extensions`; si ya existe en otro esquema, se detiene sin reubicarla. Usar credenciales externas al repositorio. Son scripts de instalación inicial, no migraciones para una base que ya tenga estos objetos.
 
-**Validación:** revisión estática realizada. Ejecución real pendiente: no hay `psql`/`postgres` instalado ni un motor Docker iniciado en este entorno. No se presenta el modelo como probado en PostgreSQL ni como implementación completa de las reglas funcionales.
+**Estado actualizado:** la instalación y los flujos se han probado en PostgreSQL local aislado con Docker. Las migraciones hasta 012 se verificaron anteriormente en Supabase. La 013 incorpora persistencia HTTP de Tomcat; su estado remoto se documenta en `docs/CORRECCIONES_DIAGNOSTICO.md`. Para la instalación completa consultar la guía única `docs/GITHUB_Y_VERCEL.md`; los pasos anteriores corresponden únicamente al modelo inicial.
 
 ## Entidades
 

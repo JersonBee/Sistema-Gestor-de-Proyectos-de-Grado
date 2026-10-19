@@ -10,6 +10,6 @@ if [ "$PORT" -lt 1 ] || [ "$PORT" -gt 65535 ]; then
     echo 'ARRANQUE_ERROR: PORT debe estar entre 1 y 65535.' >&2
     exit 1
 fi
-export CATALINA_OPTS="${CATALINA_OPTS:-} -Dgrado.http.port=$PORT"
+export CATALINA_OPTS="${CATALINA_OPTS:-} -Dgrado.http.port=$PORT -Dorg.apache.catalina.session.StandardSession.ACTIVITY_CHECK=true"
 echo "ARRANQUE: Tomcat escuchará en PORT=$PORT"
 exec /usr/local/tomcat/bin/catalina.sh run

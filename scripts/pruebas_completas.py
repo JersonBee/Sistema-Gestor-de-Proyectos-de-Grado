@@ -11,6 +11,7 @@ from pruebas_final_solicitudes import tramites
 from pruebas_permisos_roles import verificar
 from pruebas_registro_validacion import verificar_registro
 from pruebas_paginacion import verificar_paginacion
+from pruebas_sesiones_compartidas import verificar as verificar_sesiones
 
 if __name__=='__main__':
     comprobar()
@@ -20,4 +21,5 @@ if __name__=='__main__':
     verificar(contexto['clave'])
     verificar_registro()
     verificar_paginacion(contexto['clave'])
+    verificar_sesiones()
     print('OK: suite integral y matriz completa de roles finalizadas.')

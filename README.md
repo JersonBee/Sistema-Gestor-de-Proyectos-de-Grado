@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Sistema de gestión de proyectos de grado
 
 Aplicación JSP/JSTL con PostgreSQL en Supabase. Incluye acceso, perfiles, banco de ideas, creación de proyectos, Pago y revisiones de Propuesta/Informe. Hay versiones, previsualización, pausas, avisos y plazos automáticos. La fase Final permite registrar adicionales opcionales y cerrar por el Comité; las solicitudes permiten cambios de docentes, retiros y atención de consultas, quejas y reclamos. El historial muestra las decisiones y movimientos autorizados. Incluye actas con aprobación, mensajería privada estudiante/director, administración de cuentas por el Comité y búsqueda de proyectos con filtros combinables.
@@ -118,13 +117,13 @@ La aplicación utiliza `assets/img/marca-uts.svg`, una recreación vectorial a p
 
 ## Entrega manual para GitHub y Vercel
 
-Seguir [la guía de publicación](docs/GITHUB_Y_VERCEL.md). `python scripts/preparar_entrega.py` genera un ZIP de fuentes sin `.env`, compilados ni herramientas locales. No publica nada. La guía incluye las variables, el orden de migraciones y la limitación de las sesiones en memoria al escalar.
+Seguir [la guía de publicación](docs/GITHUB_Y_VERCEL.md). `python scripts/preparar_entrega.py` genera un ZIP de fuentes sin `.env`, compilados ni herramientas locales. No publica nada. La guía incluye las variables, el orden de migraciones y la persistencia compartida de sesiones y sus límites de concurrencia.
 
 ## Despliegue previsto
 
 `Dockerfile.vercel` deja preparada la imagen OCI para el runtime de contenedores de Vercel. Al configurar el proyecto usar `PORT=8080` y las variables `DB_JDBC_URL`, `DB_USER`, `DB_PASSWORD` como secretos de ejecución, nunca argumentos de construcción. No se ha creado repositorio ni despliegue remoto.
 
-Las sesiones de autenticación se verifican en PostgreSQL mediante tokens aleatorios guardados como hash. El navegador conserva una cookie de sesión HttpOnly y SameSite=Lax; los formularios usan CSRF y las consultas parámetros. La sesión HTTP de Tomcat aún reside en memoria: antes de escalar a varias instancias hay que resolver su persistencia/afinidad y configurar HTTPS/cookies seguras. Los vencimientos se procesan en Supabase Cron, independientemente de las sesiones HTTP.
+Las sesiones de autenticación se verifican en PostgreSQL mediante tokens aleatorios guardados como hash. El navegador conserva una cookie de sesión HttpOnly y SameSite=Lax; los formularios usan CSRF y las consultas parámetros. La sesión HTTP se persiste por petición en PostgreSQL mediante componentes nativos de Tomcat. Antes de actualizar, aplicar `database/013_sesiones_http.sql`; el procedimiento y los límites de concurrencia están en `docs/GITHUB_Y_VERCEL.md`. Los vencimientos se procesan en Supabase Cron, independientemente de las sesiones HTTP.
 
 ## Referencias técnicas
 
@@ -134,6 +133,3 @@ Las sesiones de autenticación se verifican en PostgreSQL mediante tokens aleato
 - [Contenedores en Vercel](https://vercel.com/docs/functions/runtimes/container).
 
 Los acuerdos funcionales están en `docs/DECISIONES_FUNCIONALES.md`. Los scripts de instalación Supabase permanecen en `database/supabase/`; el usuario confirma que ya los ejecutó. No volver a ejecutarlos como migraciones.
-=======
-# Sistema-Gestor-de-Proyectos-de-Grado
->>>>>>> 0b556cd74f4a23f2e091534334d053f789d2c1f3

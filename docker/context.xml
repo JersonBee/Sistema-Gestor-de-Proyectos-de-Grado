@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
+    <Valve className="org.apache.catalina.valves.RemoteIpValve" protocolHeader="x-forwarded-proto" />
+    <!-- Componentes incluidos en Tomcat; no hay servlets ni clases Java propias. -->
+    <Valve className="org.apache.catalina.valves.PersistentValve" filter="/assets/.*|/salud\.jsp" />
+    <Manager className="org.apache.catalina.session.PersistentManager"
+             sessionActivityCheck="true" saveOnRestart="false"
+             sessionAttributeValueClassNameFilter="java\.lang\.(String|Long|Integer|Boolean|Number)"
+             warnOnSessionAttributeFilterFailure="true">
+        <Store className="org.apache.catalina.session.DataSourceStore"
+               dataSourceName="jdbc/Grado" localDataSource="true"
+               sessionTable="grado.sesion_http" sessionAppCol="aplicacion"
+               sessionIdCol="id" sessionDataCol="datos" sessionValidCol="valida"
+               sessionMaxInactiveCol="inactividad_maxima" sessionLastAccessedCol="ultimo_acceso" />
+    </Manager>
     <CookieProcessor sameSiteCookies="lax" />
     <!-- Sustitución por EnvironmentPropertySource; sin secretos en el WAR. -->
     <Resource name="jdbc/Grado" auth="Container" type="javax.sql.DataSource"

@@ -77,11 +77,17 @@ Si Logs indica `could not connect to $PORT=80` y detecta `8005, 8080`, Vercel y 
 
 La imagen corregida utiliza `docker/iniciar.sh` para validar `PORT` y pasarlo al conector HTTP de Tomcat. Hay que subir tanto ese archivo como `Dockerfile.vercel` para incorporar la corrección; el valor por defecto local sigue siendo 8080. La declaración `EXPOSE` o `ENV` dentro de la imagen no sustituye la configuración del puerto del router en Vercel.
 
-## Límite de sesiones en este despliegue
+## Sesiones compartidas y orden de actualización
 
-La sesión HTTP y el token CSRF de Tomcat están en memoria. Vercel puede detener instancias inactivas o distribuir peticiones entre varias instancias. Un reinicio pierde la sesión; un cambio de instancia puede devolver al login o invalidar un formulario abierto. Esto **no está resuelto por guardar los tokens de autenticación en PostgreSQL**. Reabrir el login y reenviar desde una sesión nueva permite recuperar el acceso, pero no garantiza continuidad entre instancias.
+La migración `database/013_sesiones_http.sql` ya se aplicó y verificó en el Supabase de este proyecto el 19 de octubre de 2026. En otra base, aplicarla antes de desplegar esta versión. Es una migración aditiva: crea el almacén de sesiones y no modifica cuentas ni sus estados. No repetir 001/002. La instalación inicial nueva debe incluir también la 013 después de la 012.
 
-El paquete permite construir y probar el despliegue de aula; no se ha validado remotamente ni se garantiza continuidad de sesión bajo escalado. Si la demostración presenta ese comportamiento, se necesita almacenamiento compartido de la sesión o alojar esta misma imagen en un servicio con una instancia persistente. No se ha añadido una implementación alternativa de autenticación ni código Java fuera de las restricciones del proyecto.
+Tomcat utiliza sus componentes incorporados PersistentManager, DataSourceStore y PersistentValve para guardar la sesión al terminar cada petición y restaurarla desde PostgreSQL en otra instancia. Incluye el token CSRF, el token de acceso y los mensajes temporales. No añade código Java, servlets ni DAOs propios. El cambio requiere subir `docker/context.xml`, `docker/iniciar.sh`, `Dockerfile.vercel` y las fuentes modificadas a GitHub antes del nuevo despliegue.
+
+El timeout HTTP sigue siendo de 30 minutos de inactividad; el token de acceso tiene además un máximo absoluto de 8 horas y se revoca al cerrar sesión. Son límites distintos, no ocho horas de sesión HTTP garantizada. El proxy HTTPS se reconoce mediante RemoteIpValve para emitir cookies Secure cuando la petición procede de un proxy interno confiable; localmente HTTP sigue disponible. Se conservan HttpOnly y SameSite=Lax.
+
+El almacén evita depender de afinidad para el recorrido secuencial entre instancias. PersistentValve coordina peticiones de la misma sesión dentro de cada instancia; no proporciona un bloqueo distribuido entre JVM. Formularios concurrentes de una misma sesión pueden competir por sus mensajes temporales. Las reglas de negocio y autorización continúan comprobándose en PostgreSQL. No se presenta esta configuración de aula como garantía de consistencia para escrituras de sesión simultáneas entre muchas instancias.
+
+Las sesiones antiguas en memoria no se migran: después de actualizar puede ser necesario volver a entrar. Un formulario abierto antes de la actualización debe recargarse.
 
 ## Validación local previa
 
